@@ -2,14 +2,15 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import caLogo from '@/assets/ca-logo.png';
 
 const highlights = [
-  'Founded by CA P.K. Amarnath, CA P.K. Premnath & CA P.A. Aswin Kumaar',
-  'Head Office in Madurai, Branch Office in Chennai',
-  'Partners practicing since early 1980',
-  'Comprehensive accounting & consulting services',
+  'Partners practicing since 1958',
+  'Head Office in Chennai, Branch Office in Madurai',
+  '50+ Members spread across two locations',
+  'Fully digitized workplace with advanced task management',
   'Strong ethical foundation & client-first approach',
-  'Deep expertise in Indian taxation & compliance',
+  'Deep expertise in Indian & International taxation',
 ];
 
 export const About = () => {
@@ -34,13 +35,19 @@ export const About = () => {
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mt-3 mb-6">
               A Legacy of Trust & Excellence in{' '}
-              <span className="text-gradient-gold">Financial Advisory</span>
+              <span className="text-gradient-brand">Financial Advisory</span>
             </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+              Partners of P A A have been in the profession since 1958 & we represent a coalition 
+              of specialized skills that is geared to offer sound financial solutions and advices. 
+              We are a congregation of professionally qualified and experienced persons who are 
+              committed to add value and optimize the benefits accruing to clients.
+            </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              PAA & Associates, Chartered Accountants, was founded by three distinguished 
-              partners who have been in practice since the early 1980s. With our head office 
-              in Madurai led by CA P.K. Amarnath and a branch office in Chennai headed by 
-              CA P.A. Aswin Kumaar, we offer comprehensive financial services across South India.
+              Our strength has been our ability to completely digitize the workplace dynamics. 
+              Digital workflows have totally replaced human interference in setting up routine, 
+              repetitive, and mundane office tasks. The energy of youth with the experience of 
+              age is a deadly combination!
             </p>
 
             <div className="grid gap-3 mb-8">
@@ -59,10 +66,10 @@ export const About = () => {
             </div>
 
             <a
-              href="#contact"
+              href="#team"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-lg hover:bg-navy-light transition-colors"
             >
-              Learn More About Us
+              Meet Our Team
             </a>
           </motion.div>
 
@@ -77,12 +84,10 @@ export const About = () => {
               {/* Main card */}
               <div className="bg-card rounded-2xl shadow-elegant p-8 relative z-10">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 bg-gold-gradient rounded-xl flex items-center justify-center shadow-gold">
-                    <span className="text-primary font-display font-bold text-2xl">CA</span>
-                  </div>
+                  <img src={caLogo} alt="CA India" className="h-16 w-auto" />
                   <div>
                     <h3 className="font-display text-xl font-semibold text-foreground">
-                      PAA & Associates
+                      P A A & Associates
                     </h3>
                     <p className="text-muted-foreground">Chartered Accountants</p>
                   </div>
@@ -90,8 +95,8 @@ export const About = () => {
 
                 <div className="grid grid-cols-2 gap-6">
                   <div className="bg-secondary rounded-xl p-6 text-center">
-                    <p className="text-3xl font-display font-bold text-accent">1980</p>
-                    <p className="text-sm text-muted-foreground mt-1">Year Founded</p>
+                    <p className="text-3xl font-display font-bold text-accent">1958</p>
+                    <p className="text-sm text-muted-foreground mt-1">Year Established</p>
                   </div>
                   <div className="bg-secondary rounded-xl p-6 text-center">
                     <p className="text-3xl font-display font-bold text-accent">3</p>
@@ -101,9 +106,10 @@ export const About = () => {
 
                 <div className="mt-6 pt-6 border-t border-border">
                   <p className="text-sm text-muted-foreground italic">
-                    "Our commitment to excellence and integrity has been the cornerstone 
-                    of our practice for over four decades."
+                    "Serve the clients like you serve thyself, Charge the clients like you 
+                    charge thyself. Brand yourself with happy clients!"
                   </p>
+                  <p className="text-sm text-accent mt-2">— Founding Partner</p>
                 </div>
               </div>
 

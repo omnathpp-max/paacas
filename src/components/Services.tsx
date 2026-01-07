@@ -1,52 +1,67 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Calculator,
-  FileCheck,
+  Globe,
+  ClipboardCheck,
+  Rocket,
   TrendingUp,
-  Building2,
-  Gavel,
-  FileText,
+  Users2,
+  FileCheck,
   ArrowUpRight,
 } from 'lucide-react';
 
 const services = [
   {
     icon: Calculator,
+    title: 'Valuation',
+    slug: 'valuation',
+    description:
+      'Business valuation for sale value, partner ownership, taxation, FEMA compliance, and M&A transactions.',
+  },
+  {
+    icon: Globe,
+    title: 'International Advisory',
+    slug: 'international-advisory',
+    description:
+      'Transaction advisory, tax advisory for multinationals, transfer pricing, and cross-border tax planning.',
+  },
+  {
+    icon: ClipboardCheck,
     title: 'Audit & Assurance',
+    slug: 'audit-assurance',
     description:
       'Comprehensive statutory audits, internal audits, and assurance services ensuring compliance and transparency.',
   },
   {
-    icon: FileCheck,
-    title: 'Tax Advisory',
+    icon: Rocket,
+    title: 'Start-up & Virtual CFO',
+    slug: 'startup-virtual-cfo',
     description:
-      'Expert guidance on direct & indirect taxation, GST compliance, tax planning, and representation before authorities.',
+      'Complete finance and accounting solutions for startups with remote CFO services and regulatory compliance.',
   },
   {
     icon: TrendingUp,
-    title: 'Business Advisory',
+    title: 'Equity Funding & Debt Syndication',
+    slug: 'equity-funding-debt-syndication',
     description:
-      'Strategic business consulting, financial planning, and growth advisory to help your business thrive.',
+      'End-to-end syndication services from strategic planning to fund floating with Rs 200+ crores in deals closed.',
   },
   {
-    icon: Building2,
-    title: 'Company Formation',
+    icon: Users2,
+    title: 'Management Consultancy',
+    slug: 'management-consultancy',
     description:
-      'Complete assistance in company registration, LLP formation, partnership deeds, and regulatory compliance.',
+      'Finance shared services, outsourcing, strategy transformation, and business performance management.',
   },
   {
-    icon: Gavel,
-    title: 'Legal Compliance',
+    icon: FileCheck,
+    title: 'Regulatory & Compliance',
+    slug: 'regulatory-compliance',
     description:
-      'ROC filings, secretarial services, FEMA compliance, and regulatory adherence for businesses.',
-  },
-  {
-    icon: FileText,
-    title: 'Accounting Services',
-    description:
-      'Bookkeeping, financial statements, MIS reports, and comprehensive accounting solutions.',
+      'Income Tax, GST, Companies Act compliance, ROC filings, and secretarial services.',
   },
 ];
 
@@ -72,10 +87,10 @@ export const Services = () => {
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mt-3 mb-6">
             Comprehensive Financial{' '}
-            <span className="text-gradient-gold">Solutions</span>
+            <span className="text-gradient-brand">Solutions</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            From audit and taxation to business advisory, we provide end-to-end 
+            From valuation and international advisory to startup support, we provide end-to-end 
             chartered accountancy services tailored to your needs.
           </p>
         </motion.div>
@@ -90,8 +105,8 @@ export const Services = () => {
               transition={{ duration: 0.5, delay: 0.1 * index }}
               className="group bg-card rounded-2xl p-8 shadow-elegant hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-border/50"
             >
-              <div className="w-14 h-14 bg-gold-gradient rounded-xl flex items-center justify-center mb-6 shadow-gold group-hover:scale-110 transition-transform duration-300">
-                <service.icon className="w-7 h-7 text-primary" />
+              <div className="w-14 h-14 bg-brand-gradient rounded-xl flex items-center justify-center mb-6 shadow-brand group-hover:scale-110 transition-transform duration-300">
+                <service.icon className="w-7 h-7 text-white" />
               </div>
 
               <h3 className="font-display text-xl font-semibold text-foreground mb-3">
@@ -102,13 +117,13 @@ export const Services = () => {
                 {service.description}
               </p>
 
-              <a
-                href="#contact"
+              <Link
+                to={`/services/${service.slug}`}
                 className="inline-flex items-center gap-1 text-accent font-medium hover:gap-2 transition-all"
               >
                 Learn More
                 <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>

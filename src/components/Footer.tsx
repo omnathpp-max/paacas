@@ -1,20 +1,22 @@
+import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Linkedin, Instagram, ArrowUp } from 'lucide-react';
+import caLogo from '@/assets/ca-logo.png';
 
 const quickLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About Us', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Why Choose Us', href: '#why-us' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/#home' },
+  { name: 'About Us', href: '/#about' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Team', href: '/#team' },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 const services = [
-  'Audit & Assurance',
-  'Tax Advisory',
-  'Business Advisory',
-  'Company Formation',
-  'Legal Compliance',
-  'Accounting Services',
+  { name: 'Valuation', href: '/services/valuation' },
+  { name: 'International Advisory', href: '/services/international-advisory' },
+  { name: 'Audit & Assurance', href: '/services/audit-assurance' },
+  { name: 'Start-up & Virtual CFO', href: '/services/startup-virtual-cfo' },
+  { name: 'Equity Funding', href: '/services/equity-funding-debt-syndication' },
+  { name: 'Regulatory Compliance', href: '/services/regulatory-compliance' },
 ];
 
 export const Footer = () => {
@@ -29,11 +31,9 @@ export const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gold-gradient rounded-lg flex items-center justify-center shadow-gold">
-                <span className="text-primary font-display font-bold text-xl">CA</span>
-              </div>
+              <img src={caLogo} alt="CA India" className="h-12 w-auto bg-white rounded-lg p-1" />
               <div>
-                <h3 className="font-display font-semibold text-lg">PAA & Associates</h3>
+                <h3 className="font-display font-semibold text-lg">P A A & Associates</h3>
                 <p className="text-xs text-primary-foreground/60 uppercase tracking-wider">
                   Chartered Accountants
                 </p>
@@ -41,7 +41,7 @@ export const Footer = () => {
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
               Your trusted partner for comprehensive chartered accountancy 
-              services since 1980. Excellence, integrity, and client success 
+              services since 1958. Excellence, integrity, and client success 
               drive everything we do.
             </p>
             <div className="flex gap-4">
@@ -49,7 +49,7 @@ export const Footer = () => {
                 <a
                   key={index}
                   href="#"
-                  className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-accent hover:text-primary transition-colors"
+                  className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-accent hover:text-white transition-colors"
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -79,8 +79,13 @@ export const Footer = () => {
             <h4 className="font-display font-semibold text-lg mb-6">Our Services</h4>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service}>
-                  <span className="text-primary-foreground/70">{service}</span>
+                <li key={service.name}>
+                  <Link
+                    to={service.href}
+                    className="text-primary-foreground/70 hover:text-accent transition-colors"
+                  >
+                    {service.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -100,7 +105,7 @@ export const Footer = () => {
               />
               <button
                 type="submit"
-                className="px-4 py-3 bg-gold-gradient rounded-lg text-primary font-semibold hover:shadow-gold transition-shadow"
+                className="px-4 py-3 bg-brand-gradient rounded-lg text-white font-semibold hover:shadow-brand transition-shadow"
               >
                 Subscribe
               </button>
@@ -113,11 +118,11 @@ export const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} PAA & Associates. All rights reserved.
+            © {new Date().getFullYear()} P A A & Associates. All rights reserved.
           </p>
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary hover:shadow-gold transition-shadow"
+            className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white hover:shadow-brand transition-shadow"
             aria-label="Scroll to top"
           >
             <ArrowUp className="w-5 h-5" />

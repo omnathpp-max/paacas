@@ -1,13 +1,16 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import caLogo from '@/assets/ca-logo.png';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Why Us', href: '#why-us' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/#home' },
+  { name: 'About', href: '/#about' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Team', href: '/#team' },
+  { name: 'Clients', href: '/#clients' },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 export const Navbar = () => {
@@ -19,17 +22,17 @@ export const Navbar = () => {
       <div className="bg-primary text-primary-foreground py-2 hidden md:block">
         <div className="container mx-auto px-6 flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:+914522349400" className="flex items-center gap-2 hover:text-accent transition-colors">
+            <a href="tel:+914442117873" className="flex items-center gap-2 hover:text-accent transition-colors">
               <Phone className="w-4 h-4" />
-              <span>+91 452 234 9400</span>
+              <span>+91 44 4211 7873</span>
             </a>
-            <a href="mailto:info@paacas.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+            <a href="mailto:aswinpa@paacas.com" className="flex items-center gap-2 hover:text-accent transition-colors">
               <Mail className="w-4 h-4" />
-              <span>info@paacas.com</span>
+              <span>aswinpa@paacas.com</span>
             </a>
           </div>
           <div className="text-primary-foreground/70">
-            Established 1980 | Madurai & Chennai
+            Established 1958 | Chennai & Madurai
           </div>
         </div>
       </div>
@@ -39,19 +42,17 @@ export const Navbar = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gold-gradient rounded-lg flex items-center justify-center shadow-gold">
-                <span className="text-primary font-display font-bold text-xl">CA</span>
-              </div>
+            <Link to="/" className="flex items-center gap-3">
+              <img src={caLogo} alt="CA India Logo" className="h-14 w-auto" />
               <div>
                 <h1 className="font-display font-semibold text-xl text-foreground">
-                  PAA & Associates
+                  P A A & Associates
                 </h1>
                 <p className="text-xs text-muted-foreground tracking-wider uppercase">
                   Chartered Accountants
                 </p>
               </div>
-            </a>
+            </Link>
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-8">
@@ -66,8 +67,8 @@ export const Navbar = () => {
                 </a>
               ))}
               <a
-                href="#contact"
-                className="bg-gold-gradient text-primary font-semibold px-6 py-2.5 rounded-lg shadow-gold hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                href="/#contact"
+                className="bg-brand-gradient text-white font-semibold px-6 py-2.5 rounded-lg shadow-brand hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               >
                 Get Quote
               </a>
@@ -105,9 +106,9 @@ export const Navbar = () => {
                   </a>
                 ))}
                 <a
-                  href="#contact"
+                  href="/#contact"
                   onClick={() => setIsOpen(false)}
-                  className="bg-gold-gradient text-primary font-semibold px-6 py-3 rounded-lg text-center shadow-gold"
+                  className="bg-brand-gradient text-white font-semibold px-6 py-3 rounded-lg text-center shadow-brand"
                 >
                   Get Quote
                 </a>
