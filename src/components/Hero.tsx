@@ -3,8 +3,8 @@ import { ArrowRight, Award, Users, Building2 } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.jpg';
 
 const stats = [
-  { icon: Award, value: '45+', label: 'Years of Excellence' },
-  { icon: Users, value: '1000+', label: 'Satisfied Clients' },
+  { icon: Award, value: '65+', label: 'Years of Excellence' },
+  { icon: Users, value: '50+', label: 'Team Members' },
   { icon: Building2, value: '2', label: 'Offices Nationwide' },
 ];
 
@@ -33,7 +33,7 @@ export const Hero = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm border border-accent/30">
-              Trusted Since 1980
+              Trusted Since 1958
             </span>
           </motion.div>
 
@@ -44,7 +44,7 @@ export const Hero = () => {
             className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-primary-foreground font-semibold leading-tight mb-6"
           >
             Your Trusted Partner in{' '}
-            <span className="text-gradient-gold">Financial Excellence</span>
+            <span className="text-gradient-brand">Financial Excellence</span>
           </motion.h1>
 
           <motion.p
@@ -53,9 +53,9 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mb-10 leading-relaxed"
           >
-            PAA & Associates provides comprehensive chartered accountancy services 
+            P A A & Associates provides comprehensive chartered accountancy services 
             with integrity, expertise, and a commitment to your financial growth. 
-            From audit to taxation, we've got you covered.
+            From valuation to compliance, we've got you covered.
           </motion.p>
 
           <motion.div
@@ -66,7 +66,7 @@ export const Hero = () => {
           >
             <a
               href="#services"
-              className="inline-flex items-center justify-center gap-2 bg-gold-gradient text-primary font-semibold px-8 py-4 rounded-lg shadow-gold hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="inline-flex items-center justify-center gap-2 bg-brand-gradient text-white font-semibold px-8 py-4 rounded-lg shadow-brand hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               Explore Services
               <ArrowRight className="w-5 h-5" />
