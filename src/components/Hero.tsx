@@ -1,110 +1,169 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Award, Users, Building2 } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.jpg';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 const stats = [
-  { icon: Award, value: '65+', label: 'Years of Excellence' },
-  { icon: Users, value: '50+', label: 'Team Members' },
-  { icon: Building2, value: '2', label: 'Offices Nationwide' },
+  { value: '65+', label: 'Years of practice' },
+  { value: '200Cr+', label: 'Capital raised for clients' },
+  { value: '50+', label: 'Specialists on the team' },
+  { value: '2', label: 'Offices · Chennai & Madurai' },
 ];
 
 export const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt="Professional accounting office"
-          className="w-full h-full object-cover"
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center pt-36 pb-24 overflow-hidden bg-[hsl(220_45%_8%)]"
+    >
+      {/* Animated gradient mesh background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          aria-hidden
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.4 }}
+          className="absolute -top-40 -left-40 w-[42rem] h-[42rem] rounded-full blur-[140px] bg-[hsl(109_53%_50%/0.35)]"
+          style={{ animation: 'fadeIn 1.4s ease-out forwards' }}
         />
-        <div className="absolute inset-0 bg-hero-gradient opacity-90" />
+        <motion.div
+          aria-hidden
+          animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-1/3 right-[-10rem] w-[36rem] h-[36rem] rounded-full blur-[140px] bg-[hsl(180_60%_45%/0.25)]"
+        />
+        <motion.div
+          aria-hidden
+          animate={{ x: [0, -30, 0], y: [0, 30, 0] }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute bottom-[-8rem] left-1/3 w-[32rem] h-[32rem] rounded-full blur-[140px] bg-[hsl(109_60%_45%/0.18)]"
+        />
+        {/* Subtle grid */}
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage:
+              'linear-gradient(hsl(0 0% 100%) 1px, transparent 1px), linear-gradient(90deg, hsl(0 0% 100%) 1px, transparent 1px)',
+            backgroundSize: '64px 64px',
+            maskImage:
+              'radial-gradient(ellipse at center, black 40%, transparent 75%)',
+          }}
+        />
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(220_45%_6%)]" />
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
-
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl">
+        <div className="max-w-5xl">
+          {/* Eyebrow pill */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-4 py-1.5 mb-8"
           >
-            <span className="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm border border-accent/30">
-              Trusted Since 1958
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            <span className="text-sm text-white/80 font-medium tracking-wide">
+              Chartered Accountants · Practicing since 1958
             </span>
           </motion.div>
 
+          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-primary-foreground font-semibold leading-tight mb-6"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-[5.25rem] text-white font-semibold leading-[1.05] tracking-tight mb-8"
           >
-            Your Trusted Partner in{' '}
-            <span className="text-gradient-brand">Financial Excellence</span>
+            Helping businesses{' '}
+            <span className="relative inline-block">
+              <span className="text-gradient-brand">operate &amp; scale</span>
+              <motion.span
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.9, delay: 0.9, ease: 'easeOut' }}
+                className="absolute left-0 -bottom-1 h-[3px] w-full origin-left bg-brand-gradient rounded-full"
+              />
+            </span>
+            <br className="hidden md:block" />
+            with tax, structuring &amp; compliance — <span className="italic font-normal text-white/70">without the chaos.</span>
           </motion.h1>
 
+          {/* Sub */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mb-10 leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="text-lg md:text-xl text-white/65 max-w-2xl mb-12 leading-relaxed"
           >
-            P A A & Associates provides comprehensive chartered accountancy services 
-            with integrity, expertise, and a commitment to your financial growth. 
-            From valuation to compliance, we've got you covered.
+            P A A &amp; Associates is a fourth-generation chartered accountancy firm
+            blending six decades of judgment with a fully digital workflow — so
+            founders, CFOs and global teams move faster with fewer surprises.
           </motion.p>
 
+          {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 mb-16"
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="flex flex-col sm:flex-row gap-4 mb-20"
           >
             <a
-              href="#services"
-              className="inline-flex items-center justify-center gap-2 bg-brand-gradient text-white font-semibold px-8 py-4 rounded-lg shadow-brand hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              href="#contact"
+              className="group relative inline-flex items-center justify-center gap-2 bg-brand-gradient text-white font-semibold px-8 py-4 rounded-full shadow-brand hover:shadow-[0_8px_40px_hsl(109_53%_50%/0.5)] transition-all duration-300 hover:-translate-y-0.5"
             >
-              Explore Services
-              <ArrowRight className="w-5 h-5" />
+              Book a discovery call
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2 bg-primary-foreground/10 text-primary-foreground font-semibold px-8 py-4 rounded-lg border border-primary-foreground/20 backdrop-blur-sm hover:bg-primary-foreground/20 transition-all duration-300"
+              href="#services"
+              className="inline-flex items-center justify-center gap-2 text-white/90 font-medium px-8 py-4 rounded-full border border-white/15 bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-white/25 transition-all duration-300"
             >
-              Schedule Consultation
+              <Sparkles className="w-4 h-4 text-accent" />
+              Explore what we do
             </a>
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats strip */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04] backdrop-blur-md"
           >
-            {stats.map((stat, index) => (
+            {stats.map((stat, i) => (
               <div
-                key={index}
-                className="bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-xl p-6 flex items-center gap-4"
+                key={i}
+                className="px-6 py-6 bg-[hsl(220_45%_8%/0.4)] hover:bg-white/[0.04] transition-colors"
               >
-                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
-                  <stat.icon className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                  <p className="text-2xl md:text-3xl font-display font-semibold text-primary-foreground">
-                    {stat.value}
-                  </p>
-                  <p className="text-sm text-primary-foreground/60">{stat.label}</p>
-                </div>
+                <p className="font-display text-3xl md:text-4xl font-semibold text-white tracking-tight">
+                  {stat.value}
+                </p>
+                <p className="text-xs md:text-sm text-white/55 mt-1.5 uppercase tracking-wider">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-white/40"
+      >
+        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="w-px h-10 bg-gradient-to-b from-white/40 to-transparent"
+        />
+      </motion.div>
     </section>
   );
 };
