@@ -28,18 +28,18 @@ export const Navbar = () => {
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 px-4"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'px-4' : 'px-0'}`}
     >
       <motion.nav
         animate={{
           marginTop: scrolled ? 12 : 0,
-          maxWidth: scrolled ? 1120 : 1400,
+          maxWidth: scrolled ? 1120 : 5000,
         }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
         className={`mx-auto transition-all duration-500 ${
           scrolled
             ? 'bg-card/80 backdrop-blur-xl shadow-elegant border border-border/60 rounded-full'
-            : 'bg-card/95 backdrop-blur-md shadow-sm border border-border/40 rounded-2xl'
+            : 'bg-card/95 backdrop-blur-md shadow-sm border-b border-border/40 rounded-none w-full'
         }`}
       >
         <div className={`px-6 transition-all duration-500 ${scrolled ? 'py-2.5' : 'py-4'}`}>
