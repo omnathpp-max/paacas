@@ -77,9 +77,10 @@ export const Hero = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-[5.25rem] text-white font-semibold leading-[1.05] tracking-tight mb-8"
           >
-            Helping businesses{' '}
+            Operate Smarter.
+            <br className="hidden md:block" />
             <span className="relative inline-block">
-              <span className="text-gradient-brand">operate &amp; scale</span>
+              <span className="text-gradient-brand">Scale Faster.</span>
               <motion.span
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
@@ -87,8 +88,6 @@ export const Hero = () => {
                 className="absolute left-0 -bottom-1 h-[3px] w-full origin-left bg-brand-gradient rounded-full"
               />
             </span>
-            <br className="hidden md:block" />
-            with tax, structuring &amp; compliance — <span className="italic font-normal text-white/70">without the chaos.</span>
           </motion.h1>
 
           {/* Sub */}
@@ -98,9 +97,9 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="text-lg md:text-xl text-white/65 max-w-2xl mb-12 leading-relaxed"
           >
-            P A A &amp; Associates is a fourth-generation chartered accountancy firm
-            blending six decades of judgment with a fully digital workflow — so
-            founders, CFOs and global teams move faster with fewer surprises.
+            From tax optimization to business structuring and ongoing
+            compliance, we act as your finance partner — bringing clarity,
+            control, and confidence at every stage.
           </motion.p>
 
           {/* CTAs */}
@@ -114,7 +113,7 @@ export const Hero = () => {
               href="#contact"
               className="group relative inline-flex items-center justify-center gap-2 bg-brand-gradient text-white font-semibold px-8 py-4 rounded-full shadow-brand hover:shadow-[0_8px_40px_hsl(109_53%_50%/0.5)] transition-all duration-300 hover:-translate-y-0.5"
             >
-              Book a discovery call
+              Schedule a Strategy Call
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
