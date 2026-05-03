@@ -5,7 +5,6 @@ const stats = [
    { value: '65+', label: 'Years of practice' },
    { value: '75 +', label: 'CLIENTS SERVED' },
   { value: '50+', label: 'Specialists on the team' },
-  { value: '2', label: 'Offices · Chennai & Madurai' },
 ];
 
 export const Hero = () => {
@@ -55,21 +54,6 @@ export const Hero = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl">
           {/* Eyebrow pill */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-4 py-1.5 mb-8"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
-             <span className="text-sm text-white/80 font-medium tracking-wide">
-               Practicing since 1958
-             </span>
-          </motion.div>
-
           {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -130,7 +114,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04] backdrop-blur-md"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04] backdrop-blur-md"
           >
             {stats.map((stat, i) => (
               <div
