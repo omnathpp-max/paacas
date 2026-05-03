@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 const stats = [
-  { value: '65+', label: 'Years of practice' },
-  { value: '200Cr+', label: 'Capital raised for clients' },
+   { value: '65+', label: 'Years of practice' },
+   { value: '75 +', label: 'CLIENTS SERVED' },
   { value: '50+', label: 'Specialists on the team' },
   { value: '2', label: 'Offices · Chennai & Madurai' },
 ];
@@ -65,9 +65,9 @@ export const Hero = () => {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            <span className="text-sm text-white/80 font-medium tracking-wide">
-              Chartered Accountants · Practicing since 1958
-            </span>
+             <span className="text-sm text-white/80 font-medium tracking-wide">
+               Practicing since 1958
+             </span>
           </motion.div>
 
           {/* Headline */}
@@ -91,16 +91,16 @@ export const Hero = () => {
           </motion.h1>
 
           {/* Sub */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-lg md:text-xl text-white/65 max-w-2xl mb-12 leading-relaxed"
-          >
-            From tax optimization to business structuring and ongoing
-            compliance, we act as your finance partner — bringing clarity,
-            control, and confidence at every stage.
-          </motion.p>
+           <motion.p
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.6, delay: 0.25 }}
+             className="text-lg md:text-xl text-white/65 max-w-2xl mb-12 leading-relaxed"
+           >
+             From tax optimization to business structuring and ongoing
+             compliance, we act as your finance partner, bringing clarity,
+             control, and confidence at every stage.
+           </motion.p>
 
           {/* CTAs */}
           <motion.div
