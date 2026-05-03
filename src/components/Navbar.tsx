@@ -39,7 +39,7 @@ export const Navbar = () => {
         className={`mx-auto transition-all duration-500 ${
           scrolled
             ? 'bg-card/80 backdrop-blur-xl shadow-elegant border border-border/60 rounded-full'
-            : 'bg-transparent rounded-none'
+            : 'bg-card/95 backdrop-blur-md shadow-sm border border-border/40 rounded-2xl'
         }`}
       >
         <div className={`px-6 transition-all duration-500 ${scrolled ? 'py-2.5' : 'py-4'}`}>
