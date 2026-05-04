@@ -501,7 +501,7 @@ const services: Service[] = [
 ];
 
 export const Services = () => {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState<number | null>(null);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
@@ -551,7 +551,9 @@ export const Services = () => {
                   key={s.num}
                   type="button"
                   onMouseEnter={() => setActive(i)}
+                  onMouseLeave={() => setActive((cur) => (cur === i ? null : cur))}
                   onFocus={() => setActive(i)}
+                  onBlur={() => setActive((cur) => (cur === i ? null : cur))}
                   onClick={() => {
                     setActive(i);
                     setOpenIdx(i);
@@ -606,6 +608,31 @@ export const Services = () => {
 
           {/* RIGHT — sticky outcome card (also a trigger) */}
           <div className="lg:col-span-5 lg:sticky lg:top-24">
+            {active === null ? (
+              <motion.div
+                key="placeholder"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="relative w-full rounded-3xl border border-dashed border-border bg-secondary/30 p-8 md:p-10 overflow-hidden min-h-[22rem] flex flex-col justify-center"
+              >
+                <div
+                  aria-hidden
+                  className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-[100px] bg-[hsl(109_53%_50%/0.15)]"
+                />
+                <div className="relative">
+                  <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-brand-dark">
+                    Hover a service
+                  </span>
+                  <h4 className="font-display text-2xl md:text-3xl font-semibold leading-[1.2] tracking-tight text-foreground mt-4">
+                    Hover any service on the left to see the outcome it delivers.
+                  </h4>
+                  <p className="text-muted-foreground mt-4 font-light">
+                    Click to explore the full breakdown.
+                  </p>
+                </div>
+              </motion.div>
+            ) : (
             <motion.button
               type="button"
               onClick={() => setOpenIdx(active)}
@@ -675,6 +702,7 @@ export const Services = () => {
                 </div>
               </div>
             </motion.button>
+            )}
           </div>
         </div>
       </div>
