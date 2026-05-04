@@ -17,6 +17,20 @@ import {
   type LucideProps,
 } from 'lucide-react';
 import {
+  Layers,
+  Settings2,
+  ShieldCheck,
+  Users2,
+  Plane,
+  Landmark,
+  Receipt,
+  Target,
+  PiggyBank,
+  HeartHandshake,
+  FileText,
+  Scale,
+} from 'lucide-react';
+import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -127,6 +141,234 @@ const startupDetails: StartupDetails = {
   },
 };
 
+const smeDetails: StartupDetails = {
+  hero: {
+    headline: 'Scale Smarter — With Systems, Controls, and Advisory',
+    sub: 'You\u2019ve outgrown your accountant. We bring the structure, visibility and strategy your next stage needs.',
+    cta: 'Book a Growth Consultation',
+  },
+  problems: {
+    title: 'Common Growth-Stage Challenges',
+    subtitle: 'Most growing businesses hit the same ceilings. We help you break through them.',
+    items: [
+      'No reliable MIS or monthly reporting?',
+      'Cash flow surprises slowing growth?',
+      'Tax and compliance handled reactively?',
+      'No clear view of margins or unit economics?',
+    ],
+  },
+  offerings: {
+    title: 'Finance, Tax & Advisory \u2014 Built for Scale',
+    subtitle: 'A complete finance partnership designed for growing companies.',
+    groups: [
+      {
+        icon: BarChart3,
+        label: 'Accounting & MIS',
+        items: ['Monthly book closures', 'MIS dashboards & KPI tracking', 'Board-ready reports'],
+      },
+      {
+        icon: ShieldCheck,
+        label: 'Tax & Compliance',
+        items: ['Direct & indirect tax filings', 'Tax planning & optimisation', 'ROC & secretarial compliance'],
+      },
+      {
+        icon: TrendingUp,
+        label: 'Virtual CFO',
+        items: ['Budgeting & forecasting', 'Cash flow & working capital', 'Strategic finance advisory'],
+      },
+      {
+        icon: Settings2,
+        label: 'Process & Controls',
+        items: ['Internal controls design', 'SOPs & process audits', 'Systems & automation'],
+      },
+    ],
+  },
+  approach: {
+    title: 'How We Work With Growing Companies',
+    subtitle: 'A structured engagement that brings discipline without slowing you down.',
+    steps: [
+      'Diagnose finance & process maturity',
+      'Set up reporting and controls',
+      'Run a monthly review cadence',
+      'Drive growth with data-led decisions',
+    ],
+  },
+  proof: {
+    title: 'Trusted by Growing Businesses Across Sectors',
+    points: ['Partnered with 100+ SMEs', 'Across services, retail, manufacturing & tech'],
+    quote: {
+      text: 'PAA helped us move from spreadsheets to a real finance function. We finally make decisions with numbers.',
+      by: 'Founder, Growth-stage Services Company',
+    },
+  },
+  why: {
+    title: 'Why SMEs Choose PAA',
+    points: [
+      'Finance partner, not just a vendor',
+      'Sector experience across industries',
+      'Tech-enabled, scalable workflows',
+      'CFO-grade thinking at fractional cost',
+    ],
+  },
+  finalCta: {
+    headline: 'Build the Finance Engine Your Growth Deserves.',
+    primary: 'Book a Growth Consultation',
+    secondary: 'Chat on WhatsApp',
+  },
+};
+
+const globalDetails: StartupDetails = {
+  hero: {
+    headline: 'Cross-Border, Without the Compliance Headaches',
+    sub: 'FEMA, FDI, ODI, NRI taxation and global structuring \u2014 handled the right way, the first time.',
+    cta: 'Book a Cross-Border Consultation',
+  },
+  problems: {
+    title: 'Common Cross-Border Challenges',
+    subtitle: 'Global moves come with regulatory landmines. We help you avoid all of them.',
+    items: [
+      'Confused by FEMA, RBI and FDI rules?',
+      'NRI tax and DTAA filings done wrong?',
+      'Repatriation of funds stuck or delayed?',
+      'No clarity on inbound or outbound structuring?',
+    ],
+  },
+  offerings: {
+    title: 'India + Global, Fully Managed',
+    subtitle: 'A complete cross-border practice for NRIs and global businesses.',
+    groups: [
+      {
+        icon: Plane,
+        label: 'NRI Taxation & Advisory',
+        items: ['NRI income tax filings', 'DTAA & treaty advisory', 'Repatriation & remittance support'],
+      },
+      {
+        icon: Globe2,
+        label: 'Inbound (FDI) Structuring',
+        items: ['FDI structuring & filings', 'Sectoral cap analysis', 'RBI reporting & compliance'],
+      },
+      {
+        icon: Layers,
+        label: 'Outbound (ODI) & Global Setup',
+        items: ['Overseas subsidiary setup', 'ODI compliance', 'Cross-border holding structures'],
+      },
+      {
+        icon: ShieldCheck,
+        label: 'FEMA & Compliance',
+        items: ['FEMA opinions & memos', 'Compounding & remediation', 'Ongoing compliance support'],
+      },
+    ],
+  },
+  approach: {
+    title: 'How We Work With Global Clients',
+    subtitle: 'Practical, risk-aware, execution-focused \u2014 across geographies.',
+    steps: [
+      'Map your cross-border footprint',
+      'Design the optimal structure',
+      'Execute filings and approvals',
+      'Maintain ongoing compliance',
+    ],
+  },
+  proof: {
+    title: 'Trusted by NRIs and Global Businesses',
+    points: ['Clients across US, UK, UAE, Singapore & more', 'Decades of FEMA & international tax experience'],
+    quote: {
+      text: 'PAA made my India compliance and repatriation seamless. I finally stopped worrying about it.',
+      by: 'NRI Client, Singapore',
+    },
+  },
+  why: {
+    title: 'Why Global Clients Choose PAA',
+    points: [
+      'Deep FEMA & international tax expertise',
+      'Single window for India + global needs',
+      'Strong relationships with authorities',
+      'Trusted by NRIs and global founders',
+    ],
+  },
+  finalCta: {
+    headline: 'Go Global With Confidence.',
+    primary: 'Book a Cross-Border Consultation',
+    secondary: 'Chat on WhatsApp',
+  },
+};
+
+const hniDetails: StartupDetails = {
+  hero: {
+    headline: 'Keep More of What You Earn. Grow What You Keep.',
+    sub: 'For doctors, consultants and high-earning professionals \u2014 we structure your income, investments and wealth the right way.',
+    cta: 'Book a Wealth Consultation',
+  },
+  problems: {
+    title: 'Common Challenges for HNIs & Professionals',
+    subtitle: 'High income shouldn\u2019t mean high tax. We fix that.',
+    items: [
+      'Paying more tax than legally required?',
+      'No structure around your professional income?',
+      'Investments and assets held without planning?',
+      'No succession or estate roadmap in place?',
+    ],
+  },
+  offerings: {
+    title: 'Wealth, Tax & Structuring \u2014 Done Right',
+    subtitle: 'A private-office style practice for HNIs and professionals.',
+    groups: [
+      {
+        icon: Receipt,
+        label: 'Personal Tax Optimisation',
+        items: ['Income tax planning & filings', 'Capital gains structuring', 'Notice & assessment handling'],
+      },
+      {
+        icon: Briefcase,
+        label: 'Professional Practice Structuring',
+        items: ['Practice entity setup (LLP / Pvt Ltd)', 'Income & expense optimisation', 'Compliance for professionals'],
+      },
+      {
+        icon: PiggyBank,
+        label: 'Investment & Wealth Structuring',
+        items: ['Asset holding structures', 'Family investment vehicles', 'Tax-efficient wealth growth'],
+      },
+      {
+        icon: HeartHandshake,
+        label: 'Estate & Succession Planning',
+        items: ['Wills & succession roadmap', 'Trust structuring', 'Inter-generational wealth planning'],
+      },
+    ],
+  },
+  approach: {
+    title: 'How We Work With HNIs & Professionals',
+    subtitle: 'Discreet, personalised, and built around your life and goals.',
+    steps: [
+      'Understand income, assets and goals',
+      'Design the right tax & holding structure',
+      'Implement with full compliance',
+      'Review and refine every year',
+    ],
+  },
+  proof: {
+    title: 'Trusted by Doctors, Consultants & Business Families',
+    points: ['Long-term advisors to HNI families', 'Across medical, consulting and corporate leadership'],
+    quote: {
+      text: 'PAA restructured my practice and personal taxes \u2014 I keep significantly more, fully compliant.',
+      by: 'Senior Consultant Surgeon',
+    },
+  },
+  why: {
+    title: 'Why HNIs Choose PAA',
+    points: [
+      'Private-office style attention',
+      'Multi-disciplinary tax + wealth team',
+      'Discretion and long-term partnership',
+      'Aggressive optimisation, fully compliant',
+    ],
+  },
+  finalCta: {
+    headline: 'Structure Your Wealth The Right Way.',
+    primary: 'Book a Wealth Consultation',
+    secondary: 'Chat on WhatsApp',
+  },
+};
+
 const audiences: Audience[] = [
   {
     id: 'startups',
@@ -144,6 +386,7 @@ const audiences: Audience[] = [
     description:
       'Outgrowing your accountant? We help you scale with systems, controls, and advisory.',
     cta: 'Explore Growth Solutions',
+    details: smeDetails,
   },
   {
     id: 'global',
@@ -152,6 +395,7 @@ const audiences: Audience[] = [
     description:
       'Managing India compliance or expanding across borders? We simplify FEMA, tax, and inbound or outbound structuring.',
     cta: 'Explore Global Solutions',
+    details: globalDetails,
   },
   {
     id: 'hni',
@@ -160,6 +404,7 @@ const audiences: Audience[] = [
     description:
       'Doctors, consultants and professionals paying more tax than you should? We structure your income and investments the right way.',
     cta: 'Explore Wealth & Professional Services',
+    details: hniDetails,
   },
 ];
 
