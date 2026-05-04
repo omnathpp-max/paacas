@@ -214,6 +214,16 @@
   transform-origin: center;
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+  will-change: transform;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;

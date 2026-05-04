@@ -3,27 +3,69 @@ import { Sparkles, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    num: '01',
     quote:
       "We've been very impressed with the level of professionalism and attention to detail Aswin brings to the valuation process. He digs deep below the surface to discover the unique nature of our company.",
     author: 'Compliance Head',
     company: 'Top MNC Firm',
   },
   {
-    num: '02',
     quote:
       "You're in good hands. Aswin made sure we developed great rapport, and their dedication to work is evident in our growth. We appreciate their proactive response and timely delivery.",
     author: 'Founder',
     company: 'Successful Start-up',
   },
   {
-    num: '03',
     quote:
       'P A A has been a highly valued and trusted advisor — instrumental throughout our funding process. The team handled key issues impeccably and helped us achieve an attractive valuation.',
     author: 'Management',
     company: 'VC Funded Business',
   },
+  {
+    quote:
+      'Their tax team navigated a complex international restructuring for us with clarity and confidence. We finally have a partner who actually explains the why, not just the what.',
+    author: 'CFO',
+    company: 'Cross-border SaaS',
+  },
+  {
+    quote:
+      'From statutory audits to monthly reviews, the team is sharp, responsive, and refreshingly proactive. They flag issues before they become problems.',
+    author: 'Finance Director',
+    company: 'Manufacturing Group',
+  },
+  {
+    quote:
+      'P A A helped us close our Series A diligence in record time. Their financial modeling and projections held up beautifully under investor scrutiny.',
+    author: 'Co-founder',
+    company: 'D2C Brand',
+  },
+  {
+    quote:
+      'A rare blend of old-school rigour and modern, digitized workflows. Documents, queries, signoffs — everything just moves faster with them.',
+    author: 'Head of Compliance',
+    company: 'Listed Entity',
+  },
+  {
+    quote:
+      'They treat our books like their own. The partners are personally accessible, which is something you simply do not get with the larger firms.',
+    author: 'Managing Director',
+    company: 'Family-run Business',
+  },
+  {
+    quote:
+      'Their valuation report stood up to two rounds of investor and legal review without a single change. That kind of credibility is invaluable.',
+    author: 'CEO',
+    company: 'Series B Fintech',
+  },
+  {
+    quote:
+      'Honest, ethical, and deeply technical — exactly the qualities you want in a CA. We have grown from 5 to 200 people with P A A by our side every step of the way.',
+    author: 'Founder',
+    company: 'High-growth Startup',
+  },
 ];
+
+// Duplicate the list so the marquee loops seamlessly
+const marquee = [...testimonials, ...testimonials];
 
 export const Testimonials = () => {
   return (
@@ -55,32 +97,34 @@ export const Testimonials = () => {
             we've worked with have to say.
           </p>
         </motion.div>
+      </div>
 
-        {/* Testimonials grid */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.map((t, i) => (
-            <motion.figure
-              key={t.num}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="relative rounded-3xl border border-border bg-card p-8 hover:border-brand/40 transition-colors duration-300"
+      {/* Marquee — full bleed */}
+      <div className="relative group">
+        {/* edge fades */}
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-background to-transparent" />
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-background to-transparent" />
+
+        <div className="flex w-max gap-6 lg:gap-8 px-6 animate-marquee group-hover:[animation-play-state:paused]">
+          {marquee.map((t, i) => (
+            <figure
+              key={i}
+              className="relative w-[320px] md:w-[400px] shrink-0 rounded-3xl border border-border bg-card p-8 hover:border-brand/40 transition-colors duration-300"
             >
-              <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center justify-between mb-6">
                 <span className="font-display text-sm text-muted-foreground tabular-nums">
-                  {t.num}
+                  {String((i % testimonials.length) + 1).padStart(2, '0')}
                 </span>
                 <Quote className="w-6 h-6 text-brand" strokeWidth={1.5} />
               </div>
-              <blockquote className="font-display text-lg md:text-xl text-foreground leading-relaxed font-medium">
+              <blockquote className="font-display text-base md:text-lg text-foreground leading-relaxed font-medium">
                 "{t.quote}"
               </blockquote>
-              <figcaption className="mt-8 pt-6 border-t border-border">
-                <p className="font-medium text-foreground">{t.author}</p>
-                <p className="text-sm text-brand mt-1">{t.company}</p>
+              <figcaption className="mt-6 pt-5 border-t border-border">
+                <p className="font-medium text-foreground text-sm">{t.author}</p>
+                <p className="text-xs text-brand mt-1">{t.company}</p>
               </figcaption>
-            </motion.figure>
+            </figure>
           ))}
         </div>
       </div>
