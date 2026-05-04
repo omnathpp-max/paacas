@@ -3,7 +3,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 const stats = [
   { value: '75+', label: 'Years of combined practice' },
-  { value: '3000+', label: 'Clients served' },
+  { value: '5000+', label: 'Clients served' },
   { value: '60+', label: 'Specialists on the team' },
 ];
 
@@ -55,24 +55,34 @@ export const Hero = () => {
         <div className="max-w-5xl">
           {/* Eyebrow pill */}
           {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-[5.25rem] text-white font-semibold leading-[1.05] tracking-tight mb-8"
-          >
-            Operate Smarter.
-            <br className="hidden md:block" />
-            <span className="relative inline-block">
-              <span className="text-gradient-brand">Scale Faster.</span>
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-[5.25rem] text-white font-semibold leading-[1.05] tracking-tight mb-8">
+            <span className="block overflow-hidden">
               <motion.span
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.9, delay: 0.9, ease: 'easeOut' }}
-                className="absolute left-0 -bottom-1 h-[3px] w-full origin-left bg-brand-gradient rounded-full"
-              />
+                initial={{ y: '110%', opacity: 0 }}
+                animate={{ y: '0%', opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-block"
+              >
+                Operate Smarter.
+              </motion.span>
             </span>
-          </motion.h1>
+            <span className="block overflow-hidden">
+              <motion.span
+                initial={{ y: '110%', opacity: 0 }}
+                animate={{ y: '0%', opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="relative inline-block"
+              >
+                <span className="text-gradient-brand">Scale Faster.</span>
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.9, delay: 1.2, ease: 'easeOut' }}
+                  className="absolute left-0 -bottom-1 h-[3px] w-full origin-left bg-brand-gradient rounded-full"
+                />
+              </motion.span>
+            </span>
+          </h1>
 
           {/* Sub */}
            <motion.p
