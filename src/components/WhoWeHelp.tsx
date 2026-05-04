@@ -311,176 +311,240 @@ const StartupModalBody = ({
 }) => {
   const Icon = audience.icon;
   return (
-    <div className="overflow-y-auto max-h-[92vh]">
-      {/* Hero */}
-      <div className="relative px-6 sm:px-12 pt-10 sm:pt-12 pb-10 bg-hero-gradient text-primary-foreground overflow-hidden">
-        <div
-          aria-hidden
-          className="absolute -top-24 -right-20 w-72 h-72 rounded-full blur-[100px] bg-[hsl(109_53%_50%/0.4)]"
-        />
-        <div className="relative">
-          <DialogHeader>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/10 border border-white/15 backdrop-blur-sm">
-                <Icon className="w-6 h-6" strokeWidth={1.75} />
-              </div>
-              <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-[hsl(109_53%_70%)]">
-                Startup Solutions
-              </span>
+    <div className="overflow-y-auto max-h-[92vh] bg-background">
+      {/* HERO — editorial, minimal */}
+      <header className="relative px-8 sm:px-16 pt-16 sm:pt-20 pb-14 bg-background border-b border-border">
+        <DialogHeader>
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.2)] text-brand-dark">
+              <Icon className="w-5 h-5" strokeWidth={1.75} />
             </div>
-            <DialogTitle className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.1] text-left">
-              {details.hero.headline}
-            </DialogTitle>
-            <DialogDescription className="text-base md:text-lg text-white/75 leading-relaxed pt-4 text-left">
-              {details.hero.sub}
-            </DialogDescription>
-          </DialogHeader>
-          <Button size="lg" className="mt-7 bg-brand hover:bg-brand-dark text-white shadow-brand text-base">
+            <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-muted-foreground">
+              For {audience.title}
+            </span>
+          </div>
+          <DialogTitle className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] tracking-tight text-foreground text-left max-w-3xl">
+            {details.hero.headline}
+          </DialogTitle>
+          <DialogDescription className="text-lg md:text-xl text-muted-foreground leading-relaxed pt-6 text-left max-w-2xl font-light">
+            {details.hero.sub}
+          </DialogDescription>
+        </DialogHeader>
+        <div className="mt-10 flex items-center gap-4">
+          <Button size="lg" className="bg-foreground hover:bg-foreground/90 text-background text-base rounded-full px-6">
             <Calendar className="w-4 h-4" />
             {details.hero.cta}
           </Button>
+          <span className="text-sm text-muted-foreground hidden sm:inline">Free 30-min discovery call</span>
         </div>
-      </div>
+      </header>
 
-      {/* Problems */}
-      <Block eyebrow="Why" step="01" title={details.problems.title} subtitle={details.problems.subtitle}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {/* WHY — the problem we solve */}
+      <Section eyebrow="01 — Why" kicker="The problem">
+        <SectionHeader
+          title={details.problems.title}
+          subtitle={details.problems.subtitle}
+        />
+        <div className="mt-10 divide-y divide-border border-y border-border">
           {details.problems.items.map((p, i) => (
-            <div
+            <motion.div
               key={p}
-              className="group relative flex items-start gap-4 p-6 rounded-2xl bg-gradient-to-br from-secondary to-background border-l-2 border-brand/40 hover:border-brand transition-all duration-300 hover:shadow-[0_10px_30px_-10px_hsl(109_53%_50%/0.25)] hover:-translate-y-0.5"
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="flex items-baseline gap-6 py-5 group"
             >
-              <span className="font-display text-2xl font-semibold text-brand/70 leading-none pt-0.5 tabular-nums">
+              <span className="font-display text-sm text-muted-foreground tabular-nums w-8 shrink-0">
                 0{i + 1}
               </span>
-              <span className="text-base md:text-[1.05rem] text-foreground/85 leading-relaxed font-medium">{p}</span>
-            </div>
+              <span className="text-lg md:text-xl text-foreground/90 leading-snug font-light group-hover:text-brand-dark transition-colors">
+                {p}
+              </span>
+            </motion.div>
           ))}
         </div>
-      </Block>
+      </Section>
 
-      {/* Offerings */}
-      <Block eyebrow="What" step="02" title={details.offerings.title} subtitle={details.offerings.subtitle} muted>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
-          {details.offerings.groups.map((g) => {
+      {/* WHAT — what we deliver */}
+      <Section eyebrow="02 — What" kicker="The solution" muted>
+        <SectionHeader
+          title={details.offerings.title}
+          subtitle={details.offerings.subtitle}
+        />
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-px bg-border border border-border">
+          {details.offerings.groups.map((g, i) => {
             const GIcon = g.icon;
             return (
-              <div
+              <motion.div
                 key={g.label}
-                className="p-6 rounded-2xl bg-card border border-border hover:border-brand/40 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="bg-background p-7 group hover:bg-secondary/40 transition-colors"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[hsl(109_53%_50%/0.12)] text-brand-dark">
-                    <GIcon className="w-5 h-5" strokeWidth={2} />
-                  </div>
-                  <h4 className="font-display text-lg md:text-xl font-semibold text-foreground">{g.label}</h4>
+                <div className="flex items-center gap-3 mb-5">
+                  <GIcon className="w-5 h-5 text-brand-dark" strokeWidth={1.75} />
+                  <h4 className="font-display text-xl font-semibold text-foreground">{g.label}</h4>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-2.5">
                   {g.items.map((it) => (
-                    <li key={it} className="text-[0.95rem] text-muted-foreground flex items-start gap-2.5 leading-relaxed">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 shrink-0" />
-                      {it}
+                    <li key={it} className="text-base text-muted-foreground flex items-start gap-3 leading-relaxed font-light">
+                      <span className="text-brand mt-2 shrink-0">·</span>
+                      <span>{it}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             );
           })}
         </div>
-      </Block>
+      </Section>
 
-      {/* Approach */}
-      <Block eyebrow="How" step="03" title={details.approach.title} subtitle={details.approach.subtitle}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {details.approach.steps.map((s, i) => (
-            <div
-              key={s}
-              className="relative p-5 rounded-xl bg-secondary border border-border"
+      {/* HOW — horizontal connected timeline */}
+      <Section eyebrow="03 — How" kicker="The process">
+        <SectionHeader
+          title={details.approach.title}
+          subtitle={details.approach.subtitle}
+        />
+        <div className="mt-12 relative">
+          {/* connector line */}
+          <div aria-hidden className="hidden md:block absolute left-0 right-0 top-5 h-px bg-border" />
+          <motion.div
+            aria-hidden
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
+            className="hidden md:block absolute left-0 right-0 top-5 h-px bg-brand origin-left"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative">
+            {details.approach.steps.map((s, i) => (
+              <motion.div
+                key={s}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: 0.3 + i * 0.15 }}
+                className="relative md:pr-4"
+              >
+                {/* node */}
+                <div className="flex md:block items-center gap-4">
+                  <div className="relative w-10 h-10 rounded-full bg-background border-2 border-brand flex items-center justify-center font-display text-sm font-bold text-brand-dark tabular-nums shrink-0 md:mb-5">
+                    {i + 1}
+                  </div>
+                  <div>
+                    <div className="text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-2 hidden md:block">
+                      Step {i + 1}
+                    </div>
+                    <p className="text-base md:text-lg text-foreground/90 leading-snug font-light">{s}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* WHY US */}
+      <Section eyebrow="04 — Why us" kicker="The difference" muted>
+        <SectionHeader title={details.why.title} />
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5">
+          {details.why.points.map((p, i) => (
+            <motion.div
+              key={p}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="flex items-start gap-4 py-3 border-b border-border/60"
             >
-              <div className="font-display text-sm font-bold text-brand-dark mb-2 tracking-wider">0{i + 1}</div>
-              <p className="text-[0.95rem] text-foreground/85 leading-relaxed">{s}</p>
-            </div>
+              <CheckCircle2 className="w-5 h-5 mt-1 text-brand shrink-0" strokeWidth={1.75} />
+              <span className="text-lg text-foreground/90 leading-relaxed font-light">{p}</span>
+            </motion.div>
           ))}
         </div>
-      </Block>
+      </Section>
 
-      {/* Why */}
-      <Block title={details.why.title} muted>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {details.why.points.map((p) => (
-            <div key={p} className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 mt-0.5 text-brand shrink-0" />
-              <span className="text-base text-foreground/85 leading-relaxed">{p}</span>
-            </div>
-          ))}
+      {/* FINAL CTA — editorial */}
+      <section className="px-8 sm:px-16 py-20 bg-foreground text-background relative overflow-hidden">
+        <div aria-hidden className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full blur-[120px] bg-brand/20" />
+        <div className="relative max-w-3xl">
+          <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-brand">
+            Let's talk
+          </span>
+          <h3 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] tracking-tight mt-5">
+            {details.finalCta.headline}
+          </h3>
+          <div className="flex flex-col sm:flex-row gap-3 mt-10">
+            <Button size="lg" className="bg-brand hover:bg-brand-dark text-white text-base rounded-full px-6">
+              <Calendar className="w-4 h-4" />
+              {details.finalCta.primary}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-transparent border-background/20 text-background hover:bg-background/10 hover:text-background text-base rounded-full px-6"
+            >
+              <MessageCircle className="w-4 h-4" />
+              {details.finalCta.secondary}
+            </Button>
+          </div>
         </div>
-      </Block>
-
-      {/* Final CTA */}
-      <div className="px-6 sm:px-12 py-12 bg-hero-gradient text-primary-foreground">
-        <h3 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
-          {details.finalCta.headline}
-        </h3>
-        <div className="flex flex-col sm:flex-row gap-3 mt-7">
-          <Button size="lg" className="bg-brand hover:bg-brand-dark text-white shadow-brand text-base">
-            <Calendar className="w-4 h-4" />
-            {details.finalCta.primary}
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white text-base"
-          >
-            <MessageCircle className="w-4 h-4" />
-            {details.finalCta.secondary}
-          </Button>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };
 
-const Block = ({
-  title,
-  subtitle,
+const Section = ({
   eyebrow,
-  step,
+  kicker,
   children,
   muted,
 }: {
-  title: string;
-  subtitle?: string;
-  eyebrow?: string;
-  step?: string;
+  eyebrow: string;
+  kicker?: string;
   children: React.ReactNode;
   muted?: boolean;
 }) => (
-  <div className={`px-6 sm:px-12 py-10 ${muted ? 'bg-secondary/50' : 'bg-background'}`}>
-    <div className="mb-6">
-      {(eyebrow || step) && (
-        <div className="flex items-center gap-3 mb-3">
-          {step && (
-            <span className="font-display text-sm font-bold text-brand tabular-nums tracking-wider">
-              {step}
-            </span>
-          )}
-          {step && eyebrow && <span className="h-px w-8 bg-brand/40" />}
-          {eyebrow && (
-            <span className="text-xs font-semibold tracking-[0.25em] uppercase text-brand-dark">
-              {eyebrow}
-            </span>
-          )}
-        </div>
+  <section className={`px-8 sm:px-16 py-16 sm:py-20 ${muted ? 'bg-secondary/40' : 'bg-background'} border-b border-border`}>
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5 }}
+      className="flex items-center gap-3 mb-2"
+    >
+      <span className="h-px w-10 bg-brand" />
+      <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-brand-dark">
+        {eyebrow}
+      </span>
+      {kicker && (
+        <span className="text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-muted-foreground">
+          · {kicker}
+        </span>
       )}
-      <h3 className="font-display text-2xl sm:text-3xl font-semibold text-foreground leading-tight">
-        {title}
-      </h3>
-      {subtitle && (
-        <p className="mt-3 text-base md:text-[1.05rem] text-muted-foreground leading-relaxed max-w-2xl">
-          {subtitle}
-        </p>
-      )}
-    </div>
+    </motion.div>
     {children}
-  </div>
+  </section>
+);
+
+const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 16 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: '-60px' }}
+    transition={{ duration: 0.6, delay: 0.1 }}
+    className="max-w-3xl"
+  >
+    <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground leading-[1.1] tracking-tight">
+      {title}
+    </h3>
+    {subtitle && (
+      <p className="mt-5 text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
+        {subtitle}
+      </p>
+    )}
+  </motion.div>
 );
