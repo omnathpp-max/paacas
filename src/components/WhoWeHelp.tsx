@@ -143,7 +143,7 @@ const audiences: Audience[] = [
     icon: Globe2,
     title: 'NRIs, Global Businesses & Cross-Border Clients',
     description:
-      'Managing India compliance or expanding across borders? We simplify FEMA, tax, and inbound/outbound structuring.',
+      'Managing India compliance or expanding across borders? We simplify FEMA, tax, and inbound or outbound structuring.',
     cta: 'Explore Global Solutions',
   },
   {
@@ -151,7 +151,7 @@ const audiences: Audience[] = [
     icon: Briefcase,
     title: 'HNIs & Professionals',
     description:
-      'Doctors, consultants and professionals — paying more tax than you should? We structure your income and investments the right way.',
+      'Doctors, consultants and professionals paying more tax than you should? We structure your income and investments the right way.',
     cta: 'Explore Wealth & Professional Services',
   },
 ];
