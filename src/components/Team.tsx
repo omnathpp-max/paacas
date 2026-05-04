@@ -28,7 +28,7 @@ const partners = [
   {
     num: '03',
     name: 'CA P A Aswin Kumaar',
-    role: 'Engagement Partner',
+    role: 'Partner',
     qualifications: 'MBA (IIM Bangalore) · CFA (USA) · IBBI Registered Valuer',
     image: aswinImg as string | null,
     description:
@@ -75,7 +75,7 @@ export const Team = () => {
         </motion.div>
 
         {/* Partners — editorial portrait cards */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-20">
+        <div className="grid md:grid-cols-3 gap-5 lg:gap-6 mb-20 max-w-5xl mx-auto">
           {partners.map((p, i) => (
             <motion.div
               key={p.num}
@@ -115,20 +115,20 @@ export const Team = () => {
                   {p.role}
                 </span>
                 {/* name on image */}
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <h3 className="font-display text-2xl lg:text-[1.6rem] font-semibold text-background leading-tight">
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <h3 className="font-display text-xl lg:text-[1.35rem] font-semibold text-background leading-tight">
                     {p.name}
                   </h3>
                   {p.qualifications && (
-                    <p className="text-[0.7rem] text-background/75 mt-2 tracking-wide font-light">
+                    <p className="text-[0.65rem] text-background/75 mt-1.5 tracking-wide font-light">
                       {p.qualifications}
                     </p>
                   )}
                 </div>
               </div>
               {/* Description */}
-              <div className="p-6 lg:p-7 flex-1 flex">
-                <p className="text-muted-foreground text-sm md:text-base font-light leading-relaxed">
+              <div className="p-5 lg:p-6 flex-1 flex">
+                <p className="text-muted-foreground text-[0.8rem] md:text-sm font-light leading-relaxed">
                   {p.description}
                 </p>
               </div>
