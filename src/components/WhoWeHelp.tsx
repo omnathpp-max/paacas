@@ -313,29 +313,30 @@ const StartupModalBody = ({
   return (
     <div className="overflow-y-auto max-h-[92vh] bg-background">
       {/* HERO — editorial, minimal */}
-      <header className="relative px-8 sm:px-16 pt-16 sm:pt-20 pb-14 bg-background border-b border-border">
-        <DialogHeader>
+      <header className="relative px-8 sm:px-16 pt-16 sm:pt-20 pb-14 bg-foreground text-background overflow-hidden border-b border-border">
+        <div aria-hidden className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-[120px] bg-brand/20" />
+        <DialogHeader className="relative">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.2)] text-brand-dark">
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10 border border-white/15 backdrop-blur-sm text-brand">
               <Icon className="w-5 h-5" strokeWidth={1.75} />
             </div>
-            <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-muted-foreground">
+            <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-brand">
               For {audience.title}
             </span>
           </div>
-          <DialogTitle className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] tracking-tight text-foreground text-left max-w-3xl">
+          <DialogTitle className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] tracking-tight text-background text-left max-w-3xl">
             {details.hero.headline}
           </DialogTitle>
-          <DialogDescription className="text-lg md:text-xl text-muted-foreground leading-relaxed pt-6 text-left max-w-2xl font-light">
+          <DialogDescription className="text-lg md:text-xl text-background/70 leading-relaxed pt-6 text-left max-w-2xl font-light">
             {details.hero.sub}
           </DialogDescription>
         </DialogHeader>
-        <div className="mt-10 flex items-center gap-4">
-          <Button size="lg" className="bg-foreground hover:bg-foreground/90 text-background text-base rounded-full px-6">
+        <div className="relative mt-10 flex items-center gap-4">
+          <Button size="lg" className="bg-brand hover:bg-brand-dark text-white text-base rounded-full px-6">
             <Calendar className="w-4 h-4" />
             {details.hero.cta}
           </Button>
-          <span className="text-sm text-muted-foreground hidden sm:inline">Free 30-min discovery call</span>
+          <span className="text-sm text-background/60 hidden sm:inline">Free 30-min discovery call</span>
         </div>
       </header>
 
