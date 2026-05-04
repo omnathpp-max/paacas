@@ -49,7 +49,7 @@ type Audience = {
 
 const startupDetails: StartupDetails = {
   hero: {
-    headline: 'Everything Your Startup Needs—From Day 1 to Scale',
+    headline: 'Everything Your Startup Needs, From Day 1 to Scale',
     sub: 'From incorporation to funding and ongoing compliance, we set up your finance and legal backbone so you can focus on building your business.',
     cta: 'Book a Free Consultation',
   },
@@ -63,7 +63,7 @@ const startupDetails: StartupDetails = {
     ],
   },
   offerings: {
-    title: 'Startup Finance & Compliance—Handled End-to-End',
+    title: 'Startup Finance & Compliance, Handled End to End',
     groups: [
       {
         icon: Package,
@@ -100,7 +100,7 @@ const startupDetails: StartupDetails = {
     title: 'Trusted by Founders Building What\u2019s Next',
     points: ['Helped startups raise ₹XX Cr', 'Worked with X+ funded startups'],
     quote: {
-      text: 'PAA became the finance team we didn\u2019t know we needed — from incorporation to our seed round, they handled it all.',
+      text: 'PAA became the finance team we didn\u2019t know we needed. From incorporation to our seed round, they handled it all.',
       by: 'Founder, Seed-stage SaaS',
     },
   },
@@ -395,7 +395,7 @@ const StartupModalBody = ({
               &ldquo;{details.proof.quote.text}&rdquo;
             </p>
             <footer className="text-xs text-muted-foreground mt-3">
-              — {details.proof.quote.by}
+              {details.proof.quote.by}
             </footer>
           </blockquote>
         </div>
