@@ -7,7 +7,6 @@ import {
   Globe2,
   Briefcase,
   CheckCircle2,
-  Sparkles,
   MessageCircle,
   Calendar,
   Package,
