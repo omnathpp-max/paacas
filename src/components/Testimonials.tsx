@@ -27,7 +27,7 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section className="relative py-24 md:py-32 bg-background overflow-hidden">
+    <section id="testimonials" className="relative py-24 md:py-32 bg-background overflow-hidden">
       <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-32 left-1/3 w-[32rem] h-[32rem] rounded-full blur-[140px] bg-[hsl(109_53%_50%/0.06)]" />
       </div>
