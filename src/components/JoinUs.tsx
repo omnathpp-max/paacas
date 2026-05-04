@@ -55,7 +55,7 @@ export const JoinUs = () => {
               <span className="text-brand italic">People Who Care.</span>
             </h2>
             <p className="text-muted-foreground text-lg mt-6 max-w-md font-light leading-relaxed">
-              We\u2019re always looking for sharp, curious people \u2014 articled assistants,
+              We're always looking for sharp, curious people — articled assistants,
               qualified CAs, and finance professionals who want to do meaningful work.
             </p>
 
