@@ -7,7 +7,6 @@ import {
   Globe2,
   Briefcase,
   CheckCircle2,
-  Sparkles,
   MessageCircle,
   Calendar,
   Package,
@@ -262,7 +261,7 @@ export const WhoWeHelp = () => {
       </div>
 
       <Dialog open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>
-        <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] sm:w-full p-0 bg-background border-border max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl font-sans data-[state=open]:duration-500 data-[state=open]:ease-out data-[state=closed]:duration-200 data-[state=open]:slide-in-from-bottom-8 data-[state=open]:zoom-in-95 [&>button]:right-4 [&>button]:top-4 [&>button]:z-50 [&>button]:rounded-full [&>button]:bg-background/90 [&>button]:backdrop-blur-md [&>button]:border [&>button]:border-border [&>button]:shadow-md [&>button]:p-2 [&>button]:opacity-100 [&>button>svg]:h-5 [&>button>svg]:w-5 [&>button]:text-foreground hover:[&>button]:bg-background">
+        <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] sm:w-full p-0 bg-background border-0 max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl font-sans shadow-[0_30px_80px_-20px_hsl(220_50%_15%/0.45)] data-[state=open]:duration-500 data-[state=open]:ease-out data-[state=closed]:duration-200 data-[state=open]:slide-in-from-bottom-8 data-[state=open]:zoom-in-95 [&>button]:right-4 [&>button]:top-4 [&>button]:z-50 [&>button]:rounded-full [&>button]:bg-background/90 [&>button]:backdrop-blur-md [&>button]:border [&>button]:border-border [&>button]:shadow-md [&>button]:p-2 [&>button]:opacity-100 [&>button>svg]:h-5 [&>button>svg]:w-5 [&>button]:text-foreground hover:[&>button]:bg-background">
           {selected?.details ? (
             <StartupModalBody audience={selected} details={selected.details} />
           ) : selected ? (
@@ -338,14 +337,16 @@ const StartupModalBody = ({
 
       {/* Problems */}
       <Block title={details.problems.title}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {details.problems.items.map((p) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {details.problems.items.map((p, i) => (
             <div
               key={p}
-              className="flex items-start gap-3 p-5 rounded-xl bg-secondary border border-border"
+              className="group relative flex items-start gap-4 p-6 rounded-2xl bg-gradient-to-br from-secondary to-background border-l-2 border-brand/40 hover:border-brand transition-all duration-300 hover:shadow-[0_10px_30px_-10px_hsl(109_53%_50%/0.25)] hover:-translate-y-0.5"
             >
-              <Sparkles className="w-5 h-5 mt-0.5 text-brand shrink-0" />
-              <span className="text-base text-foreground/85 leading-relaxed">{p}</span>
+              <span className="font-display text-2xl font-semibold text-brand/70 leading-none pt-0.5 tabular-nums">
+                0{i + 1}
+              </span>
+              <span className="text-base md:text-[1.05rem] text-foreground/85 leading-relaxed font-medium">{p}</span>
             </div>
           ))}
         </div>
@@ -396,33 +397,8 @@ const StartupModalBody = ({
         </div>
       </Block>
 
-      {/* Proof */}
-      <Block title={details.proof.title} muted>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="space-y-3">
-            {details.proof.points.map((p) => (
-              <div
-                key={p}
-                className="flex items-center gap-3 p-5 rounded-xl bg-card border border-border"
-              >
-                <CheckCircle2 className="w-5 h-5 text-brand shrink-0" />
-                <span className="text-base font-medium text-foreground">{p}</span>
-              </div>
-            ))}
-          </div>
-          <blockquote className="p-6 rounded-2xl bg-card border border-border">
-            <p className="font-display text-base md:text-lg italic text-foreground/85 leading-relaxed">
-              &ldquo;{details.proof.quote.text}&rdquo;
-            </p>
-            <footer className="text-sm text-muted-foreground mt-4">
-              {details.proof.quote.by}
-            </footer>
-          </blockquote>
-        </div>
-      </Block>
-
       {/* Why */}
-      <Block title={details.why.title}>
+      <Block title={details.why.title} muted>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {details.why.points.map((p) => (
             <div key={p} className="flex items-start gap-3">
