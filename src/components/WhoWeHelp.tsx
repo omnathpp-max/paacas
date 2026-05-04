@@ -26,12 +26,13 @@ import { Button } from '@/components/ui/button';
 
 type StartupDetails = {
   hero: { headline: string; sub: string; cta: string };
-  problems: { title: string; items: string[] };
+  problems: { title: string; subtitle: string; items: string[] };
   offerings: {
     title: string;
+    subtitle: string;
     groups: { icon: ComponentType<LucideProps>; label: string; items: string[] }[];
   };
-  approach: { title: string; steps: string[] };
+  approach: { title: string; subtitle: string; steps: string[] };
   proof: { title: string; points: string[]; quote: { text: string; by: string } };
   why: { title: string; points: string[] };
   finalCta: { headline: string; primary: string; secondary: string };
@@ -53,7 +54,9 @@ const startupDetails: StartupDetails = {
     cta: 'Book a Free Consultation',
   },
   problems: {
-    title: 'Built for the Challenges Every Startup Faces',
+    title: 'Common Startup Challenges',
+    subtitle:
+      'Most founders face the same issues early on, we help you solve them from day one.',
     items: [
       'Not sure how to structure your company?',
       'Worried about missing compliance deadlines?',
@@ -63,6 +66,8 @@ const startupDetails: StartupDetails = {
   },
   offerings: {
     title: 'Startup Finance & Compliance, Handled End to End',
+    subtitle:
+      'A complete suite of services covering every financial and legal need as you grow.',
     groups: [
       {
         icon: Package,
@@ -88,6 +93,8 @@ const startupDetails: StartupDetails = {
   },
   approach: {
     title: 'How We Work With Startups',
+    subtitle:
+      'A clear, structured process that takes you from setup to scale, step by step.',
     steps: [
       'Set up the right structure',
       'Build compliance systems',
