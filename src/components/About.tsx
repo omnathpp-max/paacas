@@ -31,7 +31,7 @@ export const About = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-accent font-semibold text-sm uppercase tracking-wider">
-              About Us
+              Who We Are
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mt-3 mb-6">
               A Legacy of Trust & Excellence in{' '}
