@@ -199,7 +199,7 @@ export const WhoWeHelp = () => {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.55, delay: i * 0.1 }}
                 whileHover={{ y: -6 }}
-                className="group relative text-left p-8 lg:p-10 rounded-3xl border border-border bg-card transition-[border-color,box-shadow] duration-500 hover:border-transparent hover:shadow-[0_25px_60px_-15px_hsl(109_53%_50%/0.45)] overflow-hidden"
+                className="group relative text-left p-8 lg:p-10 rounded-3xl border border-border bg-card hover:bg-primary transition-[background-color,border-color,box-shadow] duration-500 hover:border-transparent hover:shadow-[0_25px_60px_-15px_hsl(109_53%_50%/0.45)] overflow-hidden"
               >
                 {/* Animated gradient border */}
                 <div
@@ -217,10 +217,10 @@ export const WhoWeHelp = () => {
                   }}
                 />
 
-                {/* Soft gradient wash that fills from bottom */}
+                {/* Soft gradient wash overlay on dark hover */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-tr from-[hsl(109_53%_50%/0.10)] via-transparent to-[hsl(180_35%_45%/0.08)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-tr from-[hsl(109_53%_50%/0.18)] via-transparent to-[hsl(180_35%_45%/0.12)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
 
                 {/* Expanding spotlight from icon */}
@@ -232,27 +232,27 @@ export const WhoWeHelp = () => {
                 {/* Floating decorative number */}
                 <div
                   aria-hidden
-                  className="absolute top-6 right-7 font-display text-6xl font-bold text-brand/0 group-hover:text-brand/10 -translate-y-2 group-hover:translate-y-0 transition-all duration-500"
+                  className="absolute top-6 right-7 font-display text-6xl font-bold text-brand/0 group-hover:text-white/10 -translate-y-2 group-hover:translate-y-0 transition-all duration-500"
                 >
                   0{i + 1}
                 </div>
 
                 <div className="relative flex items-start gap-5">
-                  <div className="relative shrink-0">
+                  <div className="relative shrink-0 [perspective:800px]">
                     <div
                       aria-hidden
                       className="absolute inset-0 rounded-2xl bg-brand/40 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"
                     />
-                    <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)] text-brand-dark group-hover:bg-brand-gradient group-hover:text-white group-hover:border-transparent group-hover:rotate-[-8deg] group-hover:scale-110 transition-all duration-500 ease-out">
-                      <Icon className="w-6 h-6 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.75} />
+                    <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)] text-brand-dark group-hover:bg-brand-gradient group-hover:text-white group-hover:border-transparent transition-all duration-500 ease-out [transform-style:preserve-3d] group-hover:[transform:rotateY(360deg)]">
+                      <Icon className="w-6 h-6" strokeWidth={1.75} />
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-display text-2xl lg:text-[1.65rem] font-semibold text-foreground leading-snug group-hover:text-brand-dark transition-colors duration-300">
+                    <h3 className="font-display text-2xl lg:text-[1.65rem] font-semibold text-foreground leading-snug group-hover:text-white transition-colors duration-500">
                       {a.title}
                     </h3>
-                    <p className="text-muted-foreground mt-3 leading-relaxed">{a.description}</p>
-                    <span className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-brand-dark relative">
+                    <p className="text-muted-foreground group-hover:text-white/75 mt-3 leading-relaxed transition-colors duration-500">{a.description}</p>
+                    <span className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-brand-dark group-hover:text-white transition-colors duration-500 relative">
                       <span className="relative">
                         {a.cta}
                         <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-brand group-hover:w-full transition-all duration-500 ease-out" />
