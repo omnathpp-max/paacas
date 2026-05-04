@@ -198,53 +198,68 @@ export const WhoWeHelp = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.55, delay: i * 0.1 }}
-                className="group relative text-left p-8 lg:p-10 rounded-3xl border border-border bg-card hover:border-brand/50 hover:shadow-brand transition-all duration-500 overflow-hidden"
+                whileHover={{ y: -6 }}
+                className="group relative text-left p-8 lg:p-10 rounded-3xl border border-border bg-card transition-[border-color,box-shadow] duration-500 hover:border-transparent hover:shadow-[0_25px_60px_-15px_hsl(109_53%_50%/0.45)] overflow-hidden"
               >
-                {/* Diagonal shine sweep */}
+                {/* Animated gradient border */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute -inset-[1px] overflow-hidden rounded-3xl"
-                >
-                  <div className="absolute -top-1/2 -left-1/2 w-[60%] h-[200%] rotate-12 bg-gradient-to-r from-transparent via-brand/15 to-transparent translate-x-[-150%] group-hover:translate-x-[450%] transition-transform duration-[1100ms] ease-out" />
-                </div>
-                {/* Floating dot pattern reveal */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                  className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{
-                    backgroundImage:
-                      'radial-gradient(hsl(109 53% 50% / 0.18) 1px, transparent 1px)',
-                    backgroundSize: '22px 22px',
-                    maskImage:
-                      'radial-gradient(circle at 100% 0%, black, transparent 65%)',
-                    WebkitMaskImage:
-                      'radial-gradient(circle at 100% 0%, black, transparent 65%)',
+                    background:
+                      'conic-gradient(from 0deg, hsl(109 53% 50%), hsl(180 35% 45%), hsl(220 50% 25%), hsl(109 53% 50%))',
+                    padding: '1.5px',
+                    WebkitMask:
+                      'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
+                    WebkitMaskComposite: 'xor',
+                    maskComposite: 'exclude',
+                    animation: 'spin 4s linear infinite',
                   }}
                 />
-                {/* Corner accent */}
+
+                {/* Soft gradient wash that fills from bottom */}
                 <div
                   aria-hidden
-                  className="absolute top-0 right-0 w-24 h-24 bg-brand-gradient opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500"
+                  className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-tr from-[hsl(109_53%_50%/0.10)] via-transparent to-[hsl(180_35%_45%/0.08)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
+
+                {/* Expanding spotlight from icon */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -top-20 -left-20 w-72 h-72 rounded-full bg-[hsl(109_53%_50%/0.25)] blur-3xl scale-0 group-hover:scale-100 transition-transform duration-700 ease-out origin-center"
+                />
+
+                {/* Floating decorative number */}
+                <div
+                  aria-hidden
+                  className="absolute top-6 right-7 font-display text-6xl font-bold text-brand/0 group-hover:text-brand/10 -translate-y-2 group-hover:translate-y-0 transition-all duration-500"
+                >
+                  0{i + 1}
+                </div>
 
                 <div className="relative flex items-start gap-5">
                   <div className="relative shrink-0">
                     <div
                       aria-hidden
-                      className="absolute inset-0 rounded-2xl bg-brand/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      className="absolute inset-0 rounded-2xl bg-brand/40 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"
                     />
-                    <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)] text-brand-dark group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all duration-500 group-hover:-translate-y-1">
+                    <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)] text-brand-dark group-hover:bg-brand-gradient group-hover:text-white group-hover:border-transparent group-hover:rotate-[-8deg] group-hover:scale-110 transition-all duration-500 ease-out">
                       <Icon className="w-6 h-6 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.75} />
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-display text-2xl lg:text-[1.65rem] font-semibold text-foreground leading-snug group-hover:text-primary transition-colors">
+                    <h3 className="font-display text-2xl lg:text-[1.65rem] font-semibold text-foreground leading-snug group-hover:text-brand-dark transition-colors duration-300">
                       {a.title}
                     </h3>
                     <p className="text-muted-foreground mt-3 leading-relaxed">{a.description}</p>
-                    <span className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-brand-dark group-hover:gap-4 transition-all duration-300">
-                      {a.cta}
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-brand-dark relative">
+                      <span className="relative">
+                        {a.cta}
+                        <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-brand group-hover:w-full transition-all duration-500 ease-out" />
+                      </span>
+                      <span className="relative inline-flex items-center justify-center w-7 h-7 rounded-full bg-[hsl(109_53%_50%/0.1)] group-hover:bg-brand group-hover:text-white transition-all duration-500 group-hover:translate-x-1">
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform duration-500 group-hover:rotate-[-45deg]" />
+                      </span>
                     </span>
                   </div>
                 </div>
