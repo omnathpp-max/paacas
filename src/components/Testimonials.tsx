@@ -1,76 +1,86 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Quote } from 'lucide-react';
+import { Sparkles, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "We've been very impressed with the level of professionalism and attention to detail that Aswin brings to the valuation process. He works hard to understand the complexities of our business. He digs deep below the surface to discover the unique nature of our company, asking questions and listening carefully to the answers.",
+    num: '01',
+    quote:
+      "We've been very impressed with the level of professionalism and attention to detail Aswin brings to the valuation process. He digs deep below the surface to discover the unique nature of our company.",
     author: 'Compliance Head',
     company: 'Top MNC Firm',
   },
   {
-    quote: "You're in good hands, Aswin made sure we developed great rapport and their dedication towards work is evident in our growth. We appreciate their proactive response to our requirements & timely delivery.",
+    num: '02',
+    quote:
+      "You're in good hands. Aswin made sure we developed great rapport, and their dedication to work is evident in our growth. We appreciate their proactive response and timely delivery.",
     author: 'Founder',
     company: 'Successful Start-up',
   },
   {
-    quote: "P A A has been a highly valued and trusted advisor to our Company, serving an instrumental role throughout the process of funding that allowed us to grow. The team did an impeccable job in handling a series of key issues and achieved an attractive valuation.",
+    num: '03',
+    quote:
+      'P A A has been a highly valued and trusted advisor — instrumental throughout our funding process. The team handled key issues impeccably and helped us achieve an attractive valuation.',
     author: 'Management',
     company: 'VC Funded Business',
   },
 ];
 
 export const Testimonials = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
   return (
-    <section className="py-24 bg-secondary relative overflow-hidden">
-      {/* Decorative */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
+    <section className="relative py-24 md:py-32 bg-background overflow-hidden">
+      <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-32 left-1/3 w-[32rem] h-[32rem] rounded-full blur-[140px] bg-[hsl(109_53%_50%/0.06)]" />
+      </div>
 
-      <div className="container mx-auto px-6" ref={ref}>
+      <div className="container relative z-10 mx-auto px-6">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="max-w-3xl mb-16 md:mb-20"
         >
-          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase text-brand-dark bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)]">
+            <Sparkles className="w-3.5 h-3.5" strokeWidth={2} />
             Testimonials
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mt-3 mb-6">
-            What Our Clients{' '}
-            <span className="text-gradient-brand">Say About Us</span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-6 leading-[1.05] tracking-tight">
+            What Our Clients <br className="hidden md:block" />
+            <span className="italic font-light text-muted-foreground">Say </span>
+            <span className="text-brand italic">About Us.</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Don't just take our word for it — hear from some of the businesses we've helped succeed.
+          <p className="text-muted-foreground text-lg md:text-xl mt-6 max-w-2xl font-light leading-relaxed">
+            Don't just take our word for it — here's what founders, CFOs, and compliance leaders
+            we've worked with have to say.
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="bg-card rounded-2xl p-8 shadow-elegant border border-border/50 relative"
+        {/* Testimonials grid */}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          {testimonials.map((t, i) => (
+            <motion.figure
+              key={t.num}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="relative rounded-3xl border border-border bg-card p-8 hover:border-brand/40 transition-colors duration-300"
             >
-              <div className="absolute top-6 right-6 w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
-                <Quote className="w-6 h-6 text-accent" />
+              <div className="flex items-center justify-between mb-8">
+                <span className="font-display text-sm text-muted-foreground tabular-nums">
+                  {t.num}
+                </span>
+                <Quote className="w-6 h-6 text-brand" strokeWidth={1.5} />
               </div>
-              <p className="text-muted-foreground leading-relaxed mb-6 italic">
-                "{testimonial.quote}"
-              </p>
-              <div className="border-t border-border pt-4">
-                <p className="font-semibold text-foreground">{testimonial.author}</p>
-                <p className="text-sm text-accent">{testimonial.company}</p>
-              </div>
-            </motion.div>
+              <blockquote className="font-display text-lg md:text-xl text-foreground leading-relaxed font-medium">
+                "{t.quote}"
+              </blockquote>
+              <figcaption className="mt-8 pt-6 border-t border-border">
+                <p className="font-medium text-foreground">{t.author}</p>
+                <p className="text-sm text-brand mt-1">{t.company}</p>
+              </figcaption>
+            </motion.figure>
           ))}
         </div>
       </div>

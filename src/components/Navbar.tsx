@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import caLogo from '@/assets/ca-logo.png';
 
 const navLinks = [
-  { name: 'Home', href: '/#home' },
-  { name: 'About', href: '/#about' },
   { name: 'Services', href: '/#services' },
+  { name: 'About', href: '/#about' },
   { name: 'Team', href: '/#team' },
+  { name: 'Join Us', href: '/#join-us' },
   { name: 'Contact', href: '/#contact' },
 ];
 
@@ -75,18 +75,18 @@ export const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-foreground/80 hover:text-accent font-medium text-sm transition-colors relative group"
+                  className="text-foreground/80 hover:text-brand font-medium text-sm transition-colors relative group"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
               <a
                 href="/#contact"
-                className="group inline-flex items-center gap-2 bg-brand-gradient text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-brand hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 bg-foreground text-background font-medium text-sm px-5 py-2.5 rounded-full hover:bg-foreground/90 transition-all duration-300"
               >
                 Schedule a Call
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
 
@@ -116,7 +116,7 @@ export const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-foreground/80 hover:text-accent font-medium py-2 transition-colors"
+                    className="text-foreground/80 hover:text-brand font-medium py-2 transition-colors"
                   >
                     {link.name}
                   </a>
@@ -124,7 +124,7 @@ export const Navbar = () => {
                 <a
                   href="/#contact"
                   onClick={() => setIsOpen(false)}
-                  className="bg-brand-gradient text-white font-semibold px-6 py-3 rounded-full text-center shadow-brand"
+                  className="bg-foreground text-background font-medium px-6 py-3 rounded-full text-center"
                 >
                   Schedule a Call
                 </a>

@@ -1,71 +1,67 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Linkedin, Instagram, ArrowUp } from 'lucide-react';
+import { Linkedin, ArrowUp } from 'lucide-react';
 import caLogo from '@/assets/ca-logo.png';
 
 const quickLinks = [
-  { name: 'Home', href: '/#home' },
-  { name: 'About Us', href: '/#about' },
   { name: 'Services', href: '/#services' },
+  { name: 'About', href: '/#about' },
   { name: 'Team', href: '/#team' },
+  { name: 'Join Us', href: '/#join-us' },
   { name: 'Contact', href: '/#contact' },
 ];
 
-const services = [
-  { name: 'Valuation', href: '/services/valuation' },
-  { name: 'International Advisory', href: '/services/international-advisory' },
-  { name: 'Audit & Assurance', href: '/services/audit-assurance' },
-  { name: 'Start-up & Virtual CFO', href: '/services/startup-virtual-cfo' },
-  { name: 'Equity Funding', href: '/services/equity-funding-debt-syndication' },
-  { name: 'Regulatory Compliance', href: '/services/regulatory-compliance' },
-];
-
 export const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="relative bg-foreground text-background overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute -top-40 left-1/3 w-[36rem] h-[36rem] rounded-full blur-[160px] bg-brand/15 pointer-events-none"
+      />
+
+      <div className="container relative z-10 mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-3 gap-10 items-start">
           {/* Brand */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
+          <div className="md:col-span-2">
+            <Link to="/" className="flex items-center gap-3 mb-6">
               <img src={caLogo} alt="CA India" className="h-12 w-auto bg-white rounded-lg p-1" />
               <div>
-                <h3 className="font-display font-semibold text-lg">P A A & Associates</h3>
-                <p className="text-xs text-primary-foreground/60 uppercase tracking-wider">
+                <h3 className="font-display font-semibold text-lg text-background">
+                  P A A & Associates
+                </h3>
+                <p className="text-xs text-background/60 uppercase tracking-wider">
                   Chartered Accountants
                 </p>
               </div>
-            </div>
-            <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
-              Your trusted partner for comprehensive chartered accountancy 
-              services since 1958. Excellence, integrity, and client success 
-              drive everything we do.
+            </Link>
+            <p className="text-background/70 text-base font-light leading-relaxed max-w-md">
+              Your trusted finance and compliance partner since 1958. Built for founders and
+              growing companies who expect outcomes — not just deliverables.
             </p>
-            <div className="flex gap-4">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-accent hover:text-white transition-colors"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+
+            <div className="mt-8">
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-white/10 border border-white/15 hover:bg-brand hover:border-brand transition-colors"
+              >
+                <Linkedin className="w-5 h-5" strokeWidth={1.75} />
+              </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Quick Links</h4>
+            <h4 className="text-xs font-semibold tracking-[0.25em] uppercase text-brand mb-6">
+              Navigate
+            </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-primary-foreground/70 hover:text-accent transition-colors"
+                    className="text-background/70 hover:text-background font-light transition-colors"
                   >
                     {link.name}
                   </a>
@@ -73,56 +69,18 @@ export const Footer = () => {
               ))}
             </ul>
           </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Our Services</h4>
-            <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service.name}>
-                  <Link
-                    to={service.href}
-                    className="text-primary-foreground/70 hover:text-accent transition-colors"
-                  >
-                    {service.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Stay Updated</h4>
-            <p className="text-primary-foreground/70 text-sm mb-4">
-              Subscribe to our newsletter for tax updates and financial insights.
-            </p>
-            <form className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent"
-              />
-              <button
-                type="submit"
-                className="px-4 py-3 bg-brand-gradient rounded-lg text-white font-semibold hover:shadow-brand transition-shadow"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-primary-foreground/10">
+      <div className="relative z-10 border-t border-white/10">
         <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-primary-foreground/60 text-sm">
+          <p className="text-background/60 text-sm font-light">
             © {new Date().getFullYear()} P A A & Associates. All rights reserved.
           </p>
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white hover:shadow-brand transition-shadow"
+            className="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white hover:bg-brand-dark transition-colors"
             aria-label="Scroll to top"
           >
             <ArrowUp className="w-5 h-5" />

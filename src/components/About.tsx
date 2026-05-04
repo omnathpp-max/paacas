@@ -1,121 +1,121 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { CheckCircle2 } from 'lucide-react';
-import caLogo from '@/assets/ca-logo.png';
+import { Sparkles, ArrowUpRight } from 'lucide-react';
+
+const stats = [
+  { value: '1958', label: 'Practising since' },
+  { value: '50+', label: 'Team members' },
+  { value: '2', label: 'Offices — Chennai & Madurai' },
+];
 
 const highlights = [
-  'Partners practicing since 1958',
-  'Head Office in Chennai, Branch Office in Madurai',
-  '50+ Members spread across two locations',
-  'Fully digitized workplace with advanced task management',
-  'Strong ethical foundation & client-first approach',
-  'Deep expertise in Indian & International taxation',
+  'A coalition of specialised skills offering sound financial solutions.',
+  'Fully digitised workplace — workflows replace paper, not people.',
+  'Deep expertise across Indian and international taxation.',
+  'Strong ethical foundation with a client-first approach.',
 ];
 
 export const About = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
   return (
-    <section id="about" className="py-24 bg-secondary relative overflow-hidden">
-      {/* Decorative */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
-      
-      <div className="container mx-auto px-6" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
+    <section id="about" className="relative py-24 md:py-32 bg-background overflow-hidden">
+      <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-[36rem] h-[36rem] rounded-full blur-[160px] bg-[hsl(109_53%_50%/0.06)]" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* LEFT — header + copy */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
+            className="lg:col-span-7"
           >
-            <span className="text-accent font-semibold text-sm uppercase tracking-wider">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase text-brand-dark bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)]">
+              <Sparkles className="w-3.5 h-3.5" strokeWidth={2} />
               Who We Are
             </span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mt-3 mb-6">
-              A Legacy of Trust & Excellence in{' '}
-              <span className="text-gradient-brand">Financial Advisory</span>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-6 leading-[1.05] tracking-tight">
+              A Legacy of Trust. <br className="hidden md:block" />
+              <span className="italic font-light text-muted-foreground">Built for </span>
+              <span className="text-brand italic">Modern Founders.</span>
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-              Partners of P A A have been in the profession since 1958 & we represent a coalition 
-              of specialized skills that is geared to offer sound financial solutions and advices. 
-              We are a congregation of professionally qualified and experienced persons who are 
-              committed to add value and optimize the benefits accruing to clients.
-            </p>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Our strength has been our ability to completely digitize the workplace dynamics. 
-              Digital workflows have totally replaced human interference in setting up routine, 
-              repetitive, and mundane office tasks. The energy of youth with the experience of 
-              age is a deadly combination!
+            <p className="text-muted-foreground text-lg md:text-xl mt-6 max-w-2xl font-light leading-relaxed">
+              Partners of P A A have been in practice since 1958. We pair the energy of a young
+              team with the experience of seasoned partners to deliver advice that is sharp,
+              practical, and built to scale with you.
             </p>
 
-            <div className="grid gap-3 mb-8">
-              {highlights.map((item, index) => (
+            <div className="mt-10 border-y border-border">
+              {highlights.map((item, i) => (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.1 * index }}
-                  className="flex items-start gap-3"
+                  key={i}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.4, delay: i * 0.06 }}
+                  className="flex items-start gap-6 py-5 border-b border-border last:border-b-0"
                 >
-                  <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground/80">{item}</span>
+                  <span className="font-display text-sm text-muted-foreground tabular-nums pt-1 shrink-0">
+                    0{i + 1}
+                  </span>
+                  <p className="text-foreground/85 text-base md:text-lg font-light leading-relaxed">
+                    {item}
+                  </p>
                 </motion.div>
               ))}
             </div>
 
             <a
               href="#team"
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-lg hover:bg-navy-light transition-colors"
+              className="group inline-flex items-center gap-3 mt-10 px-6 py-3 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors"
             >
-              Meet Our Team
+              Meet our team
+              <ArrowUpRight
+                className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                strokeWidth={2}
+              />
             </a>
           </motion.div>
 
-          {/* Visual Element */}
+          {/* RIGHT — stats card */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="lg:col-span-5 lg:sticky lg:top-24"
           >
-            <div className="relative">
-              {/* Main card */}
-              <div className="bg-card rounded-2xl shadow-elegant p-8 relative z-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <img src={caLogo} alt="CA India" className="h-16 w-auto" />
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-foreground">
-                      P A A & Associates
-                    </h3>
-                    <p className="text-muted-foreground">Chartered Accountants</p>
-                  </div>
+            <div className="relative rounded-3xl bg-foreground text-background p-8 md:p-10 overflow-hidden shadow-[0_30px_80px_-30px_hsl(220_50%_15%/0.4)]">
+              <div
+                aria-hidden
+                className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-[100px] bg-brand/25"
+              />
+              <div className="relative">
+                <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-brand">
+                  By the numbers
+                </span>
+
+                <div className="mt-8 divide-y divide-white/10">
+                  {stats.map((s, i) => (
+                    <div key={i} className="py-6 first:pt-0 last:pb-0">
+                      <p className="font-display text-5xl md:text-6xl font-semibold tracking-tight text-background">
+                        {s.value}
+                      </p>
+                      <p className="text-sm text-background/60 mt-2 font-light">{s.label}</p>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-secondary rounded-xl p-6 text-center">
-                    <p className="text-3xl font-display font-bold text-accent">1958</p>
-                    <p className="text-sm text-muted-foreground mt-1">Year Established</p>
-                  </div>
-                  <div className="bg-secondary rounded-xl p-6 text-center">
-                    <p className="text-3xl font-display font-bold text-accent">3</p>
-                    <p className="text-sm text-muted-foreground mt-1">Partner Experts</p>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-border">
-                  <p className="text-sm text-muted-foreground italic">
-                    "Serve the clients like you serve thyself, Charge the clients like you 
-                    charge thyself. Brand yourself with happy clients!"
+                <div className="mt-8 pt-8 border-t border-white/10">
+                  <p className="text-base text-background/80 font-light italic leading-relaxed">
+                    "Serve the clients like you serve thyself. Brand yourself with happy clients."
                   </p>
-                  <p className="text-sm text-accent mt-2">— Founding Partner</p>
+                  <p className="text-xs uppercase tracking-[0.25em] text-brand mt-3">
+                    — Founding Partner
+                  </p>
                 </div>
               </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-xl -z-10" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-xl -z-10" />
             </div>
           </motion.div>
         </div>
