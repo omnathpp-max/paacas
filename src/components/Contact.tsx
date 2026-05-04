@@ -1,0 +1,212 @@
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { MapPin, Phone, Mail, ArrowUpRight, Sparkles } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+
+const contactInfo = [
+  {
+    icon: MapPin,
+    title: 'Head Office — Madurai',
+    details: ['No. 24, Anna Nagar', 'Madurai 625020, Tamil Nadu'],
+  },
+  {
+    icon: MapPin,
+    title: 'Branch Office — Chennai',
+    details: ['T. Nagar', 'Chennai 600017, Tamil Nadu'],
+  },
+  {
+    icon: Phone,
+    title: 'Phone',
+    details: ['+91 452 234 9400', '+91 44 2434 5678'],
+  },
+  {
+    icon: Mail,
+    title: 'Email',
+    details: ['info@paacas.com', 'query@paacas.com'],
+  },
+];
+
+export const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    await new Promise((r) => setTimeout(r, 800));
+    toast({
+      title: 'Message sent!',
+      description: "Thanks for reaching out. We'll get back to you shortly.",
+    });
+    setIsSubmitting(false);
+    (e.target as HTMLFormElement).reset();
+  };
+
+  return (
+    <section id="contact" className="relative py-24 md:py-32 bg-secondary/40 overflow-hidden">
+      <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-32 right-0 w-[32rem] h-[32rem] rounded-full blur-[140px] bg-[hsl(109_53%_50%/0.06)]" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-6">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mb-16 md:mb-20"
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase text-brand-dark bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)]">
+            <Sparkles className="w-3.5 h-3.5" strokeWidth={2} />
+            Get In Touch
+          </span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-6 leading-[1.05] tracking-tight">
+            Let's Talk About <br className="hidden md:block" />
+            <span className="italic font-light text-muted-foreground">Your </span>
+            <span className="text-brand italic">Next Move.</span>
+          </h2>
+          <p className="text-muted-foreground text-lg md:text-xl mt-6 max-w-2xl font-light leading-relaxed">
+            Have a question or want to schedule a consultation? Drop us a note and our team will
+            get back to you promptly.
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          {/* LEFT — form */}
+          <motion.form
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6 }}
+            onSubmit={handleSubmit}
+            className="lg:col-span-7 rounded-3xl border border-border bg-card p-8 md:p-10"
+          >
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Your name"
+                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="your@email.com"
+                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors"
+                />
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+91 98765 43210"
+                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors"
+                />
+              </div>
+              <div>
+                <label htmlFor="service" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                  Service
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground focus:outline-none focus:border-brand transition-colors"
+                >
+                  <option value="">Select a service</option>
+                  <option value="launch">Startup Launch & Compliance</option>
+                  <option value="tax">Tax Optimization & Structuring</option>
+                  <option value="cfo">Virtual CFO & Growth Advisory</option>
+                  <option value="fema">FEMA & Cross-Border Advisory</option>
+                  <option value="valuation">Valuation & Transaction Support</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="mb-8">
+              <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                Your Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                required
+                placeholder="Tell us about your requirements..."
+                className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors resize-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors disabled:opacity-60"
+            >
+              {isSubmitting ? 'Sending…' : 'Send Message'}
+              <ArrowUpRight
+                className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                strokeWidth={2}
+              />
+            </button>
+          </motion.form>
+
+          {/* RIGHT — contact info */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:col-span-5"
+          >
+            <div className="border-y border-border">
+              {contactInfo.map((info, i) => {
+                const Icon = info.icon;
+                return (
+                  <div
+                    key={i}
+                    className="flex items-start gap-5 py-6 border-b border-border last:border-b-0"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-brand shrink-0">
+                      <Icon className="w-4 h-4" strokeWidth={1.75} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-display text-base font-semibold text-foreground">
+                        {info.title}
+                      </h4>
+                      {info.details.map((d, j) => (
+                        <p key={j} className="text-muted-foreground text-sm mt-1 font-light">
+                          {d}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
