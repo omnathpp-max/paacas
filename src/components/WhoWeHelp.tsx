@@ -158,6 +158,7 @@ const audiences: Audience[] = [
     description:
       'Outgrowing your accountant? We help you scale with systems, controls, and advisory.',
     cta: 'Explore Growth Solutions',
+    details: smeDetails,
   },
   {
     id: 'global',
@@ -166,6 +167,7 @@ const audiences: Audience[] = [
     description:
       'Managing India compliance or expanding across borders? We simplify FEMA, tax, and inbound or outbound structuring.',
     cta: 'Explore Global Solutions',
+    details: globalDetails,
   },
   {
     id: 'hni',
@@ -174,6 +176,7 @@ const audiences: Audience[] = [
     description:
       'Doctors, consultants and professionals paying more tax than you should? We structure your income and investments the right way.',
     cta: 'Explore Wealth & Professional Services',
+    details: hniDetails,
   },
 ];
 
