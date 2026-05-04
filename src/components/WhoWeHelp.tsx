@@ -187,7 +187,7 @@ export const WhoWeHelp = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7 items-stretch">
           {audiences.map((a, i) => {
             const Icon = a.icon;
             return (
@@ -199,7 +199,7 @@ export const WhoWeHelp = () => {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.55, delay: i * 0.1 }}
                 whileHover={{ y: -6 }}
-                className="group relative text-left p-8 lg:p-10 rounded-3xl border border-border bg-card hover:bg-primary transition-[background-color,border-color,box-shadow] duration-500 hover:border-transparent hover:shadow-[0_25px_60px_-15px_hsl(109_53%_50%/0.45)] overflow-hidden"
+                className="group relative h-full flex text-left p-8 lg:p-10 rounded-3xl border border-border bg-card hover:bg-primary transition-[background-color,border-color,box-shadow] duration-500 hover:border-transparent hover:shadow-[0_25px_60px_-15px_hsl(109_53%_50%/0.45)] overflow-hidden"
               >
                 {/* Animated gradient border */}
                 <div
@@ -229,15 +229,7 @@ export const WhoWeHelp = () => {
                   className="pointer-events-none absolute -top-20 -left-20 w-72 h-72 rounded-full bg-[hsl(109_53%_50%/0.25)] blur-3xl scale-0 group-hover:scale-100 transition-transform duration-700 ease-out origin-center"
                 />
 
-                {/* Floating decorative number */}
-                <div
-                  aria-hidden
-                  className="absolute top-6 right-7 font-display text-6xl font-bold text-brand/0 group-hover:text-white/10 -translate-y-2 group-hover:translate-y-0 transition-all duration-500"
-                >
-                  0{i + 1}
-                </div>
-
-                <div className="relative flex items-start gap-5">
+                <div className="relative flex items-start gap-5 w-full">
                   <div className="relative shrink-0 [perspective:800px]">
                     <div
                       aria-hidden
