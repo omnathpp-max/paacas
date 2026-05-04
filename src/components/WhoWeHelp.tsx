@@ -49,7 +49,7 @@ type Audience = {
 
 const startupDetails: StartupDetails = {
   hero: {
-    headline: 'Everything Your Startup Needs—From Day 1 to Scale',
+    headline: 'Everything Your Startup Needs, From Day 1 to Scale',
     sub: 'From incorporation to funding and ongoing compliance, we set up your finance and legal backbone so you can focus on building your business.',
     cta: 'Book a Free Consultation',
   },
@@ -63,7 +63,7 @@ const startupDetails: StartupDetails = {
     ],
   },
   offerings: {
-    title: 'Startup Finance & Compliance—Handled End-to-End',
+    title: 'Startup Finance & Compliance, Handled End to End',
     groups: [
       {
         icon: Package,
@@ -100,7 +100,7 @@ const startupDetails: StartupDetails = {
     title: 'Trusted by Founders Building What\u2019s Next',
     points: ['Helped startups raise ₹XX Cr', 'Worked with X+ funded startups'],
     quote: {
-      text: 'PAA became the finance team we didn\u2019t know we needed — from incorporation to our seed round, they handled it all.',
+      text: 'PAA became the finance team we didn\u2019t know we needed. From incorporation to our seed round, they handled it all.',
       by: 'Founder, Seed-stage SaaS',
     },
   },
@@ -143,7 +143,7 @@ const audiences: Audience[] = [
     icon: Globe2,
     title: 'NRIs, Global Businesses & Cross-Border Clients',
     description:
-      'Managing India compliance or expanding across borders? We simplify FEMA, tax, and inbound/outbound structuring.',
+      'Managing India compliance or expanding across borders? We simplify FEMA, tax, and inbound or outbound structuring.',
     cta: 'Explore Global Solutions',
   },
   {
@@ -151,7 +151,7 @@ const audiences: Audience[] = [
     icon: Briefcase,
     title: 'HNIs & Professionals',
     description:
-      'Doctors, consultants and professionals — paying more tax than you should? We structure your income and investments the right way.',
+      'Doctors, consultants and professionals paying more tax than you should? We structure your income and investments the right way.',
     cta: 'Explore Wealth & Professional Services',
   },
 ];
@@ -198,32 +198,45 @@ export const WhoWeHelp = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.55, delay: i * 0.1 }}
-                whileHover={{ y: -6 }}
-                className="group relative text-left p-8 lg:p-10 rounded-3xl border border-border bg-card hover:border-brand/40 hover:shadow-brand transition-all duration-500 overflow-hidden"
+                className="group relative text-left p-8 lg:p-10 rounded-3xl border border-border bg-card hover:border-brand/50 hover:shadow-brand transition-all duration-500 overflow-hidden"
               >
-                {/* Animated gradient sweep */}
+                {/* Diagonal shine sweep */}
                 <div
                   aria-hidden
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="pointer-events-none absolute -inset-[1px] overflow-hidden rounded-3xl"
+                >
+                  <div className="absolute -top-1/2 -left-1/2 w-[60%] h-[200%] rotate-12 bg-gradient-to-r from-transparent via-brand/15 to-transparent translate-x-[-150%] group-hover:translate-x-[450%] transition-transform duration-[1100ms] ease-out" />
+                </div>
+                {/* Floating dot pattern reveal */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                   style={{
-                    background:
-                      'radial-gradient(600px circle at var(--x, 50%) var(--y, 0%), hsl(109 53% 50% / 0.10), transparent 60%)',
+                    backgroundImage:
+                      'radial-gradient(hsl(109 53% 50% / 0.18) 1px, transparent 1px)',
+                    backgroundSize: '22px 22px',
+                    maskImage:
+                      'radial-gradient(circle at 100% 0%, black, transparent 65%)',
+                    WebkitMaskImage:
+                      'radial-gradient(circle at 100% 0%, black, transparent 65%)',
                   }}
                 />
-                {/* Top accent bar */}
+                {/* Corner accent */}
                 <div
                   aria-hidden
-                  className="absolute top-0 left-0 h-1 w-0 bg-brand-gradient group-hover:w-full transition-all duration-500 ease-out"
+                  className="absolute top-0 right-0 w-24 h-24 bg-brand-gradient opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500"
                 />
 
                 <div className="relative flex items-start gap-5">
-                  <motion.div
-                    whileHover={{ rotate: -6, scale: 1.05 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                    className="shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)] text-brand-dark group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-colors duration-500"
-                  >
-                    <Icon className="w-6 h-6" strokeWidth={1.75} />
-                  </motion.div>
+                  <div className="relative shrink-0">
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 rounded-2xl bg-brand/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    />
+                    <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)] text-brand-dark group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all duration-500 group-hover:-translate-y-1">
+                      <Icon className="w-6 h-6 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.75} />
+                    </div>
+                  </div>
                   <div className="flex-1">
                     <h3 className="font-display text-2xl lg:text-[1.65rem] font-semibold text-foreground leading-snug group-hover:text-primary transition-colors">
                       {a.title}
@@ -242,7 +255,7 @@ export const WhoWeHelp = () => {
       </div>
 
       <Dialog open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>
-        <DialogContent className="max-w-3xl w-[calc(100vw-2rem)] sm:w-full p-0 bg-background border-border max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl">
+        <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] sm:w-full p-0 bg-background border-border max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl [&>button]:right-4 [&>button]:top-4 [&>button]:z-50 [&>button]:rounded-full [&>button]:bg-background/90 [&>button]:backdrop-blur-md [&>button]:border [&>button]:border-border [&>button]:shadow-md [&>button]:p-2 [&>button]:opacity-100 [&>button>svg]:h-4 [&>button>svg]:w-4 [&>button]:text-foreground hover:[&>button]:bg-background">
           {selected?.details ? (
             <StartupModalBody audience={selected} details={selected.details} />
           ) : selected ? (
@@ -395,7 +408,7 @@ const StartupModalBody = ({
               &ldquo;{details.proof.quote.text}&rdquo;
             </p>
             <footer className="text-xs text-muted-foreground mt-3">
-              — {details.proof.quote.by}
+              {details.proof.quote.by}
             </footer>
           </blockquote>
         </div>
