@@ -26,12 +26,13 @@ import { Button } from '@/components/ui/button';
 
 type StartupDetails = {
   hero: { headline: string; sub: string; cta: string };
-  problems: { title: string; items: string[] };
+  problems: { title: string; subtitle: string; items: string[] };
   offerings: {
     title: string;
+    subtitle: string;
     groups: { icon: ComponentType<LucideProps>; label: string; items: string[] }[];
   };
-  approach: { title: string; steps: string[] };
+  approach: { title: string; subtitle: string; steps: string[] };
   proof: { title: string; points: string[]; quote: { text: string; by: string } };
   why: { title: string; points: string[] };
   finalCta: { headline: string; primary: string; secondary: string };
@@ -53,7 +54,9 @@ const startupDetails: StartupDetails = {
     cta: 'Book a Free Consultation',
   },
   problems: {
-    title: 'Built for the Challenges Every Startup Faces',
+    title: 'Common Startup Challenges',
+    subtitle:
+      'Most founders face the same issues early on, we help you solve them from day one.',
     items: [
       'Not sure how to structure your company?',
       'Worried about missing compliance deadlines?',
@@ -63,6 +66,8 @@ const startupDetails: StartupDetails = {
   },
   offerings: {
     title: 'Startup Finance & Compliance, Handled End to End',
+    subtitle:
+      'A complete suite of services covering every financial and legal need as you grow.',
     groups: [
       {
         icon: Package,
@@ -88,6 +93,8 @@ const startupDetails: StartupDetails = {
   },
   approach: {
     title: 'How We Work With Startups',
+    subtitle:
+      'A clear, structured process that takes you from setup to scale, step by step.',
     steps: [
       'Set up the right structure',
       'Build compliance systems',
@@ -336,7 +343,7 @@ const StartupModalBody = ({
       </div>
 
       {/* Problems */}
-      <Block title={details.problems.title}>
+      <Block eyebrow="Why" step="01" title={details.problems.title} subtitle={details.problems.subtitle}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {details.problems.items.map((p, i) => (
             <div
@@ -353,7 +360,7 @@ const StartupModalBody = ({
       </Block>
 
       {/* Offerings */}
-      <Block title={details.offerings.title} muted>
+      <Block eyebrow="What" step="02" title={details.offerings.title} subtitle={details.offerings.subtitle} muted>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
           {details.offerings.groups.map((g) => {
             const GIcon = g.icon;
@@ -383,7 +390,7 @@ const StartupModalBody = ({
       </Block>
 
       {/* Approach */}
-      <Block title={details.approach.title}>
+      <Block eyebrow="How" step="03" title={details.approach.title} subtitle={details.approach.subtitle}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {details.approach.steps.map((s, i) => (
             <div
@@ -435,17 +442,45 @@ const StartupModalBody = ({
 
 const Block = ({
   title,
+  subtitle,
+  eyebrow,
+  step,
   children,
   muted,
 }: {
   title: string;
+  subtitle?: string;
+  eyebrow?: string;
+  step?: string;
   children: React.ReactNode;
   muted?: boolean;
 }) => (
   <div className={`px-6 sm:px-12 py-10 ${muted ? 'bg-secondary/50' : 'bg-background'}`}>
-    <h3 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-6 leading-tight">
-      {title}
-    </h3>
+    <div className="mb-6">
+      {(eyebrow || step) && (
+        <div className="flex items-center gap-3 mb-3">
+          {step && (
+            <span className="font-display text-sm font-bold text-brand tabular-nums tracking-wider">
+              {step}
+            </span>
+          )}
+          {step && eyebrow && <span className="h-px w-8 bg-brand/40" />}
+          {eyebrow && (
+            <span className="text-xs font-semibold tracking-[0.25em] uppercase text-brand-dark">
+              {eyebrow}
+            </span>
+          )}
+        </div>
+      )}
+      <h3 className="font-display text-2xl sm:text-3xl font-semibold text-foreground leading-tight">
+        {title}
+      </h3>
+      {subtitle && (
+        <p className="mt-3 text-base md:text-[1.05rem] text-muted-foreground leading-relaxed max-w-2xl">
+          {subtitle}
+        </p>
+      )}
+    </div>
     {children}
   </div>
 );
