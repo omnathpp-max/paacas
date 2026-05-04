@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
-import { Sparkles, User } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import aswinImg from '@/assets/team/aswin.png';
+import premnathImg from '@/assets/team/premnath.png';
+import amarnathImg from '@/assets/team/amarnath.png';
 import kaushikImg from '@/assets/team/kaushik.png';
 import thiagarajanImg from '@/assets/team/thiagarajan.png';
 import jeevanImg from '@/assets/team/jeevan.png';
@@ -11,7 +13,7 @@ const partners = [
     num: '01',
     name: 'CA P K Premnath',
     role: 'Partner',
-    image: null as string | null,
+    image: premnathImg as string | null,
     description:
       'Second-generation Chartered Accountant practising since 1977. Deep expertise in Statutory Audits, Tax Audits, project reports, and management consultancy.',
   },
@@ -19,7 +21,7 @@ const partners = [
     num: '02',
     name: 'CA P K Amarnath',
     role: 'Partner',
-    image: null as string | null,
+    image: amarnathImg as string | null,
     description:
       'Second-generation Chartered Accountant practising since 1978. Specialised in Direct Taxation, from Assessment stage right through to Settlement Commission.',
   },
