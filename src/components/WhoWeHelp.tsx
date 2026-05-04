@@ -187,7 +187,7 @@ export const WhoWeHelp = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7 items-stretch">
           {audiences.map((a, i) => {
             const Icon = a.icon;
             return (
@@ -199,7 +199,7 @@ export const WhoWeHelp = () => {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.55, delay: i * 0.1 }}
                 whileHover={{ y: -6 }}
-                className="group relative text-left p-8 lg:p-10 rounded-3xl border border-border bg-card hover:bg-primary transition-[background-color,border-color,box-shadow] duration-500 hover:border-transparent hover:shadow-[0_25px_60px_-15px_hsl(109_53%_50%/0.45)] overflow-hidden"
+                className="group relative h-full flex text-left p-8 lg:p-10 rounded-3xl border border-border bg-card hover:bg-primary transition-[background-color,border-color,box-shadow] duration-500 hover:border-transparent hover:shadow-[0_25px_60px_-15px_hsl(109_53%_50%/0.45)] overflow-hidden"
               >
                 {/* Animated gradient border */}
                 <div
@@ -229,15 +229,7 @@ export const WhoWeHelp = () => {
                   className="pointer-events-none absolute -top-20 -left-20 w-72 h-72 rounded-full bg-[hsl(109_53%_50%/0.25)] blur-3xl scale-0 group-hover:scale-100 transition-transform duration-700 ease-out origin-center"
                 />
 
-                {/* Floating decorative number */}
-                <div
-                  aria-hidden
-                  className="absolute top-6 right-7 font-display text-6xl font-bold text-brand/0 group-hover:text-white/10 -translate-y-2 group-hover:translate-y-0 transition-all duration-500"
-                >
-                  0{i + 1}
-                </div>
-
-                <div className="relative flex items-start gap-5">
+                <div className="relative flex items-start gap-5 w-full">
                   <div className="relative shrink-0 [perspective:800px]">
                     <div
                       aria-hidden
@@ -270,7 +262,7 @@ export const WhoWeHelp = () => {
       </div>
 
       <Dialog open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>
-        <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] sm:w-full p-0 bg-background border-border max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl [&>button]:right-4 [&>button]:top-4 [&>button]:z-50 [&>button]:rounded-full [&>button]:bg-background/90 [&>button]:backdrop-blur-md [&>button]:border [&>button]:border-border [&>button]:shadow-md [&>button]:p-2 [&>button]:opacity-100 [&>button>svg]:h-4 [&>button>svg]:w-4 [&>button]:text-foreground hover:[&>button]:bg-background">
+        <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] sm:w-full p-0 bg-background border-border max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl font-sans data-[state=open]:duration-500 data-[state=open]:ease-out data-[state=closed]:duration-200 data-[state=open]:slide-in-from-bottom-8 data-[state=open]:zoom-in-95 [&>button]:right-4 [&>button]:top-4 [&>button]:z-50 [&>button]:rounded-full [&>button]:bg-background/90 [&>button]:backdrop-blur-md [&>button]:border [&>button]:border-border [&>button]:shadow-md [&>button]:p-2 [&>button]:opacity-100 [&>button>svg]:h-5 [&>button>svg]:w-5 [&>button]:text-foreground hover:[&>button]:bg-background">
           {selected?.details ? (
             <StartupModalBody audience={selected} details={selected.details} />
           ) : selected ? (
@@ -285,21 +277,21 @@ export const WhoWeHelp = () => {
 const ComingSoonBody = ({ audience }: { audience: Audience }) => {
   const Icon = audience.icon;
   return (
-    <div className="p-8 sm:p-10">
+    <div className="p-8 sm:p-12">
       <DialogHeader>
         <div className="flex items-center gap-4 mb-2">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[hsl(109_53%_50%/0.12)] border border-[hsl(109_53%_50%/0.25)] text-brand-dark">
-            <Icon className="w-5 h-5" strokeWidth={1.75} />
+          <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-[hsl(109_53%_50%/0.12)] border border-[hsl(109_53%_50%/0.25)] text-brand-dark">
+            <Icon className="w-6 h-6" strokeWidth={1.75} />
           </div>
-          <DialogTitle className="font-display text-2xl md:text-3xl font-semibold text-foreground text-left">
+          <DialogTitle className="font-display text-3xl md:text-4xl font-semibold text-foreground text-left">
             {audience.title}
           </DialogTitle>
         </div>
-        <DialogDescription className="text-muted-foreground text-base leading-relaxed pt-2 text-left">
+        <DialogDescription className="text-muted-foreground text-base md:text-lg leading-relaxed pt-3 text-left">
           {audience.description}
         </DialogDescription>
       </DialogHeader>
-      <p className="mt-6 text-muted-foreground">Detailed information coming soon.</p>
+      <p className="mt-8 text-base md:text-lg text-muted-foreground">Detailed information coming soon.</p>
     </div>
   );
 };
@@ -315,7 +307,7 @@ const StartupModalBody = ({
   return (
     <div className="overflow-y-auto max-h-[92vh]">
       {/* Hero */}
-      <div className="relative px-6 sm:px-10 pt-8 sm:pt-10 pb-8 bg-hero-gradient text-primary-foreground overflow-hidden">
+      <div className="relative px-6 sm:px-12 pt-10 sm:pt-12 pb-10 bg-hero-gradient text-primary-foreground overflow-hidden">
         <div
           aria-hidden
           className="absolute -top-24 -right-20 w-72 h-72 rounded-full blur-[100px] bg-[hsl(109_53%_50%/0.4)]"
@@ -323,21 +315,21 @@ const StartupModalBody = ({
         <div className="relative">
           <DialogHeader>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-11 h-11 rounded-xl flex items-center justify-center bg-white/10 border border-white/15 backdrop-blur-sm">
-                <Icon className="w-5 h-5" strokeWidth={1.75} />
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/10 border border-white/15 backdrop-blur-sm">
+                <Icon className="w-6 h-6" strokeWidth={1.75} />
               </div>
-              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[hsl(109_53%_70%)]">
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-[hsl(109_53%_70%)]">
                 Startup Solutions
               </span>
             </div>
-            <DialogTitle className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-left">
+            <DialogTitle className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.1] text-left">
               {details.hero.headline}
             </DialogTitle>
-            <DialogDescription className="text-base text-white/75 leading-relaxed pt-3 text-left">
+            <DialogDescription className="text-base md:text-lg text-white/75 leading-relaxed pt-4 text-left">
               {details.hero.sub}
             </DialogDescription>
           </DialogHeader>
-          <Button className="mt-6 bg-brand hover:bg-brand-dark text-white shadow-brand">
+          <Button size="lg" className="mt-7 bg-brand hover:bg-brand-dark text-white shadow-brand text-base">
             <Calendar className="w-4 h-4" />
             {details.hero.cta}
           </Button>
@@ -350,10 +342,10 @@ const StartupModalBody = ({
           {details.problems.items.map((p) => (
             <div
               key={p}
-              className="flex items-start gap-3 p-4 rounded-xl bg-secondary border border-border"
+              className="flex items-start gap-3 p-5 rounded-xl bg-secondary border border-border"
             >
-              <Sparkles className="w-4 h-4 mt-0.5 text-brand shrink-0" />
-              <span className="text-sm text-foreground/80">{p}</span>
+              <Sparkles className="w-5 h-5 mt-0.5 text-brand shrink-0" />
+              <span className="text-base text-foreground/85 leading-relaxed">{p}</span>
             </div>
           ))}
         </div>
@@ -361,24 +353,24 @@ const StartupModalBody = ({
 
       {/* Offerings */}
       <Block title={details.offerings.title} muted>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
           {details.offerings.groups.map((g) => {
             const GIcon = g.icon;
             return (
               <div
                 key={g.label}
-                className="p-5 rounded-2xl bg-card border border-border hover:border-brand/40 transition-colors"
+                className="p-6 rounded-2xl bg-card border border-border hover:border-brand/40 transition-colors"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-[hsl(109_53%_50%/0.12)] text-brand-dark">
-                    <GIcon className="w-4 h-4" strokeWidth={2} />
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[hsl(109_53%_50%/0.12)] text-brand-dark">
+                    <GIcon className="w-5 h-5" strokeWidth={2} />
                   </div>
-                  <h4 className="font-semibold text-foreground">{g.label}</h4>
+                  <h4 className="font-display text-lg md:text-xl font-semibold text-foreground">{g.label}</h4>
                 </div>
-                <ul className="space-y-1.5">
+                <ul className="space-y-2">
                   {g.items.map((it) => (
-                    <li key={it} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="w-1 h-1 rounded-full bg-brand mt-2 shrink-0" />
+                    <li key={it} className="text-[0.95rem] text-muted-foreground flex items-start gap-2.5 leading-relaxed">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 shrink-0" />
                       {it}
                     </li>
                   ))}
@@ -395,10 +387,10 @@ const StartupModalBody = ({
           {details.approach.steps.map((s, i) => (
             <div
               key={s}
-              className="relative p-4 rounded-xl bg-secondary border border-border"
+              className="relative p-5 rounded-xl bg-secondary border border-border"
             >
-              <div className="text-xs font-bold text-brand-dark mb-2">0{i + 1}</div>
-              <p className="text-sm text-foreground/80 leading-snug">{s}</p>
+              <div className="font-display text-sm font-bold text-brand-dark mb-2 tracking-wider">0{i + 1}</div>
+              <p className="text-[0.95rem] text-foreground/85 leading-relaxed">{s}</p>
             </div>
           ))}
         </div>
@@ -411,18 +403,18 @@ const StartupModalBody = ({
             {details.proof.points.map((p) => (
               <div
                 key={p}
-                className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border"
+                className="flex items-center gap-3 p-5 rounded-xl bg-card border border-border"
               >
                 <CheckCircle2 className="w-5 h-5 text-brand shrink-0" />
-                <span className="text-sm font-medium text-foreground">{p}</span>
+                <span className="text-base font-medium text-foreground">{p}</span>
               </div>
             ))}
           </div>
-          <blockquote className="p-5 rounded-2xl bg-card border border-border">
-            <p className="text-sm italic text-foreground/80 leading-relaxed">
+          <blockquote className="p-6 rounded-2xl bg-card border border-border">
+            <p className="font-display text-base md:text-lg italic text-foreground/85 leading-relaxed">
               &ldquo;{details.proof.quote.text}&rdquo;
             </p>
-            <footer className="text-xs text-muted-foreground mt-3">
+            <footer className="text-sm text-muted-foreground mt-4">
               {details.proof.quote.by}
             </footer>
           </blockquote>
@@ -431,29 +423,30 @@ const StartupModalBody = ({
 
       {/* Why */}
       <Block title={details.why.title}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {details.why.points.map((p) => (
             <div key={p} className="flex items-start gap-3">
-              <CheckCircle2 className="w-4 h-4 mt-1 text-brand shrink-0" />
-              <span className="text-sm text-foreground/80">{p}</span>
+              <CheckCircle2 className="w-5 h-5 mt-0.5 text-brand shrink-0" />
+              <span className="text-base text-foreground/85 leading-relaxed">{p}</span>
             </div>
           ))}
         </div>
       </Block>
 
       {/* Final CTA */}
-      <div className="px-6 sm:px-10 py-10 bg-hero-gradient text-primary-foreground">
-        <h3 className="font-display text-2xl sm:text-3xl font-semibold leading-tight">
+      <div className="px-6 sm:px-12 py-12 bg-hero-gradient text-primary-foreground">
+        <h3 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
           {details.finalCta.headline}
         </h3>
-        <div className="flex flex-col sm:flex-row gap-3 mt-6">
-          <Button className="bg-brand hover:bg-brand-dark text-white shadow-brand">
+        <div className="flex flex-col sm:flex-row gap-3 mt-7">
+          <Button size="lg" className="bg-brand hover:bg-brand-dark text-white shadow-brand text-base">
             <Calendar className="w-4 h-4" />
             {details.finalCta.primary}
           </Button>
           <Button
+            size="lg"
             variant="outline"
-            className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white"
+            className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white text-base"
           >
             <MessageCircle className="w-4 h-4" />
             {details.finalCta.secondary}
@@ -473,8 +466,8 @@ const Block = ({
   children: React.ReactNode;
   muted?: boolean;
 }) => (
-  <div className={`px-6 sm:px-10 py-8 ${muted ? 'bg-secondary/50' : 'bg-background'}`}>
-    <h3 className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-5">
+  <div className={`px-6 sm:px-12 py-10 ${muted ? 'bg-secondary/50' : 'bg-background'}`}>
+    <h3 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-6 leading-tight">
       {title}
     </h3>
     {children}
