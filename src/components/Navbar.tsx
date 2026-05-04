@@ -5,10 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import caLogo from '@/assets/ca-logo.png';
 
 const navLinks = [
+  { name: 'Who We Help', href: '/#who-we-help' },
   { name: 'Services', href: '/#services' },
   { name: 'About', href: '/#about' },
   { name: 'Team', href: '/#team' },
   { name: 'Join Us', href: '/#join-us' },
+  { name: 'Testimonials', href: '/#testimonials' },
   { name: 'Contact', href: '/#contact' },
 ];
 
