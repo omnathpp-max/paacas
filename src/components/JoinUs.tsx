@@ -1,27 +1,33 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Sparkles, X, Upload } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 const perks = [
   {
-    num: '01',
     title: 'Work on real, high-stakes mandates',
     description:
       'From cross-border structuring to startup valuations, you\u2019ll handle work that actually moves the needle for clients.',
   },
   {
-    num: '02',
     title: 'Learn directly from the partners',
     description:
       'Small team, flat structure. You\u2019ll get mentorship from professionals with decades of practice — not just a desk in a back office.',
   },
   {
-    num: '03',
     title: 'A modern, digitized workplace',
     description:
       'No paper-pushing. Our workflows are fully digital so your time goes into thinking, not chasing files.',
   },
   {
-    num: '04',
     title: 'Build a long-term career path',
     description:
       'Articleship, qualified roles, and partner-track opportunities — we invest in people who want to grow with us.',
@@ -29,6 +35,22 @@ const perks = [
 ];
 
 export const JoinUs = () => {
+  const [open, setOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    await new Promise((r) => setTimeout(r, 800));
+    toast({
+      title: 'Application submitted',
+      description: "Thanks for applying. Our team will review and get back to you within 3–5 business days.",
+    });
+    setSubmitting(false);
+    setOpen(false);
+  };
+
   return (
     <section id="join-us" className="relative py-24 md:py-32 bg-secondary overflow-hidden">
       <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -59,8 +81,9 @@ export const JoinUs = () => {
               qualified CAs, and finance professionals who want to do meaningful work.
             </p>
 
-            <a
-              href="#contact"
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
               className="group inline-flex items-center gap-3 mt-10 px-6 py-3 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors"
             >
               Send us your CV
@@ -68,36 +91,164 @@ export const JoinUs = () => {
                 className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 strokeWidth={2}
               />
-            </a>
+            </button>
           </motion.div>
 
           {/* RIGHT — perks list */}
           <div className="lg:col-span-7 border-y border-border">
             {perks.map((p, i) => (
               <motion.div
-                key={p.num}
+                key={p.title}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.45, delay: i * 0.06 }}
-                className="flex items-start gap-6 py-7 md:py-8 border-b border-border last:border-b-0"
+                className="py-7 md:py-8 border-b border-border last:border-b-0"
               >
-                <span className="font-display text-sm text-muted-foreground tabular-nums pt-1 shrink-0">
-                  {p.num}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground leading-snug mb-2">
-                    {p.title}
-                  </h3>
-                  <p className="text-muted-foreground text-base leading-relaxed font-light">
-                    {p.description}
-                  </p>
-                </div>
+                <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground leading-snug mb-2">
+                  {p.title}
+                </h3>
+                <p className="text-muted-foreground text-base leading-relaxed font-light">
+                  {p.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Application Modal */}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-5xl p-0 overflow-hidden bg-secondary/40 border-border">
+          <div className="grid md:grid-cols-2 gap-0">
+            {/* LEFT — Form */}
+            <div className="bg-card p-8 md:p-10">
+              <DialogHeader>
+                <DialogTitle className="font-display text-2xl md:text-3xl font-semibold text-foreground">
+                  Submit Your Profile
+                </DialogTitle>
+                <DialogDescription className="sr-only">
+                  Application form to join P A A & Associates
+                </DialogDescription>
+              </DialogHeader>
+
+              <form onSubmit={handleSubmit} className="mt-6 space-y-5 max-h-[70vh] overflow-y-auto pr-2">
+                <div className="grid grid-cols-2 gap-4">
+                  <Field label="First Name" name="firstName" required maxLength={50} />
+                  <Field label="Last Name" name="lastName" required maxLength={50} />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <Field label="Email Address" name="email" type="email" required maxLength={120} />
+                  <Field label="Phone Number" name="phone" type="tel" required maxLength={20} />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <Field label="Current Location" name="location" required maxLength={80} />
+                  <Field label="Years of Experience" name="experience" type="number" required />
+                </div>
+                <Field label="Current Role/Position" name="role" maxLength={80} />
+                <Field label="LinkedIn Profile URL" name="linkedin" type="url" maxLength={200} />
+
+                <div>
+                  <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-2">
+                    About You <span className="text-brand">*</span>
+                  </label>
+                  <textarea
+                    name="about"
+                    required
+                    maxLength={1000}
+                    rows={4}
+                    placeholder="Tell us about your background, skills, and what type of opportunities you're interested in…"
+                    className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand/50 transition"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-2">
+                    Upload Resume (PDF, DOCX)
+                  </label>
+                  <label className="flex items-center gap-3 px-4 py-3 rounded-xl border border-dashed border-border bg-background hover:border-brand/50 hover:bg-secondary/50 transition cursor-pointer">
+                    <Upload className="w-4 h-4 text-brand" />
+                    <span className="text-sm text-muted-foreground">Choose file…</span>
+                    <input type="file" name="resume" accept=".pdf,.doc,.docx" className="hidden" />
+                  </label>
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={submitting}
+                  className="w-full bg-brand hover:bg-brand-dark text-white font-medium rounded-full py-6 text-base"
+                >
+                  {submitting ? 'Submitting…' : 'Submit Application'}
+                </Button>
+              </form>
+            </div>
+
+            {/* RIGHT — Process */}
+            <div className="bg-card p-8 md:p-10 border-l border-border">
+              <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground">
+                Application Process
+              </h3>
+              <ol className="mt-8 space-y-7">
+                {[
+                  {
+                    title: 'Submit Your Profile',
+                    body: 'Complete the form with your personal details, experience, and upload your resume. Make sure all required fields are filled accurately to help us understand your background.',
+                  },
+                  {
+                    title: 'Profile Review & Assessment',
+                    body: 'Our talent acquisition team will carefully review your profile within 3–5 business days. We\u2019ll assess your qualifications, experience, and match them against current and upcoming opportunities.',
+                  },
+                  {
+                    title: 'Interview & Evaluation',
+                    body: 'When suitable opportunities arise, we\u2019ll contact you for interviews. This typically includes 2–3 rounds: technical assessment, team fit interview, and final discussion with the partner.',
+                  },
+                  {
+                    title: 'Offer & Onboarding',
+                    body: 'Successful candidates will receive a comprehensive offer including compensation, benefits, and growth opportunities. We\u2019ll guide you through onboarding into your new role at P A A & Associates.',
+                  },
+                ].map((step, i) => (
+                  <li key={i} className="flex gap-4">
+                    <span className="shrink-0 w-9 h-9 rounded-full bg-brand text-white font-display font-semibold text-sm flex items-center justify-center">
+                      {i + 1}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-display font-semibold text-foreground text-base mb-1.5">
+                        {step.title}
+                      </h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed font-light">
+                        {step.body}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
+
+type FieldProps = {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  maxLength?: number;
+};
+
+const Field = ({ label, name, type = 'text', required, maxLength }: FieldProps) => (
+  <div>
+    <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-2">
+      {label} {required && <span className="text-brand">*</span>}
+    </label>
+    <input
+      type={type}
+      name={name}
+      required={required}
+      maxLength={maxLength}
+      className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand/50 transition"
+    />
+  </div>
+);
