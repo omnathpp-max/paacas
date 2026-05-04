@@ -32,7 +32,7 @@ export const About = () => {
             className="lg:col-span-7"
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase text-brand-dark bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)]">
-              <Sparkles className="w-3.5 h-3.5" strokeWidth={2} />
+              <Sparkles className="w-3.5 h-3.5 animate-sparkle" strokeWidth={2} />
               Who We Are
             </span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-6 leading-[1.05] tracking-tight">
