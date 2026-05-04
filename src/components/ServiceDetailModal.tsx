@@ -144,7 +144,12 @@ export const ServiceDetailModal = ({ open, onOpenChange, icon: Icon, title, deta
                   transition={{ duration: 1.2, ease: 'easeOut' }}
                   className="hidden md:block absolute left-0 right-0 top-5 h-px bg-brand origin-left"
                 />
-                <div className={`grid grid-cols-1 md:grid-cols-${Math.min(details.approach.steps.length, 4)} gap-8 md:gap-4 relative`}>
+                <div
+                  className="grid grid-cols-1 gap-8 md:gap-4 relative"
+                  style={{
+                    gridTemplateColumns: `repeat(${Math.min(details.approach.steps.length, 4)}, minmax(0, 1fr))`,
+                  }}
+                >
                   {details.approach.steps.map((s, i) => (
                     <motion.div
                       key={s}
