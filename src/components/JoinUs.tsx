@@ -132,7 +132,7 @@ export const JoinUs = () => {
                 </DialogDescription>
               </DialogHeader>
 
-              <form onSubmit={handleSubmit} className="mt-6 space-y-5 max-h-[70vh] overflow-y-auto pr-2">
+              <form onSubmit={handleSubmit} className="mt-6 space-y-5 max-h-[70vh] overflow-y-auto pr-6">
                 <div className="grid grid-cols-2 gap-4">
                   <Field label="First Name" name="firstName" required maxLength={50} />
                   <Field label="Last Name" name="lastName" required maxLength={50} />
@@ -143,9 +143,10 @@ export const JoinUs = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <Field label="Current Location" name="location" required maxLength={80} />
-                  <Field label="Years of Experience" name="experience" type="number" required />
+                  <Field label="Years of Experience" name="experience" type="number" required min={0} />
                 </div>
                 <Field label="Current Role/Position" name="role" maxLength={80} />
+                <Field label="Qualification" name="qualification" required maxLength={120} />
                 <Field label="LinkedIn Profile URL" name="linkedin" type="url" maxLength={200} />
 
                 <div>
@@ -164,12 +165,12 @@ export const JoinUs = () => {
 
                 <div>
                   <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-2">
-                    Upload Resume (PDF, DOCX)
+                    Upload Resume (PDF, DOCX) <span className="text-brand">*</span>
                   </label>
                   <label className="flex items-center gap-3 px-4 py-3 rounded-xl border border-dashed border-border bg-background hover:border-brand/50 hover:bg-secondary/50 transition cursor-pointer">
                     <Upload className="w-4 h-4 text-brand" />
                     <span className="text-sm text-muted-foreground">Choose file…</span>
-                    <input type="file" name="resume" accept=".pdf,.doc,.docx" className="hidden" />
+                    <input type="file" name="resume" accept=".pdf,.doc,.docx" required className="hidden" />
                   </label>
                 </div>
 
@@ -236,9 +237,10 @@ type FieldProps = {
   type?: string;
   required?: boolean;
   maxLength?: number;
+  min?: number;
 };
 
-const Field = ({ label, name, type = 'text', required, maxLength }: FieldProps) => (
+const Field = ({ label, name, type = 'text', required, maxLength, min }: FieldProps) => (
   <div>
     <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-2">
       {label} {required && <span className="text-brand">*</span>}
@@ -248,6 +250,7 @@ const Field = ({ label, name, type = 'text', required, maxLength }: FieldProps) 
       name={name}
       required={required}
       maxLength={maxLength}
+      min={min}
       className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand/50 transition"
     />
   </div>
