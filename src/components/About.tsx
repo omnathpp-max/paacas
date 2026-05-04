@@ -65,17 +65,6 @@ export const About = () => {
                 </motion.div>
               ))}
             </div>
-
-            <a
-              href="#team"
-              className="group inline-flex items-center gap-3 mt-10 px-6 py-3 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors"
-            >
-              Meet our team
-              <ArrowUpRight
-                className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                strokeWidth={2}
-              />
-            </a>
           </motion.div>
 
           {/* RIGHT — stats card */}
