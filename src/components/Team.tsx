@@ -146,7 +146,7 @@ export const Team = () => {
         >
           <div className="flex items-baseline justify-between mb-8">
             <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground">
-              Network
+              Knowledge Associates
             </h3>
             <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
               Trusted Collaborators
