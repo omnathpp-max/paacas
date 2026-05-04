@@ -30,7 +30,7 @@ const perks = [
 
 export const JoinUs = () => {
   return (
-    <section id="join-us" className="relative py-24 md:py-32 bg-secondary/40 overflow-hidden">
+    <section id="join-us" className="relative py-24 md:py-32 bg-secondary overflow-hidden">
       <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-32 right-0 w-[32rem] h-[32rem] rounded-full blur-[140px] bg-[hsl(109_53%_50%/0.08)]" />
       </div>
