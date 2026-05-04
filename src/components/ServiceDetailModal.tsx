@@ -145,10 +145,13 @@ export const ServiceDetailModal = ({ open, onOpenChange, icon: Icon, title, deta
                   className="hidden md:block absolute left-0 right-0 top-5 h-px bg-brand origin-left"
                 />
                 <div
-                  className="grid grid-cols-1 gap-8 md:gap-4 relative"
-                  style={{
-                    gridTemplateColumns: `repeat(${Math.min(details.approach.steps.length, 4)}, minmax(0, 1fr))`,
-                  }}
+                  className={`grid grid-cols-1 gap-8 md:gap-4 relative ${
+                    details.approach.steps.length >= 4
+                      ? 'md:grid-cols-4'
+                      : details.approach.steps.length === 3
+                      ? 'md:grid-cols-3'
+                      : 'md:grid-cols-2'
+                  }`}
                 >
                   {details.approach.steps.map((s, i) => (
                     <motion.div
