@@ -196,6 +196,24 @@
   }
 }
 
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 0 hsl(109 53% 50% / 0));
+  }
+  50% {
+    transform: scale(1.2) rotate(15deg);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 6px hsl(109 53% 50% / 0.7));
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;

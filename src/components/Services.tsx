@@ -522,7 +522,7 @@ export const Services = () => {
           className="max-w-3xl mb-16 md:mb-20"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase text-brand-dark bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)]">
-            <Sparkles className="w-3.5 h-3.5" strokeWidth={2} />
+            <Sparkles className="w-3.5 h-3.5 animate-sparkle" strokeWidth={2} />
             What We Do
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-6 leading-[1.05] tracking-tight">
@@ -531,8 +531,8 @@ export const Services = () => {
             <span className="text-brand italic">Move the Needle.</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl mt-6 max-w-2xl font-light leading-relaxed">
-            Five core practice areas, built for founders and growing companies who expect
-            outcomes — not just deliverables.
+            Built for founders and growing companies that value impact, clarity, and
+            execution that delivers.
           </p>
           <p className="text-sm text-brand-dark mt-4 font-medium">
             Click any service to explore the full breakdown →
@@ -571,10 +571,7 @@ export const Services = () => {
                       isActive ? 'scale-y-100' : 'scale-y-0'
                     }`}
                   />
-                  <span className="font-display text-sm text-muted-foreground tabular-nums pt-1 pl-5 md:pl-6 shrink-0">
-                    {s.num}
-                  </span>
-                  <div className="flex-1 min-w-0">
+                  <div className="flex-1 min-w-0 pl-5 md:pl-6">
                     <div className="flex items-center gap-3 mb-2">
                       <Icon
                         className={`w-5 h-5 shrink-0 transition-colors duration-300 ${
@@ -613,9 +610,9 @@ export const Services = () => {
               type="button"
               onClick={() => setOpenIdx(active)}
               key={active}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
+              initial={{ opacity: 0, y: 16, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="group relative w-full text-left rounded-3xl bg-foreground text-background p-8 md:p-10 overflow-hidden shadow-[0_30px_80px_-30px_hsl(220_50%_15%/0.4)] transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
               aria-label={`View details for ${services[active].title}`}
             >
@@ -628,25 +625,37 @@ export const Services = () => {
                   <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-brand">
                     The Outcome
                   </span>
-                  <span className="font-display text-sm text-background/40 tabular-nums">
-                    {services[active].num} / {String(services.length).padStart(2, '0')}
-                  </span>
                 </div>
 
-                <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 backdrop-blur-sm flex items-center justify-center text-brand mb-6">
+                <motion.div
+                  initial={{ rotate: -10, scale: 0.8 }}
+                  animate={{ rotate: 0, scale: 1 }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                  className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 backdrop-blur-sm flex items-center justify-center text-brand mb-6"
+                >
                   {(() => {
                     const ActiveIcon = services[active].icon;
                     return <ActiveIcon className="w-6 h-6" strokeWidth={1.75} />;
                   })()}
-                </div>
+                </motion.div>
 
-                <h4 className="font-display text-xs font-semibold tracking-[0.2em] uppercase text-background/50 mb-3">
+                <motion.h4
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.05 }}
+                  className="font-display text-xs font-semibold tracking-[0.2em] uppercase text-background/50 mb-3"
+                >
                   {services[active].title}
-                </h4>
+                </motion.h4>
 
-                <p className="font-display text-2xl md:text-3xl font-semibold leading-[1.2] tracking-tight text-background">
+                <motion.p
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="font-display text-2xl md:text-3xl font-semibold leading-[1.2] tracking-tight text-background"
+                >
                   {services[active].outcome}
-                </p>
+                </motion.p>
 
                 <div className="mt-10 pt-8 border-t border-white/10 flex items-center justify-between">
                   <div>

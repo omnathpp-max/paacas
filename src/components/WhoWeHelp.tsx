@@ -13,6 +13,7 @@ import {
   BarChart3,
   TrendingUp,
   Wallet,
+  Sparkles,
   type LucideProps,
 } from 'lucide-react';
 import {
@@ -182,6 +183,7 @@ export const WhoWeHelp = () => {
           className="max-w-3xl mb-14"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase text-brand-dark bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)]">
+            <Sparkles className="w-3.5 h-3.5 animate-sparkle" strokeWidth={2} />
             Who We Help
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-6 leading-tight">

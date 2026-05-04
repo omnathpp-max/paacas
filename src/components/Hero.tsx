@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 const stats = [
-   { value: '65+', label: 'Years of practice' },
-   { value: '75 +', label: 'CLIENTS SERVED' },
-  { value: '50+', label: 'Specialists on the team' },
+  { value: '75+', label: 'Years of combined practice' },
+  { value: '3000+', label: 'Clients served' },
+  { value: '60+', label: 'Specialists on the team' },
 ];
 
 export const Hero = () => {
