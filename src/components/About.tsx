@@ -16,7 +16,7 @@ const highlights = [
 
 export const About = () => {
   return (
-    <section id="about" className="relative py-24 md:py-32 bg-background overflow-hidden">
+    <section id="about" className="relative py-24 md:py-32 bg-secondary/40 overflow-hidden">
       <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -right-40 w-[36rem] h-[36rem] rounded-full blur-[160px] bg-[hsl(109_53%_50%/0.06)]" />
       </div>
