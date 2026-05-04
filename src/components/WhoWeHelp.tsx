@@ -48,8 +48,8 @@ type Audience = {
 
 const startupDetails: StartupDetails = {
   hero: {
-    headline: 'Everything Your Startup Needs, From Day 1 to Scale',
-    sub: 'From incorporation to funding and ongoing compliance, we set up your finance and legal backbone so you can focus on building your business.',
+    headline: 'From Idea to Scale - We\u2019ve Got Your Startup Covered',
+    sub: 'You build the business. We handle everything from setup to funding and compliance.',
     cta: 'Book a Free Consultation',
   },
   problems: {
