@@ -8,9 +8,29 @@ import {
   Wallet,
   ArrowUpRight,
   Sparkles,
+  Building2,
+  FileText,
+  ScrollText,
+  Calculator,
+  Settings2,
+  CalendarCheck,
+  Receipt,
+  Layers,
+  Briefcase,
+  LineChart,
+  Target,
+  Activity,
+  Compass,
+  Plane,
+  ShieldCheck,
+  Users2,
+  Landmark,
+  Scale,
+  HandCoins,
   type LucideProps,
 } from 'lucide-react';
 import type { ComponentType } from 'react';
+import { ServiceDetailModal, type ServiceDetails } from './ServiceDetailModal';
 
 type Service = {
   num: string;
@@ -18,6 +38,7 @@ type Service = {
   title: string;
   description: string;
   outcome: string;
+  details: ServiceDetails;
 };
 
 const services: Service[] = [
@@ -28,6 +49,112 @@ const services: Service[] = [
     description:
       'From incorporation to filings — we set up your entire compliance backbone.',
     outcome: 'Zero confusion, fully compliant from day one.',
+    details: {
+      eyebrow: 'Startup Launch & Compliance Stack',
+      hero: {
+        headline: 'From Idea to Fully Compliant Business — Done Right',
+        sub: 'We don\u2019t just help you register a company. We set up a complete compliance and finance foundation that supports you from day one to scale.',
+        cta: 'Book a Free Consultation',
+      },
+      problems: {
+        title: 'What This Solves',
+        subtitle: 'We eliminate guesswork and set things up right the first time.',
+        items: [
+          'Confusion on entity type (Pvt Ltd, LLP, etc.)',
+          'Delays and errors in incorporation',
+          'Missing initial compliance requirements',
+          'No clarity on post-incorporation filings',
+          'Poor financial structure from the start',
+        ],
+      },
+      offerings: {
+        title: 'Our End-to-End Coverage',
+        subtitle: 'Six pillars that make up a complete startup foundation.',
+        groups: [
+          {
+            icon: Building2,
+            label: 'Entity Structuring & Incorporation',
+            items: [
+              'Choosing the right entity (Pvt Ltd / LLP / etc.)',
+              'Name approval, incorporation, PAN, TAN',
+              'Drafting MOA, AOA & incorporation documents',
+            ],
+          },
+          {
+            icon: FileText,
+            label: 'Founder & Legal Setup',
+            items: ['Founder agreements', 'Shareholding structure', 'ESOP framework setup'],
+          },
+          {
+            icon: ScrollText,
+            label: 'Registrations & Compliance Setup',
+            items: [
+              'GST registration',
+              'Shops & Establishment / local registrations',
+              'Professional tax & statutory registrations',
+            ],
+          },
+          {
+            icon: Calculator,
+            label: 'Finance & Compliance Backbone',
+            items: [
+              'Accounting system setup',
+              'Chart of accounts design',
+              'Compliance calendar (GST, ROC, IT)',
+            ],
+          },
+          {
+            icon: Settings2,
+            label: 'Process & Documentation',
+            items: [
+              'Invoicing & documentation templates',
+              'Expense tracking systems',
+              'Record-keeping structure',
+            ],
+          },
+          {
+            icon: CalendarCheck,
+            label: 'Ongoing Compliance Management',
+            items: ['GST filings', 'Income tax filings', 'ROC compliance & tracking'],
+          },
+        ],
+      },
+      approach: {
+        title: 'How We Execute',
+        subtitle: 'A founder-friendly process that gets it right from day one.',
+        steps: [
+          'Understand your business model & growth plan',
+          'Design the right, tax-efficient structure',
+          'Set up systems & compliance end to end',
+          'Enable financial visibility from day one',
+        ],
+      },
+      outcomes: {
+        title: 'What You Get',
+        subtitle: 'A startup foundation built to support real growth.',
+        points: [
+          'Fully compliant business from day one',
+          'Clear structure for growth and funding',
+          'No missed deadlines or penalties',
+          'Organised financial and legal systems',
+          'Confidence to focus on building',
+        ],
+      },
+      why: {
+        title: 'Why Founders Choose This',
+        points: [
+          'End-to-end setup (not fragmented services)',
+          'Built for scale, not just compliance',
+          'Fast, structured execution',
+          'Founder-friendly guidance',
+        ],
+      },
+      finalCta: {
+        headline: 'Ready to set up your startup the right way?',
+        primary: 'Book a Free Consultation',
+        secondary: 'Chat on WhatsApp',
+      },
+    },
   },
   {
     num: '02',
@@ -36,6 +163,84 @@ const services: Service[] = [
     description:
       'We don\u2019t just file returns — we reduce your tax liability legally.',
     outcome: 'More cash retained, smarter structuring.',
+    details: {
+      eyebrow: 'Tax Optimization & Structuring',
+      hero: {
+        headline: 'Pay Less Tax. Legally. Strategically.',
+        sub: 'Most businesses overpay tax because no one designs their structure proactively. We do.',
+        cta: 'Book a Tax Review',
+      },
+      problems: {
+        title: 'What This Solves',
+        subtitle: 'Common tax leakages we plug for founders and growing companies.',
+        items: [
+          'Paying more tax than legally required',
+          'No long-term tax planning, only filing',
+          'Inefficient business or shareholding structure',
+          'Missed deductions, exemptions and incentives',
+          'Cross-entity transactions done without planning',
+        ],
+      },
+      offerings: {
+        title: 'How We Optimise Your Tax',
+        subtitle: 'A complete tax strategy layer over your business.',
+        groups: [
+          {
+            icon: Layers,
+            label: 'Entity & Group Structuring',
+            items: ['Holding & subsidiary design', 'Promoter & founder structuring', 'Asset protection layout'],
+          },
+          {
+            icon: Receipt,
+            label: 'Direct Tax Planning',
+            items: ['Income tax strategy', 'Capital gains planning', 'Dividend & distribution structuring'],
+          },
+          {
+            icon: BarChart3,
+            label: 'GST & Indirect Tax',
+            items: ['GST advisory & structuring', 'Input credit optimisation', 'Sector-specific advisory'],
+          },
+          {
+            icon: ShieldCheck,
+            label: 'Tax Risk & Litigation',
+            items: ['Notice handling', 'Assessments & appeals', 'Representation before authorities'],
+          },
+        ],
+      },
+      approach: {
+        title: 'Our Approach',
+        subtitle: 'Strategy first, filing second.',
+        steps: [
+          'Diagnose current tax position',
+          'Design an optimised structure',
+          'Implement with full compliance',
+          'Review and refine every year',
+        ],
+      },
+      outcomes: {
+        title: 'What You Get',
+        points: [
+          'Lower effective tax rate, legally',
+          'More cash retained in the business',
+          'A structure that scales with you',
+          'Audit and notice readiness',
+        ],
+      },
+      why: {
+        title: 'Why Clients Choose Us',
+        points: [
+          'Proactive planning, not reactive filing',
+          'Deep cross-domain expertise',
+          'Aggressive yet fully compliant',
+          'Long-term partnership approach',
+        ],
+      },
+      finalCta: {
+        headline: 'Stop overpaying. Start structuring.',
+        primary: 'Book a Tax Review',
+        secondary: 'Chat on WhatsApp',
+      },
+    },
   },
   {
     num: '03',
@@ -43,6 +248,84 @@ const services: Service[] = [
     title: 'Virtual CFO & Growth Advisory',
     description: 'Financial clarity, MIS, forecasting, and strategic guidance.',
     outcome: 'Better decisions, faster growth.',
+    details: {
+      eyebrow: 'Virtual CFO & Growth Advisory',
+      hero: {
+        headline: 'A CFO\u2019s Brain, Without the CFO\u2019s Cost.',
+        sub: 'Get the financial clarity, controls and strategy of a full-time CFO — built around your stage and ambition.',
+        cta: 'Book a Discovery Call',
+      },
+      problems: {
+        title: 'What This Solves',
+        subtitle: 'Most growing businesses lack the financial visibility to make confident decisions.',
+        items: [
+          'No clarity on burn, runway or unit economics',
+          'Decisions made on gut instead of numbers',
+          'No reliable MIS or monthly reporting',
+          'Cash flow surprises and missed forecasts',
+          'No one owning finance strategy',
+        ],
+      },
+      offerings: {
+        title: 'What a Virtual CFO Engagement Includes',
+        subtitle: 'A complete finance leadership layer for your business.',
+        groups: [
+          {
+            icon: LineChart,
+            label: 'MIS & Financial Reporting',
+            items: ['Monthly MIS dashboards', 'KPI & metric tracking', 'Board-ready reports'],
+          },
+          {
+            icon: Target,
+            label: 'Budgeting & Forecasting',
+            items: ['Annual budgets', 'Rolling forecasts', 'Scenario planning'],
+          },
+          {
+            icon: Activity,
+            label: 'Cash Flow & Working Capital',
+            items: ['Cash flow management', 'Runway tracking', 'Working capital optimisation'],
+          },
+          {
+            icon: Compass,
+            label: 'Strategic Advisory',
+            items: ['Pricing & margin reviews', 'Growth strategy support', 'Investor & board advisory'],
+          },
+        ],
+      },
+      approach: {
+        title: 'How We Engage',
+        subtitle: 'Embedded with your team, on a clear cadence.',
+        steps: [
+          'Diagnose finance & data maturity',
+          'Set up reporting & forecasting',
+          'Run monthly review cadence',
+          'Drive strategic decisions with data',
+        ],
+      },
+      outcomes: {
+        title: 'What You Get',
+        points: [
+          'Real-time financial visibility',
+          'Confident, data-backed decisions',
+          'Better cash & runway control',
+          'A finance partner who thinks like a founder',
+        ],
+      },
+      why: {
+        title: 'Why Founders Choose Us',
+        points: [
+          'CFO-level thinking, fractional cost',
+          'Hands-on, not just advisory',
+          'Tech-enabled workflows',
+          'Experience across stages and sectors',
+        ],
+      },
+      finalCta: {
+        headline: 'Get financial clarity. Grow with confidence.',
+        primary: 'Book a Discovery Call',
+        secondary: 'Chat on WhatsApp',
+      },
+    },
   },
   {
     num: '04',
@@ -50,6 +333,84 @@ const services: Service[] = [
     title: 'FEMA & Cross-Border Advisory',
     description: 'FDI, ODI, ESOPs, and international structuring handled right.',
     outcome: 'No regulatory surprises.',
+    details: {
+      eyebrow: 'FEMA & Cross-Border Advisory',
+      hero: {
+        headline: 'Cross-Border, Without the Compliance Headaches.',
+        sub: 'FDI, ODI, ESOPs, transfer pricing and global structuring — handled the right way, the first time.',
+        cta: 'Talk to a FEMA Expert',
+      },
+      problems: {
+        title: 'What This Solves',
+        subtitle: 'Cross-border transactions are full of regulatory landmines. We help you avoid all of them.',
+        items: [
+          'Confusion around FEMA, RBI and FDI rules',
+          'Wrong structuring of foreign investments',
+          'Non-compliance in ESOPs to overseas employees',
+          'Risk of penalties on inbound / outbound flows',
+          'No clarity on tax and treaty implications',
+        ],
+      },
+      offerings: {
+        title: 'What We Cover',
+        subtitle: 'Full-spectrum cross-border advisory for businesses and individuals.',
+        groups: [
+          {
+            icon: Plane,
+            label: 'Inbound Investment (FDI)',
+            items: ['FDI structuring', 'Sectoral cap analysis', 'RBI reporting & filings'],
+          },
+          {
+            icon: Globe2,
+            label: 'Outbound Investment (ODI)',
+            items: ['Overseas subsidiary setup', 'ODI compliance', 'Cross-border holding structures'],
+          },
+          {
+            icon: Users2,
+            label: 'ESOPs & Cross-Border Talent',
+            items: ['Global ESOP structuring', 'Cross-border tax impact', 'Compliance for overseas grants'],
+          },
+          {
+            icon: ShieldCheck,
+            label: 'FEMA Compliance & Advisory',
+            items: ['FEMA opinions & memos', 'Compounding & remediation', 'Ongoing compliance support'],
+          },
+        ],
+      },
+      approach: {
+        title: 'Our Approach',
+        subtitle: 'Practical, risk-aware, and execution-focused.',
+        steps: [
+          'Map your cross-border footprint',
+          'Design the optimal structure',
+          'Execute filings and approvals',
+          'Maintain ongoing compliance',
+        ],
+      },
+      outcomes: {
+        title: 'What You Get',
+        points: [
+          'Fully compliant cross-border setup',
+          'No regulatory or RBI surprises',
+          'Tax-efficient global structure',
+          'Confidence to scale internationally',
+        ],
+      },
+      why: {
+        title: 'Why Clients Choose Us',
+        points: [
+          'Deep FEMA & international tax expertise',
+          'End-to-end execution capability',
+          'Strong relationships with authorities',
+          'Trusted by NRIs and global founders',
+        ],
+      },
+      finalCta: {
+        headline: 'Go global with confidence.',
+        primary: 'Talk to a FEMA Expert',
+        secondary: 'Chat on WhatsApp',
+      },
+    },
   },
   {
     num: '05',
@@ -58,11 +419,90 @@ const services: Service[] = [
     description:
       'Business valuations for funding, compliance, restructuring, and strategic decisions.',
     outcome: 'Defensible valuations that stand up to investors and regulators.',
+    details: {
+      eyebrow: 'Valuation & Transaction Support',
+      hero: {
+        headline: 'Valuations That Stand Up to Investors and Regulators.',
+        sub: 'Whether you\u2019re raising capital, restructuring, or planning an exit — we deliver defensible, decision-ready valuations.',
+        cta: 'Request a Valuation',
+      },
+      problems: {
+        title: 'What This Solves',
+        subtitle: 'Most valuations fall apart under scrutiny. Ours don\u2019t.',
+        items: [
+          'Valuation reports rejected by investors or regulators',
+          'No clarity on the right valuation methodology',
+          'Surprises during due diligence',
+          'Tax issues from poorly priced transactions',
+          'Complex deal structures with no clear advisory',
+        ],
+      },
+      offerings: {
+        title: 'What We Cover',
+        subtitle: 'A complete valuation and deal-support practice.',
+        groups: [
+          {
+            icon: HandCoins,
+            label: 'Fundraising Valuations',
+            items: ['Equity round valuations', 'Convertible & SAFE pricing', 'Investor-ready models'],
+          },
+          {
+            icon: Landmark,
+            label: 'Regulatory Valuations',
+            items: ['Income Tax (Rule 11UA)', 'FEMA / RBI valuations', 'Companies Act valuations'],
+          },
+          {
+            icon: Briefcase,
+            label: 'M&A & Transaction Support',
+            items: ['Buy-side & sell-side advisory', 'Financial due diligence', 'Deal structuring'],
+          },
+          {
+            icon: Scale,
+            label: 'Restructuring & Special Situations',
+            items: ['Internal restructuring', 'Demerger & slump sale', 'ESOP & buyback valuations'],
+          },
+        ],
+      },
+      approach: {
+        title: 'How We Work',
+        subtitle: 'Rigorous methodology, clear narrative, defensible numbers.',
+        steps: [
+          'Understand the purpose and audience',
+          'Select the right methodology',
+          'Build a defensible model & report',
+          'Support you through scrutiny & negotiation',
+        ],
+      },
+      outcomes: {
+        title: 'What You Get',
+        points: [
+          'Defensible, regulator-ready valuations',
+          'Stronger negotiating position',
+          'Cleaner due diligence outcomes',
+          'Confidence in every deal',
+        ],
+      },
+      why: {
+        title: 'Why Clients Choose Us',
+        points: [
+          'Registered valuers with deep deal experience',
+          'Multi-disciplinary team (tax + finance + legal)',
+          'Trusted by founders, investors and counsels',
+          'Reports that hold up under scrutiny',
+        ],
+      },
+      finalCta: {
+        headline: 'Get a valuation built to defend.',
+        primary: 'Request a Valuation',
+        secondary: 'Chat on WhatsApp',
+      },
+    },
   },
 ];
 
 export const Services = () => {
   const [active, setActive] = useState(0);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
     <section id="services" className="relative py-24 md:py-32 bg-background overflow-hidden">
@@ -94,6 +534,9 @@ export const Services = () => {
             Five core practice areas, built for founders and growing companies who expect
             outcomes — not just deliverables.
           </p>
+          <p className="text-sm text-brand-dark mt-4 font-medium">
+            Click any service to explore the full breakdown →
+          </p>
         </motion.div>
 
         {/* Editorial split layout */}
@@ -109,7 +552,10 @@ export const Services = () => {
                   type="button"
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
-                  onClick={() => setActive(i)}
+                  onClick={() => {
+                    setActive(i);
+                    setOpenIdx(i);
+                  }}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-60px' }}
@@ -161,14 +607,17 @@ export const Services = () => {
             })}
           </div>
 
-          {/* RIGHT — sticky outcome card */}
+          {/* RIGHT — sticky outcome card (also a trigger) */}
           <div className="lg:col-span-5 lg:sticky lg:top-24">
-            <motion.div
+            <motion.button
+              type="button"
+              onClick={() => setOpenIdx(active)}
               key={active}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="relative rounded-3xl bg-foreground text-background p-8 md:p-10 overflow-hidden shadow-[0_30px_80px_-30px_hsl(220_50%_15%/0.4)]"
+              className="group relative w-full text-left rounded-3xl bg-foreground text-background p-8 md:p-10 overflow-hidden shadow-[0_30px_80px_-30px_hsl(220_50%_15%/0.4)] transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
+              aria-label={`View details for ${services[active].title}`}
             >
               <div
                 aria-hidden
@@ -202,28 +651,32 @@ export const Services = () => {
                 <div className="mt-10 pt-8 border-t border-white/10 flex items-center justify-between">
                   <div>
                     <p className="text-xs uppercase tracking-[0.25em] text-background/50 mb-1">
-                      Ready to start?
+                      See full breakdown
                     </p>
                     <p className="text-base text-background/80 font-light">
-                      Book a free 30-min discovery call.
+                      Click to explore this service in detail.
                     </p>
                   </div>
-                  <a
-                    href="#contact"
-                    className="shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand text-white hover:bg-brand-dark transition-colors group"
-                    aria-label="Contact us"
-                  >
+                  <span className="shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand text-white group-hover:bg-brand-dark transition-colors">
                     <ArrowUpRight
                       className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                       strokeWidth={2}
                     />
-                  </a>
+                  </span>
                 </div>
               </div>
-            </motion.div>
+            </motion.button>
           </div>
         </div>
       </div>
+
+      <ServiceDetailModal
+        open={openIdx !== null}
+        onOpenChange={(o) => !o && setOpenIdx(null)}
+        icon={openIdx !== null ? services[openIdx].icon : Package}
+        title={openIdx !== null ? services[openIdx].title : ''}
+        details={openIdx !== null ? services[openIdx].details : null}
+      />
     </section>
   );
 };
