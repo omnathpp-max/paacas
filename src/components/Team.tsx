@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, User } from 'lucide-react';
 import aswinImg from '@/assets/team/aswin.png';
 import premnathImg from '@/assets/team/premnath.png';
 import amarnathImg from '@/assets/team/amarnath.png';
