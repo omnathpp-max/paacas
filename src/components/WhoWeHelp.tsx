@@ -17,6 +17,20 @@ import {
   type LucideProps,
 } from 'lucide-react';
 import {
+  Layers,
+  Settings2,
+  ShieldCheck,
+  Users2,
+  Plane,
+  Landmark,
+  Receipt,
+  Target,
+  PiggyBank,
+  HeartHandshake,
+  FileText,
+  Scale,
+} from 'lucide-react';
+import {
   Dialog,
   DialogContent,
   DialogDescription,
