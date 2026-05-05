@@ -24,17 +24,29 @@ const partners: Partner[] = [
     num: '01',
     name: 'CA P K Premnath',
     role: 'Partner',
+    qualifications: 'FCA · 30+ Years in Practice',
     image: premnathImg as string | null,
     description:
-      'Second-generation Chartered Accountant practising since 1977. Deep expertise in Statutory Audits, Tax Audits, project reports, and management consultancy.',
+      'Specialises in audits, return filings, and advisory on real estate and disputes.',
+    bio: [
+      'CA P K Premnath is a Partner at P A A & Associates, Chartered Accountants, with over three decades of experience in practice. He specialises in audit and assurance, including statutory audits and tax audits, and has extensive experience in handling return filings across a diverse client base.',
+      'A Fellow Chartered Accountant and Commerce graduate, he advises clients on matters relating to real estate transactions, family arrangements, and dispute resolution. His practical approach and understanding of both financial and regulatory aspects enable him to provide balanced, solution-oriented guidance in sensitive and complex situations.',
+      'He has also been involved in matters relating to arbitration and advisory support in family and business disputes, working closely with clients to ensure clarity, compliance, and effective resolution. His experience adds depth to the firm\u2019s capabilities across assurance and advisory services.',
+    ],
   },
   {
     num: '02',
     name: 'CA P K Amarnath',
     role: 'Partner',
+    qualifications: 'FCA · 30+ Years in Practice',
     image: amarnathImg as string | null,
     description:
-      'Second-generation Chartered Accountant practising since 1978. Specialised in Direct Taxation, from Assessment stage right through to Settlement Commission.',
+      'Advising on taxation, assessments, and regulatory proceedings.',
+    bio: [
+      'CA P K Amarnath is a Partner at P A A & Associates, Chartered Accountants, with over three decades of experience in practice. He brings deep expertise in taxation, assessment proceedings, and regulatory matters, having represented clients across a wide range of industries.',
+      'A Fellow Chartered Accountant and Commerce graduate, he has extensive experience in handling income tax and GST assessments, responding to statutory notices, and managing interactions with regulatory authorities. His practical understanding of procedures and departmental processes enables him to guide clients effectively through complex matters.',
+      'Known for his measured approach and strong grounding in tax laws, he plays a key role in ensuring clients are well-prepared, compliant, and confidently represented before authorities. His experience continues to be a cornerstone of the firm\u2019s advisory strength.',
+    ],
   },
   {
     num: '03',

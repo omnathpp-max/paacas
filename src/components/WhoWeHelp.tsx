@@ -6,7 +6,6 @@ import {
   Building2,
   Globe2,
   Briefcase,
-  CheckCircle2,
   MessageCircle,
   Calendar,
   Package,
@@ -121,12 +120,12 @@ const startupDetails: StartupDetails = {
     title: 'Trusted by Founders Building What\u2019s Next',
     points: ['Helped startups raise ₹XX Cr', 'Worked with X+ funded startups'],
     quote: {
-      text: 'PAA became the finance team we didn\u2019t know we needed. From incorporation to our seed round, they handled it all.',
+      text: 'P A A became the finance team we didn\u2019t know we needed. From incorporation to our seed round, they handled it all.',
       by: 'Founder, Seed-stage SaaS',
     },
   },
   why: {
-    title: 'Why Startups Choose PAA',
+    title: 'Why Startups Choose P A A',
     points: [
       'End-to-end support (not fragmented)',
       'Tech-enabled workflows',
@@ -197,12 +196,12 @@ const smeDetails: StartupDetails = {
     title: 'Trusted by Growing Businesses Across Sectors',
     points: ['Partnered with 100+ SMEs', 'Across services, retail, manufacturing & tech'],
     quote: {
-      text: 'PAA helped us move from spreadsheets to a real finance function. We finally make decisions with numbers.',
+      text: 'P A A helped us move from spreadsheets to a real finance function. We finally make decisions with numbers.',
       by: 'Founder, Growth-stage Services Company',
     },
   },
   why: {
-    title: 'Why SMEs Choose PAA',
+    title: 'Why SMEs Choose P A A',
     points: [
       'Finance partner, not just a vendor',
       'Sector experience across industries',
@@ -273,12 +272,12 @@ const globalDetails: StartupDetails = {
     title: 'Trusted by NRIs and Global Businesses',
     points: ['Clients across US, UK, UAE, Singapore & more', 'Decades of FEMA & international tax experience'],
     quote: {
-      text: 'PAA made my India compliance and repatriation seamless. I finally stopped worrying about it.',
+      text: 'P A A made my India compliance and repatriation seamless. I finally stopped worrying about it.',
       by: 'NRI Client, Singapore',
     },
   },
   why: {
-    title: 'Why Global Clients Choose PAA',
+    title: 'Why Global Clients Choose P A A',
     points: [
       'Deep FEMA & international tax expertise',
       'Single window for India + global needs',
@@ -349,12 +348,12 @@ const hniDetails: StartupDetails = {
     title: 'Trusted by Doctors, Consultants & Business Families',
     points: ['Long-term advisors to HNI families', 'Across medical, consulting and corporate leadership'],
     quote: {
-      text: 'PAA restructured my practice and personal taxes \u2014 I keep significantly more, fully compliant.',
+      text: 'P A A restructured my practice and personal taxes \u2014 I keep significantly more, fully compliant.',
       by: 'Senior Consultant Surgeon',
     },
   },
   why: {
-    title: 'Why HNIs Choose PAA',
+    title: 'Why HNIs Choose P A A',
     points: [
       'Private-office style attention',
       'Multi-disciplinary tax + wealth team',
@@ -692,26 +691,6 @@ const StartupModalBody = ({
               </motion.div>
             ))}
           </div>
-        </div>
-      </Section>
-
-      {/* WHY US */}
-      <Section eyebrow="04 — Why us" kicker="The difference" muted>
-        <SectionHeader title={details.why.title} />
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5">
-          {details.why.points.map((p, i) => (
-            <motion.div
-              key={p}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="flex items-start gap-4 py-3 border-b border-border/60"
-            >
-              <CheckCircle2 className="w-5 h-5 mt-1 text-brand shrink-0" strokeWidth={1.75} />
-              <span className="text-lg text-foreground/90 leading-relaxed font-light">{p}</span>
-            </motion.div>
-          ))}
         </div>
       </Section>
 

@@ -74,6 +74,20 @@ export const JourneyInfographic = () => {
             style={{ transformOrigin: 'top' }}
             className="absolute left-[19px] top-2 bottom-2 w-px bg-gradient-to-b from-brand via-brand/60 to-brand/0"
           />
+          {/* Travelling shimmer along the line */}
+          <motion.div
+            aria-hidden
+            className="absolute left-[17px] w-[5px] h-10 rounded-full bg-gradient-to-b from-transparent via-brand to-transparent blur-[2px]"
+            initial={{ top: 0, opacity: 0 }}
+            whileInView={{ opacity: [0, 1, 1, 0], top: ['0%', '100%'] }}
+            viewport={{ once: false, margin: '-80px' }}
+            transition={{
+              duration: 3.5,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: 1.8,
+            }}
+          />
 
           <ul className="space-y-7">
             {milestones.map((m, i) => {
@@ -93,9 +107,22 @@ export const JourneyInfographic = () => {
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true, margin: '-60px' }}
                     transition={{ duration: 0.5, delay: 0.4 + i * 0.18 }}
-                    className="absolute left-0 top-0 w-10 h-10 rounded-full bg-background/[0.06] border border-brand/40 backdrop-blur-sm flex items-center justify-center text-brand shadow-[0_0_0_4px_hsl(220_45%_10%)]"
+                    whileHover={{ scale: 1.12, rotate: 6 }}
+                    className="absolute left-0 top-0 w-10 h-10 rounded-full bg-background/[0.06] border border-brand/40 backdrop-blur-sm flex items-center justify-center text-brand shadow-[0_0_0_4px_hsl(220_45%_10%)] cursor-default"
                   >
-                    <Icon className="w-4 h-4" strokeWidth={1.75} />
+                    {/* Pulsing ring */}
+                    <motion.span
+                      aria-hidden
+                      className="absolute inset-0 rounded-full border border-brand/50"
+                      animate={{ scale: [1, 1.6, 1.6], opacity: [0.6, 0, 0] }}
+                      transition={{
+                        duration: 2.4,
+                        repeat: Infinity,
+                        delay: 1.2 + i * 0.4,
+                        ease: 'easeOut',
+                      }}
+                    />
+                    <Icon className="w-4 h-4 relative" strokeWidth={1.75} />
                   </motion.span>
 
                   <h4 className="font-display text-base md:text-lg font-medium text-background leading-tight tracking-tight">
