@@ -43,19 +43,16 @@ export const Navbar = () => {
         <div className={`px-6 transition-all duration-500 ${scrolled ? 'py-2.5' : 'py-4'}`}>
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex flex-col leading-none group">
+            <Link to="/" className="flex flex-col leading-tight">
               <h1
-                className={`font-display font-medium text-foreground transition-all duration-500 tracking-[0.18em] ${
-                  scrolled ? 'text-lg' : 'text-2xl'
+                className={`font-display font-semibold text-foreground transition-all duration-500 tracking-tight ${
+                  scrolled ? 'text-lg' : 'text-xl'
                 }`}
               >
-                P<span className="text-brand">A</span>A
-                <span className="font-light text-foreground/70 tracking-normal ml-2 italic">
-                  &amp; Associates
-                </span>
+                P A A &amp; Associates
               </h1>
               <p
-                className={`font-sans text-muted-foreground tracking-[0.35em] uppercase transition-all duration-500 mt-0.5 ${
+                className={`font-sans font-medium text-muted-foreground tracking-[0.25em] uppercase transition-all duration-500 ${
                   scrolled ? 'text-[9px]' : 'text-[10px]'
                 }`}
               >

@@ -23,14 +23,11 @@ export const Footer = () => {
         <div className="grid md:grid-cols-3 gap-10 items-start">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link to="/" className="inline-flex flex-col leading-none mb-6 group">
-              <h3 className="font-display font-medium text-2xl text-background tracking-[0.18em]">
-                P<span className="text-brand">A</span>A
-                <span className="font-light text-background/70 tracking-normal ml-2 italic">
-                  &amp; Associates
-                </span>
+            <Link to="/" className="inline-flex flex-col leading-tight mb-6">
+              <h3 className="font-display font-semibold text-2xl text-background tracking-tight">
+                P A A &amp; Associates
               </h3>
-              <p className="font-sans text-[10px] text-background/60 uppercase tracking-[0.35em] mt-1">
+              <p className="font-sans font-medium text-[10px] text-background/60 uppercase tracking-[0.25em] mt-1">
                 Chartered Accountants
               </p>
             </Link>
