@@ -74,6 +74,20 @@ export const JourneyInfographic = () => {
             style={{ transformOrigin: 'top' }}
             className="absolute left-[19px] top-2 bottom-2 w-px bg-gradient-to-b from-brand via-brand/60 to-brand/0"
           />
+          {/* Travelling shimmer along the line */}
+          <motion.div
+            aria-hidden
+            className="absolute left-[17px] w-[5px] h-10 rounded-full bg-gradient-to-b from-transparent via-brand to-transparent blur-[2px]"
+            initial={{ top: 0, opacity: 0 }}
+            whileInView={{ opacity: [0, 1, 1, 0], top: ['0%', '100%'] }}
+            viewport={{ once: false, margin: '-80px' }}
+            transition={{
+              duration: 3.5,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: 1.8,
+            }}
+          />
 
           <ul className="space-y-7">
             {milestones.map((m, i) => {
