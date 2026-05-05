@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
-import { Sparkles, User } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles, User, X } from 'lucide-react';
 import aswinImg from '@/assets/team/aswin.png';
 import premnathImg from '@/assets/team/premnath.png';
 import amarnathImg from '@/assets/team/amarnath.png';
@@ -8,7 +9,17 @@ import thiagarajanImg from '@/assets/team/thiagarajan.png';
 import jeevanImg from '@/assets/team/jeevan.png';
 import gopalImg from '@/assets/team/gopal.png';
 
-const partners = [
+type Partner = {
+  num: string;
+  name: string;
+  role: string;
+  qualifications?: string;
+  image: string | null;
+  description: string;
+  bio?: string[];
+};
+
+const partners: Partner[] = [
   {
     num: '01',
     name: 'CA P K Premnath',
@@ -29,10 +40,18 @@ const partners = [
     num: '03',
     name: 'CA P A Aswin Kumaar',
     role: 'Partner',
-    qualifications: 'MBA (IIM Bangalore) · CFA (USA) · IBBI Registered Valuer',
+    qualifications:
+      'MBA (IIM Bangalore) · Diploma in International Taxation · IBBI Registered Valuer · Electrical Engineer',
     image: aswinImg as string | null,
     description:
-      'Leads Chennai operations with expertise in valuation, international taxation, and equity funding.',
+      'Working with founders on advisory, tax, transactions, and financial strategy.',
+    bio: [
+      "Aswin Kumaar P A is a Partner at P A A & Associates, Chartered Accountants, and leads the firm's Chennai operations. He specialises in Direct and International Taxation, advising corporates and high net worth individuals on structuring, compliance, and cross-border matters.",
+      'He brings a multidisciplinary perspective, backed by qualifications as a Chartered Accountant, MBA from IIM Bangalore, Post Graduate Diploma in International Taxation, Registered Valuer (IBBI), and an Electrical Engineer. This diverse background enables him to approach complex financial and regulatory issues with both technical depth and practical clarity.',
+      'His experience spans inbound and outbound investment structuring, FEMA advisory, valuation, and transaction structuring and support across fundraising and strategic deals. He works closely with businesses to navigate evolving tax and regulatory frameworks with a solution-oriented approach.',
+      'With a strong focus on the startup and growth-stage ecosystem, he advises on equity fundraising, financial structuring, and investor readiness. His work includes end-to-end support—from legal structuring and financial due diligence to setting up accounting systems and ongoing financial oversight.',
+      'He also leads virtual CFO engagements, helping businesses build robust financial processes and make informed strategic decisions. Known for his practical, execution-focused style, he partners with clients to deliver clarity, compliance, and long-term value.',
+    ],
   },
 ];
 
@@ -44,6 +63,8 @@ const network = [
 ];
 
 export const Team = () => {
+  const [openPartner, setOpenPartner] = useState<Partner | null>(null);
+
   return (
     <section id="team" className="relative py-24 md:py-32 bg-background overflow-hidden">
       <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -69,8 +90,8 @@ export const Team = () => {
             <span className="text-brand italic">& People.</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl mt-6 max-w-2xl font-light leading-relaxed">
-            A small, sharp team of partners backed by a trusted network — committed to delivering
-            advice that actually creates value for our clients.
+            A multi-generational team of partners blending experience and fresh perspective to
+            deliver advice that drives real results.
           </p>
         </motion.div>
 
@@ -83,7 +104,18 @@ export const Team = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative rounded-3xl border border-border bg-card overflow-hidden hover:border-brand/40 transition-colors duration-300 flex flex-col"
+              onClick={() => p.bio && setOpenPartner(p)}
+              role={p.bio ? 'button' : undefined}
+              tabIndex={p.bio ? 0 : undefined}
+              onKeyDown={(e) => {
+                if (p.bio && (e.key === 'Enter' || e.key === ' ')) {
+                  e.preventDefault();
+                  setOpenPartner(p);
+                }
+              }}
+              className={`group relative rounded-3xl border border-border bg-card overflow-hidden hover:border-brand/40 transition-colors duration-300 flex flex-col ${
+                p.bio ? 'cursor-pointer' : ''
+              }`}
             >
               {/* Portrait */}
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-secondary">
@@ -132,6 +164,11 @@ export const Team = () => {
                   {p.description}
                 </p>
               </div>
+              {p.bio && (
+                <span className="absolute bottom-4 right-5 text-[0.65rem] tracking-[0.2em] uppercase text-brand font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                  Read more →
+                </span>
+              )}
             </motion.div>
           ))}
         </div>
@@ -185,6 +222,83 @@ export const Team = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Partner bio modal */}
+      <AnimatePresence>
+        {openPartner && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-foreground/70 backdrop-blur-sm"
+            onClick={() => setOpenPartner(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 24, scale: 0.98 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-3xl bg-background border border-border shadow-[0_40px_120px_-30px_hsl(220_50%_15%/0.5)]"
+            >
+              <button
+                aria-label="Close"
+                onClick={() => setOpenPartner(null)}
+                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-background/90 border border-border flex items-center justify-center text-foreground hover:bg-brand hover:text-white hover:border-brand transition-colors"
+              >
+                <X className="w-4 h-4" strokeWidth={2} />
+              </button>
+              <div className="grid md:grid-cols-5 max-h-[90vh]">
+                <div className="md:col-span-2 relative aspect-[4/5] md:aspect-auto bg-secondary overflow-hidden">
+                  {openPartner.image && (
+                    <img
+                      src={openPartner.image}
+                      alt={openPartner.name}
+                      className="absolute inset-0 w-full h-full object-cover object-center"
+                    />
+                  )}
+                  <div
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-foreground/85 via-foreground/30 to-transparent md:hidden"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 p-6 md:hidden">
+                    <span className="px-2.5 py-1 rounded-full bg-brand text-white text-[0.65rem] font-semibold tracking-[0.15em] uppercase">
+                      {openPartner.role}
+                    </span>
+                    <h3 className="font-display text-2xl font-semibold text-background leading-tight mt-3">
+                      {openPartner.name}
+                    </h3>
+                  </div>
+                </div>
+                <div className="md:col-span-3 p-6 md:p-10 overflow-y-auto max-h-[90vh]">
+                  <span className="hidden md:inline-flex px-2.5 py-1 rounded-full bg-brand text-white text-[0.65rem] font-semibold tracking-[0.15em] uppercase">
+                    {openPartner.role}
+                  </span>
+                  <h3 className="hidden md:block font-display text-3xl lg:text-4xl font-semibold text-foreground leading-tight mt-4">
+                    {openPartner.name}
+                  </h3>
+                  {openPartner.qualifications && (
+                    <p className="text-xs text-muted-foreground mt-3 tracking-wide font-light">
+                      {openPartner.qualifications}
+                    </p>
+                  )}
+                  <div className="mt-6 space-y-4">
+                    {openPartner.bio?.map((para, idx) => (
+                      <p
+                        key={idx}
+                        className="text-foreground/80 text-sm md:text-base font-light leading-relaxed"
+                      >
+                        {para}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
