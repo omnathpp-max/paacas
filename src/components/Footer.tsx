@@ -24,8 +24,9 @@ export const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link to="/" className="inline-flex flex-col leading-tight mb-6">
-              <h3 className="font-display font-semibold text-2xl text-background tracking-tight">
-                P A A &amp; Associates
+              <h3 className="font-display font-semibold text-2xl tracking-tight">
+                <span className="text-gradient-brand">P A A</span>
+                <span className="text-background"> &amp; Associates</span>
               </h3>
               <p className="font-sans font-medium text-[10px] text-background/60 uppercase tracking-[0.25em] mt-1">
                 Chartered Accountants

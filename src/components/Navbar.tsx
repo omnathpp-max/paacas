@@ -45,11 +45,12 @@ export const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="flex flex-col leading-tight">
               <h1
-                className={`font-display font-semibold text-foreground transition-all duration-500 tracking-tight ${
+                className={`font-display font-semibold tracking-tight transition-all duration-500 ${
                   scrolled ? 'text-lg' : 'text-xl'
                 }`}
               >
-                P A A &amp; Associates
+                <span className="text-gradient-brand">P A A</span>
+                <span className="text-foreground"> &amp; Associates</span>
               </h1>
               <p
                 className={`font-sans font-medium text-muted-foreground tracking-[0.25em] uppercase transition-all duration-500 ${
