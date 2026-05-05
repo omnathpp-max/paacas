@@ -213,7 +213,7 @@ export const Team = () => {
                     <span />
                   )}
                   {p.bio && (
-                    <span className="text-[0.65rem] tracking-[0.2em] uppercase text-brand font-semibold opacity-70 group-hover:opacity-100 transition-opacity">
+                    <span className="text-[0.65rem] tracking-[0.2em] uppercase text-brand font-semibold opacity-0 translate-x-[-4px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                       Read more →
                     </span>
                   )}
