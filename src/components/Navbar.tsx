@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import caLogo from '@/assets/ca-logo.png';
 
 const navLinks = [
   { name: 'Services', href: '/#services' },
@@ -44,28 +43,24 @@ export const Navbar = () => {
         <div className={`px-6 transition-all duration-500 ${scrolled ? 'py-2.5' : 'py-4'}`}>
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
-              <img
-                src={caLogo}
-                alt="CA India Logo"
-                className={`w-auto transition-all duration-500 ${scrolled ? 'h-10' : 'h-12'}`}
-              />
-              <div>
-                <h1
-                  className={`font-display font-semibold text-foreground transition-all duration-500 ${
-                    scrolled ? 'text-base' : 'text-xl'
-                  }`}
-                >
-                  P A A & Associates
-                </h1>
-                <p
-                  className={`text-muted-foreground tracking-wider uppercase transition-all duration-500 ${
-                    scrolled ? 'text-[10px]' : 'text-xs'
-                  }`}
-                >
-                  Chartered Accountants
-                </p>
-              </div>
+            <Link to="/" className="flex flex-col leading-none group">
+              <h1
+                className={`font-display font-medium text-foreground transition-all duration-500 tracking-[0.18em] ${
+                  scrolled ? 'text-lg' : 'text-2xl'
+                }`}
+              >
+                P<span className="text-brand">A</span>A
+                <span className="font-light text-foreground/70 tracking-normal ml-2 italic">
+                  &amp; Associates
+                </span>
+              </h1>
+              <p
+                className={`font-sans text-muted-foreground tracking-[0.35em] uppercase transition-all duration-500 mt-0.5 ${
+                  scrolled ? 'text-[9px]' : 'text-[10px]'
+                }`}
+              >
+                Chartered Accountants
+              </p>
             </Link>
 
             {/* Desktop Nav */}
