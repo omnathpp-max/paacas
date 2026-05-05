@@ -111,7 +111,10 @@ export const Testimonials = () => {
               key={i}
               className="relative w-[320px] md:w-[400px] shrink-0 rounded-3xl border border-border bg-card p-8 hover:border-brand/40 transition-colors duration-300"
             >
-              <div className="flex items-center justify-end mb-6">
+              <div className="flex items-center justify-between mb-6">
+                <span className="font-display text-sm text-muted-foreground tabular-nums">
+                  {String((i % testimonials.length) + 1).padStart(2, '0')}
+                </span>
                 <Quote className="w-6 h-6 text-brand" strokeWidth={1.5} />
               </div>
               <blockquote className="font-display text-base md:text-lg text-foreground leading-relaxed font-medium">
