@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion';
-import { Sparkles, ArrowUpRight, Layers, Cpu, Globe2, HeartHandshake } from 'lucide-react';
-
-const stats = [
-  { value: '1958', label: 'Practising since' },
-  { value: '50+', label: 'Team members' },
-  { value: '2', label: 'Offices — Chennai & Madurai' },
-];
+import {
+  Sparkles,
+  Layers,
+  Cpu,
+  Globe2,
+  HeartHandshake,
+  Landmark,
+  Users,
+  Cpu as CpuIcon,
+  Globe,
+} from 'lucide-react';
 
 const highlights = [
   {
@@ -92,37 +96,7 @@ export const About = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="lg:col-span-5 lg:sticky lg:top-24"
           >
-            <div className="relative rounded-3xl bg-foreground text-background p-8 md:p-10 overflow-hidden shadow-[0_30px_80px_-30px_hsl(220_50%_15%/0.4)]">
-              <div
-                aria-hidden
-                className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-[100px] bg-brand/25"
-              />
-              <div className="relative">
-                <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-brand">
-                  By the numbers
-                </span>
-
-                <div className="mt-8 divide-y divide-white/10">
-                  {stats.map((s, i) => (
-                    <div key={i} className="py-6 first:pt-0 last:pb-0">
-                      <p className="font-display text-5xl md:text-6xl font-semibold tracking-tight text-background">
-                        {s.value}
-                      </p>
-                      <p className="text-sm text-background/60 mt-2 font-light">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 pt-8 border-t border-white/10">
-                  <p className="text-base text-background/80 font-light italic leading-relaxed">
-                    "Serve the clients like you serve thyself. Brand yourself with happy clients."
-                  </p>
-                  <p className="text-xs uppercase tracking-[0.25em] text-brand mt-3">
-                    — Founding Partner
-                  </p>
-                </div>
-              </div>
-            </div>
+            <JourneyInfographic />
           </motion.div>
         </div>
       </div>
