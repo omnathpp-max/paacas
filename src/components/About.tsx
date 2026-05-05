@@ -1,15 +1,6 @@
 import { motion } from 'framer-motion';
-import {
-  Sparkles,
-  Layers,
-  Cpu,
-  Globe2,
-  HeartHandshake,
-  Landmark,
-  Users,
-  Cpu as CpuIcon,
-  Globe,
-} from 'lucide-react';
+import { Sparkles, Layers, Cpu, Globe2, HeartHandshake } from 'lucide-react';
+import { JourneyInfographic } from './JourneyInfographic';
 
 const highlights = [
   {
