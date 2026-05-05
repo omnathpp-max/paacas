@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, ArrowUp } from 'lucide-react';
-import caLogo from '@/assets/ca-logo.png';
 
 const quickLinks = [
   { name: 'Services', href: '/#services' },
@@ -24,16 +23,16 @@ export const Footer = () => {
         <div className="grid md:grid-cols-3 gap-10 items-start">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-6">
-              <img src={caLogo} alt="CA India" className="h-12 w-auto bg-white rounded-lg p-1" />
-              <div>
-                <h3 className="font-display font-semibold text-lg text-background">
-                  P A A & Associates
-                </h3>
-                <p className="text-xs text-background/60 uppercase tracking-wider">
-                  Chartered Accountants
-                </p>
-              </div>
+            <Link to="/" className="inline-flex flex-col leading-none mb-6 group">
+              <h3 className="font-display font-medium text-2xl text-background tracking-[0.18em]">
+                P<span className="text-brand">A</span>A
+                <span className="font-light text-background/70 tracking-normal ml-2 italic">
+                  &amp; Associates
+                </span>
+              </h3>
+              <p className="font-sans text-[10px] text-background/60 uppercase tracking-[0.35em] mt-1">
+                Chartered Accountants
+              </p>
             </Link>
             <p className="text-background/70 text-base font-light leading-relaxed max-w-md">
               Your trusted finance and compliance partner since 1958. Built for founders and
