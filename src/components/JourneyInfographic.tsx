@@ -93,9 +93,22 @@ export const JourneyInfographic = () => {
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true, margin: '-60px' }}
                     transition={{ duration: 0.5, delay: 0.4 + i * 0.18 }}
-                    className="absolute left-0 top-0 w-10 h-10 rounded-full bg-background/[0.06] border border-brand/40 backdrop-blur-sm flex items-center justify-center text-brand shadow-[0_0_0_4px_hsl(220_45%_10%)]"
+                    whileHover={{ scale: 1.12, rotate: 6 }}
+                    className="absolute left-0 top-0 w-10 h-10 rounded-full bg-background/[0.06] border border-brand/40 backdrop-blur-sm flex items-center justify-center text-brand shadow-[0_0_0_4px_hsl(220_45%_10%)] cursor-default"
                   >
-                    <Icon className="w-4 h-4" strokeWidth={1.75} />
+                    {/* Pulsing ring */}
+                    <motion.span
+                      aria-hidden
+                      className="absolute inset-0 rounded-full border border-brand/50"
+                      animate={{ scale: [1, 1.6, 1.6], opacity: [0.6, 0, 0] }}
+                      transition={{
+                        duration: 2.4,
+                        repeat: Infinity,
+                        delay: 1.2 + i * 0.4,
+                        ease: 'easeOut',
+                      }}
+                    />
+                    <Icon className="w-4 h-4 relative" strokeWidth={1.75} />
                   </motion.span>
 
                   <h4 className="font-display text-base md:text-lg font-medium text-background leading-tight tracking-tight">

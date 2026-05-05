@@ -6,7 +6,6 @@ import {
   Building2,
   Globe2,
   Briefcase,
-  CheckCircle2,
   MessageCircle,
   Calendar,
   Package,
