@@ -25,7 +25,7 @@ const servicesData: Record<string, { icon: any; title: string; content: string[]
     icon: ClipboardCheck,
     title: 'Audit & Assurance',
     content: [
-      'Audit is about much more than just the numbers. Those numbers tell a story of accomplishments and aspirations, of projects completed and new plans laid. At PAA, audit fuels advancement by demonstrating how things are — and asking how they can be made better.',
+      'Audit is about much more than just the numbers. Those numbers tell a story of accomplishments and aspirations, of projects completed and new plans laid. At P A A, audit fuels advancement by demonstrating how things are — and asking how they can be made better.',
       'We provide assurance that future visions are built on strong foundations, informed by relevant insights and guided by sound decisions. We have invested in significant digital and workforce transformation for continuous improvement.',
     ],
   },
@@ -41,7 +41,7 @@ const servicesData: Record<string, { icon: any; title: string; content: string[]
     icon: TrendingUp,
     title: 'Equity Funding & Debt Syndication',
     content: [
-      'PAA assists companies to achieve their funding goals by providing specialized Syndication services and consulting on when and how to raise funds. We provide end-to-end support, from strategic planning to floating of funds.',
+      'P A A assists companies to achieve their funding goals by providing specialized Syndication services and consulting on when and how to raise funds. We provide end-to-end support, from strategic planning to floating of funds.',
       'The team has concluded deals aggregating to equity amount over Rs 200 crores. Our Information Memorandums have been well received by participating bankers and investors.',
     ],
   },

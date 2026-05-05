@@ -695,26 +695,6 @@ const StartupModalBody = ({
         </div>
       </Section>
 
-      {/* WHY US */}
-      <Section eyebrow="04 — Why us" kicker="The difference" muted>
-        <SectionHeader title={details.why.title} />
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5">
-          {details.why.points.map((p, i) => (
-            <motion.div
-              key={p}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="flex items-start gap-4 py-3 border-b border-border/60"
-            >
-              <CheckCircle2 className="w-5 h-5 mt-1 text-brand shrink-0" strokeWidth={1.75} />
-              <span className="text-lg text-foreground/90 leading-relaxed font-light">{p}</span>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
-
       {/* FINAL CTA — editorial */}
       <section className="px-8 sm:px-16 py-20 bg-foreground text-background relative overflow-hidden">
         <div aria-hidden className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full blur-[120px] bg-brand/20" />
