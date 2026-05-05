@@ -1,28 +1,35 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { MapPin, Phone, Mail, ArrowUpRight, Sparkles } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowUpRight, Sparkles, ExternalLink } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-const contactInfo = [
+const offices = [
   {
-    icon: MapPin,
-    title: 'Head Office — Madurai',
-    details: ['No. 24, Anna Nagar', 'Madurai 625020, Tamil Nadu'],
+    city: 'Madurai',
+    label: 'Office — Madurai',
+    address: 'Plot No. 784, West Main Road, Anna Nagar, Madurai 625020, Tamil Nadu',
+    mapQuery: 'Plot No. 784, West Main Road, Anna Nagar, Madurai 625020, Tamil Nadu',
   },
   {
-    icon: MapPin,
-    title: 'Branch Office — Chennai',
-    details: ['T. Nagar', 'Chennai 600017, Tamil Nadu'],
+    city: 'Chennai',
+    label: 'Office — Chennai',
+    address:
+      'Door No. 20/12, 2nd & 3rd Floors, Plot No. 9, Wheat Croft Rd, A2, Nungambakkam, Chennai 600034, Tamil Nadu',
+    mapQuery:
+      'Door No. 20/12, Wheat Croft Road, Nungambakkam, Chennai 600034, Tamil Nadu',
   },
+];
+
+const contactChannels = [
   {
     icon: Phone,
     title: 'Phone',
-    details: ['+91 452 234 9400', '+91 44 2434 5678'],
+    details: ['+91 44 4211 7873'],
   },
   {
     icon: Mail,
     title: 'Email',
-    details: ['info@paacas.com', 'query@paacas.com'],
+    details: ['aswinpa@paacas.com', 'kaushik@paacas.com'],
   },
 ];
 
@@ -179,30 +186,69 @@ export const Contact = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-5"
           >
-            <div className="border-y border-border">
-              {contactInfo.map((info, i) => {
-                const Icon = info.icon;
-                return (
-                  <div
-                    key={i}
-                    className="flex items-start gap-5 py-6 border-b border-border last:border-b-0"
-                  >
+            <div className="space-y-5">
+              {offices.map((o, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl border border-border bg-card overflow-hidden"
+                >
+                  <div className="flex items-start gap-4 p-5">
                     <div className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-brand shrink-0">
-                      <Icon className="w-4 h-4" strokeWidth={1.75} />
+                      <MapPin className="w-4 h-4" strokeWidth={1.75} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-display text-base font-semibold text-foreground">
-                        {info.title}
-                      </h4>
-                      {info.details.map((d, j) => (
-                        <p key={j} className="text-muted-foreground text-sm mt-1 font-light">
-                          {d}
-                        </p>
-                      ))}
+                      <div className="flex items-center justify-between gap-3">
+                        <h4 className="font-display text-base font-semibold text-foreground">
+                          {o.label}
+                        </h4>
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(o.mapQuery)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-brand hover:text-brand-dark transition-colors"
+                        >
+                          Directions <ExternalLink className="w-3 h-3" strokeWidth={2} />
+                        </a>
+                      </div>
+                      <p className="text-muted-foreground text-sm mt-1.5 font-light leading-relaxed">
+                        {o.address}
+                      </p>
                     </div>
                   </div>
-                );
-              })}
+                  <div className="relative h-40 w-full border-t border-border bg-secondary">
+                    <iframe
+                      title={`Map of ${o.city}`}
+                      src={`https://www.google.com/maps?q=${encodeURIComponent(o.mapQuery)}&output=embed`}
+                      className="absolute inset-0 w-full h-full grayscale-[40%] hover:grayscale-0 transition-all duration-500"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
+                </div>
+              ))}
+
+              <div className="rounded-2xl border border-border bg-card divide-y divide-border">
+                {contactChannels.map((info, i) => {
+                  const Icon = info.icon;
+                  return (
+                    <div key={i} className="flex items-start gap-4 p-5">
+                      <div className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-brand shrink-0">
+                        <Icon className="w-4 h-4" strokeWidth={1.75} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-display text-base font-semibold text-foreground">
+                          {info.title}
+                        </h4>
+                        {info.details.map((d, j) => (
+                          <p key={j} className="text-muted-foreground text-sm mt-1 font-light break-all">
+                            {d}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, User, X } from 'lucide-react';
+import { Sparkles, User, X, Linkedin } from 'lucide-react';
 import aswinImg from '@/assets/team/aswin.png';
 import premnathImg from '@/assets/team/premnath.png';
 import amarnathImg from '@/assets/team/amarnath.png';
@@ -17,6 +17,7 @@ type Partner = {
   image: string | null;
   description: string;
   bio?: string[];
+  linkedin?: string;
 };
 
 const partners: Partner[] = [
@@ -57,6 +58,7 @@ const partners: Partner[] = [
     image: aswinImg as string | null,
     description:
       'Working with founders on advisory, tax, transactions, and financial strategy.',
+    linkedin: 'https://www.linkedin.com/in/aswinkumaarpa/',
     bio: [
       "Aswin Kumaar P A is a Partner at P A A & Associates, Chartered Accountants, and leads the firm's Chennai operations. He specialises in Direct and International Taxation, advising corporates and high net worth individuals on structuring, compliance, and cross-border matters.",
       'He brings a multidisciplinary perspective, backed by qualifications as a Chartered Accountant, MBA from IIM Bangalore, Post Graduate Diploma in International Taxation, Registered Valuer (IBBI), and an Electrical Engineer. This diverse background enables him to approach complex financial and regulatory issues with both technical depth and practical clarity.',
@@ -68,10 +70,30 @@ const partners: Partner[] = [
 ];
 
 const network = [
-  { name: 'CA Kaushik Ganesh', firm: 'Sparkwood Advisors', image: kaushikImg },
-  { name: 'Thiagarajan Arumugam', firm: 'Spark Consulting', image: thiagarajanImg },
-  { name: 'CA Jeevan Kumar', firm: 'Jeevan & Associates', image: jeevanImg },
-  { name: 'CA Gopalakrishnan Natesan', firm: 'GN & Co', image: gopalImg },
+  {
+    name: 'CA Kaushik Ganesh',
+    firm: 'Sparkwood Advisors',
+    image: kaushikImg,
+    linkedin: 'https://www.linkedin.com/in/kaushikganesh/',
+  },
+  {
+    name: 'Thiagarajan Arumugam',
+    firm: 'Spark Consulting',
+    image: thiagarajanImg,
+    linkedin: 'https://www.linkedin.com/in/thiagarajan-arumugam/',
+  },
+  {
+    name: 'CA Jeevan Kumar',
+    firm: 'Jeevan & Associates',
+    image: jeevanImg,
+    linkedin: 'https://www.linkedin.com/in/jeevan-kumar/',
+  },
+  {
+    name: 'CA Gopalakrishnan Natesan',
+    firm: 'GN & Co',
+    image: gopalImg,
+    linkedin: 'https://www.linkedin.com/in/gopalakrishnan-natesan/',
+  },
 ];
 
 export const Team = () => {
@@ -171,16 +193,32 @@ export const Team = () => {
                 </div>
               </div>
               {/* Description */}
-              <div className="p-5 lg:p-6 flex-1 flex">
+              <div className="p-5 lg:p-6 flex-1 flex flex-col gap-4">
                 <p className="text-muted-foreground text-[0.8rem] md:text-sm font-light leading-relaxed">
                   {p.description}
                 </p>
+                <div className="mt-auto flex items-center justify-between gap-3 pt-1">
+                  {p.linkedin ? (
+                    <a
+                      href={p.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      aria-label={`${p.name} on LinkedIn`}
+                      className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-border text-muted-foreground hover:bg-brand hover:text-white hover:border-brand transition-colors"
+                    >
+                      <Linkedin className="w-3.5 h-3.5" strokeWidth={1.75} />
+                    </a>
+                  ) : (
+                    <span />
+                  )}
+                  {p.bio && (
+                    <span className="text-[0.65rem] tracking-[0.2em] uppercase text-brand font-semibold opacity-70 group-hover:opacity-100 transition-opacity">
+                      Read more →
+                    </span>
+                  )}
+                </div>
               </div>
-              {p.bio && (
-                <span className="absolute bottom-4 right-5 text-[0.65rem] tracking-[0.2em] uppercase text-brand font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                  Read more →
-                </span>
-              )}
             </motion.div>
           ))}
         </div>
@@ -224,10 +262,25 @@ export const Team = () => {
                   />
                 </div>
                 <div className="p-5">
-                  <h4 className="font-display text-base lg:text-lg font-semibold text-foreground leading-tight">
-                    {a.name}
-                  </h4>
-                  <p className="text-muted-foreground text-xs lg:text-sm mt-1 font-light">{a.firm}</p>
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <h4 className="font-display text-base lg:text-lg font-semibold text-foreground leading-tight">
+                        {a.name}
+                      </h4>
+                      <p className="text-muted-foreground text-xs lg:text-sm mt-1 font-light">{a.firm}</p>
+                    </div>
+                    {a.linkedin && (
+                      <a
+                        href={a.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${a.name} on LinkedIn`}
+                        className="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full border border-border text-muted-foreground hover:bg-brand hover:text-white hover:border-brand transition-colors"
+                      >
+                        <Linkedin className="w-3.5 h-3.5" strokeWidth={1.75} />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -294,6 +347,17 @@ export const Team = () => {
                     <p className="text-xs text-muted-foreground mt-3 tracking-wide font-light">
                       {openPartner.qualifications}
                     </p>
+                  )}
+                  {openPartner.linkedin && (
+                    <a
+                      href={openPartner.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 mt-4 px-3.5 py-2 rounded-full border border-border text-xs font-semibold uppercase tracking-[0.18em] text-foreground hover:bg-brand hover:text-white hover:border-brand transition-colors"
+                    >
+                      <Linkedin className="w-3.5 h-3.5" strokeWidth={1.75} />
+                      LinkedIn
+                    </a>
                   )}
                   <div className="mt-6 space-y-4">
                     {openPartner.bio?.map((para, idx) => (
