@@ -162,7 +162,7 @@ export const Hero = () => {
                 className="px-6 py-6 bg-[hsl(220_45%_8%/0.4)] hover:bg-white/[0.04] transition-colors"
               >
                 <p className="font-display text-3xl md:text-4xl font-semibold text-white tracking-tight">
-                  <AnimatedCounter to={stat.value} suffix={stat.suffix} duration={2 + i * 0.2} />
+                  <AnimatedCounter from={stat.from} to={stat.value} suffix={stat.suffix} duration={stat.duration} />
                 </p>
                 <p className="text-xs md:text-sm text-white/55 mt-1.5 uppercase tracking-wider">
                   {stat.label}
