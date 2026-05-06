@@ -3,9 +3,9 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 const stats = [
-  { value: 75, suffix: '+', label: 'Years of combined practice' },
-  { value: 5000, suffix: '+', label: 'Clients served' },
-  { value: 60, suffix: '+', label: 'Specialists on the team' },
+  { from: 65, value: 75, suffix: '+', label: 'Years of combined practice', duration: 1.5 },
+  { from: 4900, value: 5000, suffix: '+', label: 'Clients served', duration: 2.0 },
+  { from: 50, value: 60, suffix: '+', label: 'Specialists on the team', duration: 1.5 },
 ];
 
 const AnimatedCounter = ({ from = 0, to, suffix = '', duration = 2 }: { from?: number; to: number; suffix?: string; duration?: number }) => {
