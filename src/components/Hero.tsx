@@ -8,17 +8,17 @@ const stats = [
   { value: 60, suffix: '+', label: 'Specialists on the team' },
 ];
 
-const AnimatedCounter = ({ to, suffix = '', duration = 2 }: { to: number; suffix?: string; duration?: number }) => {
+const AnimatedCounter = ({ from = 0, to, suffix = '', duration = 2 }: { from?: number; to: number; suffix?: string; duration?: number }) => {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
-  const count = useMotionValue(0);
+  const count = useMotionValue(from);
   const rounded = useTransform(count, (v) => Math.floor(v).toLocaleString('en-IN'));
 
   useEffect(() => {
     if (!inView) return;
     const controls = animate(count, to, {
       duration,
-      ease: [0.22, 1, 0.36, 1],
+      ease: 'linear',
     });
     return controls.stop;
   }, [inView, to, duration, count]);
@@ -31,7 +31,7 @@ const AnimatedCounter = ({ to, suffix = '', duration = 2 }: { to: number; suffix
 
   return (
     <>
-      <span ref={ref}>0</span>
+      <span ref={ref}>{from.toLocaleString('en-IN')}</span>
       {suffix}
     </>
   );
