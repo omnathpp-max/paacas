@@ -1,11 +1,41 @@
-import { motion } from 'framer-motion';
+import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 
 const stats = [
-  { value: '75+', label: 'Years of combined practice' },
-  { value: '5000+', label: 'Clients served' },
-  { value: '60+', label: 'Specialists on the team' },
+  { value: 75, suffix: '+', label: 'Years of combined practice' },
+  { value: 5000, suffix: '+', label: 'Clients served' },
+  { value: 60, suffix: '+', label: 'Specialists on the team' },
 ];
+
+const AnimatedCounter = ({ to, suffix = '', duration = 2 }: { to: number; suffix?: string; duration?: number }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (v) => Math.floor(v).toLocaleString('en-IN'));
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(count, to, {
+      duration,
+      ease: [0.22, 1, 0.36, 1],
+    });
+    return controls.stop;
+  }, [inView, to, duration, count]);
+
+  useEffect(() => {
+    return rounded.on('change', (latest) => {
+      if (ref.current) ref.current.textContent = latest;
+    });
+  }, [rounded]);
+
+  return (
+    <>
+      <span ref={ref}>0</span>
+      {suffix}
+    </>
+  );
+};
 
 export const Hero = () => {
   return (
@@ -132,7 +162,7 @@ export const Hero = () => {
                 className="px-6 py-6 bg-[hsl(220_45%_8%/0.4)] hover:bg-white/[0.04] transition-colors"
               >
                 <p className="font-display text-3xl md:text-4xl font-semibold text-white tracking-tight">
-                  {stat.value}
+                  <AnimatedCounter to={stat.value} suffix={stat.suffix} duration={2 + i * 0.2} />
                 </p>
                 <p className="text-xs md:text-sm text-white/55 mt-1.5 uppercase tracking-wider">
                   {stat.label}
