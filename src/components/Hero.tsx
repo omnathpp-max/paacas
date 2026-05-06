@@ -3,22 +3,22 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 const stats = [
-  { value: 75, suffix: '+', label: 'Years of combined practice' },
-  { value: 5000, suffix: '+', label: 'Clients served' },
-  { value: 60, suffix: '+', label: 'Specialists on the team' },
+  { from: 65, value: 75, suffix: '+', label: 'Years of combined practice', duration: 1.5 },
+  { from: 4900, value: 5000, suffix: '+', label: 'Clients served', duration: 2.0 },
+  { from: 50, value: 60, suffix: '+', label: 'Specialists on the team', duration: 1.5 },
 ];
 
-const AnimatedCounter = ({ to, suffix = '', duration = 2 }: { to: number; suffix?: string; duration?: number }) => {
+const AnimatedCounter = ({ from = 0, to, suffix = '', duration = 2 }: { from?: number; to: number; suffix?: string; duration?: number }) => {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
-  const count = useMotionValue(0);
+  const count = useMotionValue(from);
   const rounded = useTransform(count, (v) => Math.floor(v).toLocaleString('en-IN'));
 
   useEffect(() => {
     if (!inView) return;
     const controls = animate(count, to, {
       duration,
-      ease: [0.22, 1, 0.36, 1],
+      ease: 'linear',
     });
     return controls.stop;
   }, [inView, to, duration, count]);
@@ -31,7 +31,7 @@ const AnimatedCounter = ({ to, suffix = '', duration = 2 }: { to: number; suffix
 
   return (
     <>
-      <span ref={ref}>0</span>
+      <span ref={ref}>{from.toLocaleString('en-IN')}</span>
       {suffix}
     </>
   );
@@ -162,7 +162,7 @@ export const Hero = () => {
                 className="px-6 py-6 bg-[hsl(220_45%_8%/0.4)] hover:bg-white/[0.04] transition-colors"
               >
                 <p className="font-display text-3xl md:text-4xl font-semibold text-white tracking-tight">
-                  <AnimatedCounter to={stat.value} suffix={stat.suffix} duration={2 + i * 0.2} />
+                  <AnimatedCounter from={stat.from} to={stat.value} suffix={stat.suffix} duration={stat.duration} />
                 </p>
                 <p className="text-xs md:text-sm text-white/55 mt-1.5 uppercase tracking-wider">
                   {stat.label}
