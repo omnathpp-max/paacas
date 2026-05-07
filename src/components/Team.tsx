@@ -324,26 +324,22 @@ export const Team = () => {
                 <X className="w-4 h-4" strokeWidth={2} />
               </button>
               <div className="grid md:grid-cols-5 flex-1 min-h-0 md:max-h-[90vh] overflow-y-auto md:overflow-hidden overscroll-contain">
-                <div className="md:col-span-2 relative h-64 sm:h-80 md:h-auto md:aspect-auto bg-secondary overflow-hidden shrink-0">
+                <div className="md:col-span-2 relative w-full bg-secondary overflow-hidden shrink-0 md:h-auto">
                   {openPartner.image && (
                     <img
                       src={openPartner.image}
                       alt={openPartner.name}
-                      className="absolute inset-0 w-full h-full object-cover object-top"
+                      className="block w-full h-auto md:absolute md:inset-0 md:w-full md:h-full md:object-cover md:object-center"
                     />
                   )}
-                  <div
-                    aria-hidden
-                    className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-foreground/85 via-foreground/30 to-transparent md:hidden"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 p-6 md:hidden">
-                    <span className="px-2.5 py-1 rounded-full bg-brand text-white text-[0.65rem] font-semibold tracking-[0.15em] uppercase">
-                      {openPartner.role}
-                    </span>
-                    <h3 className="font-display text-2xl font-semibold text-background leading-tight mt-3">
-                      {openPartner.name}
-                    </h3>
-                  </div>
+                </div>
+                <div className="md:hidden px-6 pt-5">
+                  <span className="inline-flex px-2.5 py-1 rounded-full bg-brand text-white text-[0.65rem] font-semibold tracking-[0.15em] uppercase">
+                    {openPartner.role}
+                  </span>
+                  <h3 className="font-display text-2xl font-semibold text-foreground leading-tight mt-3">
+                    {openPartner.name}
+                  </h3>
                 </div>
                 <div className="md:col-span-3 p-6 md:p-10 md:overflow-y-auto md:max-h-[90vh]">
                   <span className="hidden md:inline-flex px-2.5 py-1 rounded-full bg-brand text-white text-[0.65rem] font-semibold tracking-[0.15em] uppercase">
