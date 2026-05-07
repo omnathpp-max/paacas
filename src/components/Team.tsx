@@ -323,13 +323,13 @@ export const Team = () => {
               >
                 <X className="w-4 h-4" strokeWidth={2} />
               </button>
-              <div className="grid md:grid-cols-5 flex-1 min-h-0 md:max-h-[90vh] overflow-y-auto md:overflow-hidden">
-                <div className="md:col-span-2 relative aspect-[4/5] md:aspect-auto bg-secondary overflow-hidden">
+              <div className="grid md:grid-cols-5 flex-1 min-h-0 md:max-h-[90vh] overflow-y-auto md:overflow-hidden overscroll-contain">
+                <div className="md:col-span-2 relative h-64 sm:h-80 md:h-auto md:aspect-auto bg-secondary overflow-hidden shrink-0">
                   {openPartner.image && (
                     <img
                       src={openPartner.image}
                       alt={openPartner.name}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
+                      className="absolute inset-0 w-full h-full object-cover object-top"
                     />
                   )}
                   <div
