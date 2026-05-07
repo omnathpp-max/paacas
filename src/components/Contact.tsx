@@ -227,11 +227,14 @@ export const Contact = () => {
                 </div>
               ))}
 
-              <div className="rounded-2xl border border-border bg-card divide-y divide-border">
+              <div className="grid sm:grid-cols-2 gap-5">
                 {contactChannels.map((info, i) => {
                   const Icon = info.icon;
                   return (
-                    <div key={i} className="flex items-start gap-4 p-5">
+                    <div
+                      key={i}
+                      className="rounded-2xl border border-border bg-card p-5 flex items-start gap-4"
+                    >
                       <div className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-brand shrink-0">
                         <Icon className="w-4 h-4" strokeWidth={1.75} />
                       </div>
