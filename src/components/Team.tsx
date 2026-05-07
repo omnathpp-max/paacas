@@ -75,24 +75,28 @@ const network = [
     firm: 'Sparkwood Advisors',
     image: kaushikImg,
     linkedin: 'https://www.linkedin.com/in/kaushikganesh/',
+    bio: 'Chartered Accountant with deep expertise in audit, assurance and corporate advisory. Partners with growth-stage businesses on financial controls and reporting.',
   },
   {
     name: 'Thiagarajan Arumugam',
     firm: 'Spark Consulting',
     image: thiagarajanImg,
     linkedin: 'https://www.linkedin.com/in/thiagarajan-arumugam/',
+    bio: 'Seasoned consultant focused on business advisory, process design and strategic finance. Brings decades of cross-industry experience to complex engagements.',
   },
   {
     name: 'CA Jeevan Kumar',
     firm: 'Jeevan & Associates',
     image: jeevanImg,
     linkedin: 'https://www.linkedin.com/in/jeevan-kumar/',
+    bio: 'Practising Chartered Accountant specialising in taxation, compliance and SME advisory. Trusted partner for owner-managed businesses across South India.',
   },
   {
     name: 'CA Gopalakrishnan Natesan',
     firm: 'GN & Co',
     image: gopalImg,
     linkedin: 'https://www.linkedin.com/in/gopalakrishnan-natesan/',
+    bio: 'Chartered Accountant advising on direct tax, assessments and regulatory matters. Known for clear, practical guidance through complex tax situations.',
   },
 ];
 
