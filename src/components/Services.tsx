@@ -8,7 +8,6 @@ import {
   Wallet,
   ArrowUpRight,
   Sparkles,
-  Target,
   Building2,
   FileText,
   ScrollText,
