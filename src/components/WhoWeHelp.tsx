@@ -514,7 +514,7 @@ export const WhoWeHelp = () => {
       </div>
 
       <Dialog open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>
-        <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] sm:w-full p-0 bg-background border-0 max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl font-sans shadow-[0_30px_80px_-20px_hsl(220_50%_15%/0.45)] data-[state=open]:duration-500 data-[state=open]:ease-out data-[state=closed]:duration-200 data-[state=open]:slide-in-from-bottom-8 data-[state=open]:zoom-in-95 [&>button]:right-4 [&>button]:top-4 [&>button]:z-50 [&>button]:rounded-full [&>button]:bg-background/90 [&>button]:backdrop-blur-md [&>button]:border [&>button]:border-border [&>button]:shadow-md [&>button]:p-2 [&>button]:opacity-100 [&>button>svg]:h-5 [&>button>svg]:w-5 [&>button]:text-foreground hover:[&>button]:bg-background">
+        <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] sm:w-full p-0 bg-background border-0 max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl font-sans shadow-[0_30px_80px_-20px_hsl(220_50%_15%/0.45)] max-sm:!w-screen max-sm:!h-[100dvh] max-sm:!max-h-[100dvh] max-sm:!max-w-none max-sm:!rounded-none max-sm:!left-0 max-sm:!top-0 max-sm:!translate-x-0 max-sm:!translate-y-0 data-[state=open]:duration-500 data-[state=open]:ease-out data-[state=closed]:duration-200 data-[state=open]:slide-in-from-bottom-8 data-[state=open]:zoom-in-95 [&>button]:right-4 [&>button]:top-4 [&>button]:z-50 [&>button]:rounded-full [&>button]:bg-background/90 [&>button]:backdrop-blur-md [&>button]:border [&>button]:border-border [&>button]:shadow-md [&>button]:p-2 [&>button]:opacity-100 [&>button>svg]:h-5 [&>button>svg]:w-5 [&>button]:text-foreground hover:[&>button]:bg-background">
           {selected?.details ? (
             <StartupModalBody audience={selected} details={selected.details} />
           ) : selected ? (
@@ -557,7 +557,7 @@ const StartupModalBody = ({
 }) => {
   const Icon = audience.icon;
   return (
-    <div className="overflow-y-auto max-h-[92vh] bg-background">
+    <div className="overflow-y-auto max-h-[92vh] max-sm:max-h-[100dvh] bg-background">
       {/* HERO — editorial, minimal */}
       <header className="relative px-8 sm:px-16 pt-16 sm:pt-20 pb-14 bg-foreground text-background overflow-hidden border-b border-border">
         <div aria-hidden className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-[120px] bg-brand/20" />
