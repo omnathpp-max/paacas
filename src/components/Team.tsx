@@ -296,7 +296,7 @@ export const Team = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-foreground/70 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex items-center justify-center md:p-6 bg-foreground/70 backdrop-blur-sm"
             onClick={() => setOpenPartner(null)}
           >
             <motion.div
@@ -305,7 +305,7 @@ export const Team = () => {
               exit={{ opacity: 0, y: 24, scale: 0.98 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-3xl bg-background border border-border shadow-[0_40px_120px_-30px_hsl(220_50%_15%/0.5)]"
+              className="relative w-full h-[100dvh] md:h-auto md:max-h-[90vh] md:max-w-4xl overflow-hidden md:rounded-3xl bg-background md:border md:border-border md:shadow-[0_40px_120px_-30px_hsl(220_50%_15%/0.5)] flex flex-col"
             >
               <button
                 aria-label="Close"
@@ -314,7 +314,7 @@ export const Team = () => {
               >
                 <X className="w-4 h-4" strokeWidth={2} />
               </button>
-              <div className="grid md:grid-cols-5 max-h-[90vh]">
+              <div className="grid md:grid-cols-5 flex-1 min-h-0 md:max-h-[90vh] overflow-y-auto md:overflow-hidden">
                 <div className="md:col-span-2 relative aspect-[4/5] md:aspect-auto bg-secondary overflow-hidden">
                   {openPartner.image && (
                     <img
@@ -336,7 +336,7 @@ export const Team = () => {
                     </h3>
                   </div>
                 </div>
-                <div className="md:col-span-3 p-6 md:p-10 overflow-y-auto max-h-[90vh]">
+                <div className="md:col-span-3 p-6 md:p-10 md:overflow-y-auto md:max-h-[90vh]">
                   <span className="hidden md:inline-flex px-2.5 py-1 rounded-full bg-brand text-white text-[0.65rem] font-semibold tracking-[0.15em] uppercase">
                     {openPartner.role}
                   </span>
