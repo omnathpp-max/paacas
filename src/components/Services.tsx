@@ -501,7 +501,6 @@ const services: Service[] = [
 ];
 
 export const Services = () => {
-  const [active, setActive] = useState<number | null>(null);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
@@ -539,171 +538,64 @@ export const Services = () => {
           </p>
         </motion.div>
 
-        {/* Editorial split layout */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          {/* LEFT — interactive list */}
-          <div className="lg:col-span-7 border-y border-border">
-            {services.map((s, i) => {
-              const Icon = s.icon;
-              const isActive = active === i;
-              return (
-                <motion.button
-                  key={s.num}
-                  type="button"
-                  onMouseEnter={() => setActive(i)}
-                  onMouseLeave={() => setActive((cur) => (cur === i ? null : cur))}
-                  onFocus={() => setActive(i)}
-                  onBlur={() => setActive((cur) => (cur === i ? null : cur))}
-                  onClick={() => {
-                    setActive(i);
-                    setOpenIdx(i);
-                  }}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.45, delay: i * 0.06 }}
-                  className={`group relative w-full text-left flex items-start gap-6 py-7 md:py-8 border-b border-border last:border-b-0 transition-colors duration-300 ${
-                    isActive ? 'bg-secondary/40' : 'hover:bg-secondary/20'
-                  }`}
-                >
-                  {/* Active indicator bar */}
-                  <span
-                    aria-hidden
-                    className={`absolute left-0 top-0 bottom-0 w-[3px] bg-brand origin-top transition-transform duration-500 ${
-                      isActive ? 'scale-y-100' : 'scale-y-0'
-                    }`}
-                  />
-                  <div className="flex-1 min-w-0 pl-5 md:pl-6">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Icon
-                        className={`w-5 h-5 shrink-0 transition-colors duration-300 ${
-                          isActive ? 'text-brand' : 'text-muted-foreground'
-                        }`}
-                        strokeWidth={1.75}
-                      />
-                      <h3
-                        className={`font-display text-xl md:text-2xl font-semibold leading-snug transition-colors duration-300 ${
-                          isActive ? 'text-foreground' : 'text-foreground/80'
-                        }`}
-                      >
-                        {s.title}
-                      </h3>
-                    </div>
-                    <p className="text-muted-foreground text-base md:text-[1.05rem] leading-relaxed font-light pl-8">
-                      {s.description}
-                    </p>
-                  </div>
-                  <ArrowUpRight
-                    className={`w-5 h-5 mr-5 md:mr-6 mt-2 shrink-0 transition-all duration-300 ${
-                      isActive
-                        ? 'text-brand opacity-100 translate-x-0 -translate-y-0.5'
-                        : 'text-muted-foreground opacity-40'
-                    }`}
-                    strokeWidth={1.75}
-                  />
-                </motion.button>
-              );
-            })}
-          </div>
-
-          {/* RIGHT — sticky outcome card (also a trigger) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-24">
-            {active === null ? (
-              <motion.div
-                key="placeholder"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-full rounded-3xl border border-dashed border-border bg-secondary/30 p-8 md:p-10 overflow-hidden min-h-[22rem] flex flex-col justify-center"
+        {/* Modern bento-style service grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {services.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.button
+                key={s.num}
+                type="button"
+                onClick={() => setOpenIdx(i)}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: i * 0.07 }}
+                whileHover={{ y: -4 }}
+                className="group relative text-left rounded-3xl border border-border bg-card p-7 md:p-8 overflow-hidden transition-all duration-500 hover:border-brand/40 hover:shadow-[0_25px_60px_-25px_hsl(109_53%_50%/0.45)]"
+                aria-label={`View details for ${s.title}`}
               >
+                {/* Soft hover wash */}
                 <div
                   aria-hidden
-                  className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-[100px] bg-[hsl(109_53%_50%/0.15)]"
+                  className="pointer-events-none absolute -top-24 -right-24 w-64 h-64 rounded-full blur-[90px] bg-[hsl(109_53%_50%/0.18)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
-                <div className="relative">
-                  <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-brand-dark">
-                    Hover a service
-                  </span>
-                  <h4 className="font-display text-2xl md:text-3xl font-semibold leading-[1.2] tracking-tight text-foreground mt-4">
-                    Hover any service on the left to see the outcome it delivers.
-                  </h4>
-                  <p className="text-muted-foreground mt-4 font-light">
-                    Click to explore the full breakdown.
+
+                <div className="relative flex flex-col h-full min-h-[18rem]">
+                  {/* Top: number + arrow */}
+                  <div className="flex items-start justify-between mb-7">
+                    <span className="font-display text-xs font-semibold tracking-[0.3em] uppercase text-brand-dark tabular-nums">
+                      {s.num}
+                    </span>
+                    <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-secondary text-muted-foreground group-hover:bg-brand group-hover:text-white transition-all duration-500 group-hover:rotate-45">
+                      <ArrowUpRight className="w-4 h-4" strokeWidth={2} />
+                    </span>
+                  </div>
+
+                  {/* Icon */}
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)] text-brand-dark group-hover:bg-brand group-hover:text-white group-hover:border-transparent transition-all duration-500 mb-6">
+                    <Icon className="w-5 h-5" strokeWidth={1.75} />
+                  </div>
+
+                  {/* Title + description */}
+                  <h3 className="font-display text-xl md:text-[1.4rem] font-semibold text-foreground leading-snug tracking-tight mb-3">
+                    {s.title}
+                  </h3>
+                  <p className="text-muted-foreground text-[0.95rem] leading-relaxed font-light">
+                    {s.description}
                   </p>
-                </div>
-              </motion.div>
-            ) : (
-            <motion.button
-              type="button"
-              onClick={() => setOpenIdx(active)}
-              key={active}
-              initial={{ opacity: 0, y: 16, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative w-full text-left rounded-3xl bg-foreground text-background p-8 md:p-10 overflow-hidden shadow-[0_30px_80px_-30px_hsl(220_50%_15%/0.4)] transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
-              aria-label={`View details for ${services[active].title}`}
-            >
-              <div
-                aria-hidden
-                className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-[100px] bg-brand/25"
-              />
-              <div className="relative">
-                <div className="flex items-center justify-between mb-8">
-                  <span className="text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-brand">
-                    The Outcome
-                  </span>
-                </div>
 
-                <motion.div
-                  initial={{ rotate: -10, scale: 0.8 }}
-                  animate={{ rotate: 0, scale: 1 }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
-                  className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 backdrop-blur-sm flex items-center justify-center text-brand mb-6"
-                >
-                  {(() => {
-                    const ActiveIcon = services[active].icon;
-                    return <ActiveIcon className="w-6 h-6" strokeWidth={1.75} />;
-                  })()}
-                </motion.div>
-
-                <motion.h4
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.05 }}
-                  className="font-display text-xs font-semibold tracking-[0.2em] uppercase text-background/50 mb-3"
-                >
-                  {services[active].title}
-                </motion.h4>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="font-display text-2xl md:text-3xl font-semibold leading-[1.2] tracking-tight text-background"
-                >
-                  {services[active].outcome}
-                </motion.p>
-
-                <div className="mt-10 pt-8 border-t border-white/10 flex items-center justify-between">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.25em] text-background/50 mb-1">
-                      See full breakdown
-                    </p>
-                    <p className="text-base text-background/80 font-light">
-                      Click to explore this service in detail.
+                  {/* Outcome pinned to bottom */}
+                  <div className="mt-6 pt-5 border-t border-border/70 flex items-start gap-2.5">
+                    <Target className="w-4 h-4 mt-0.5 shrink-0 text-brand" strokeWidth={2} />
+                    <p className="text-sm text-foreground/85 leading-snug font-medium">
+                      {s.outcome}
                     </p>
                   </div>
-                  <span className="shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand text-white group-hover:bg-brand-dark transition-colors">
-                    <ArrowUpRight
-                      className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      strokeWidth={2}
-                    />
-                  </span>
                 </div>
-              </div>
-            </motion.button>
-            )}
-          </div>
+              </motion.button>
+            );
+          })}
         </div>
       </div>
 

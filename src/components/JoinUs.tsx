@@ -119,7 +119,7 @@ export const JoinUs = () => {
 
       {/* Application Modal */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-5xl p-0 overflow-hidden bg-secondary/40 border-border">
+        <DialogContent className="max-w-5xl p-0 overflow-hidden bg-secondary/40 border-border max-sm:!w-screen max-sm:!h-[100dvh] max-sm:!max-h-[100dvh] max-sm:!max-w-none max-sm:!rounded-none max-sm:!left-0 max-sm:!top-0 max-sm:!translate-x-0 max-sm:!translate-y-0 max-sm:overflow-y-auto">
           <div className="grid md:grid-cols-2 gap-0">
             {/* LEFT — Form */}
             <div className="bg-card p-8 md:p-10">
