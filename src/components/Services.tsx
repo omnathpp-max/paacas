@@ -328,9 +328,9 @@ const services: Service[] = [
     },
   },
   {
-    num: '04',
     icon: Globe2,
     title: 'FEMA & Cross-Border Advisory',
+    short: 'Cross-Border',
     description: 'FDI, ODI, ESOPs, and international structuring handled right.',
     outcome: 'No regulatory surprises.',
     details: {
@@ -413,9 +413,9 @@ const services: Service[] = [
     },
   },
   {
-    num: '05',
     icon: Wallet,
     title: 'Valuation & Transaction Support',
+    short: 'Valuation & Deals',
     description:
       'Business valuations for funding, compliance, restructuring, and strategic decisions.',
     outcome: 'Defensible valuations that stand up to investors and regulators.',
