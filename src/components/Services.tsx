@@ -538,13 +538,54 @@ export const Services = () => {
           </p>
         </motion.div>
 
-        {/* Interactive service explorer: rail + showcase panel */}
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_1.4fr] gap-8 lg:gap-12 items-start">
+        {/* Mobile: clean vertical list of tappable service cards */}
+        <div className="lg:hidden flex flex-col gap-3">
+          {services.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.button
+                key={s.title}
+                type="button"
+                onClick={() => setOpenIdx(i)}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="group relative w-full text-left rounded-2xl border border-border bg-card p-5 flex items-start gap-4 active:scale-[0.99] transition-transform"
+                aria-label={`View details for ${s.title}`}
+              >
+                <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-[hsl(109_53%_50%/0.1)] border border-[hsl(109_53%_50%/0.25)] text-brand-dark shrink-0">
+                  <Icon className="w-5 h-5" strokeWidth={1.75} />
+                </span>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-display text-base font-semibold text-foreground leading-snug tracking-tight">
+                    {s.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm mt-1.5 leading-relaxed font-light">
+                    {s.description}
+                  </p>
+                  <div className="mt-3 flex items-center gap-2">
+                    <Target className="w-3.5 h-3.5 text-brand shrink-0" strokeWidth={2} />
+                    <p className="text-xs text-foreground/85 font-medium leading-snug">
+                      {s.outcome}
+                    </p>
+                  </div>
+                </div>
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-muted-foreground shrink-0 mt-0.5">
+                  <ArrowUpRight className="w-4 h-4" strokeWidth={2} />
+                </span>
+              </motion.button>
+            );
+          })}
+        </div>
+
+        {/* Desktop: interactive rail + showcase panel */}
+        <div className="hidden lg:grid lg:grid-cols-[minmax(0,1fr)_1.4fr] gap-12 items-start">
           {/* Left rail: tab list */}
           <div
             role="tablist"
             aria-label="Services"
-            className="flex lg:flex-col gap-2 lg:gap-1.5 overflow-x-auto lg:overflow-visible -mx-6 px-6 lg:mx-0 lg:px-0 snap-x snap-mandatory scrollbar-none"
+            className="flex flex-col gap-1.5"
           >
             {services.map((s, i) => {
               const Icon = s.icon;
@@ -556,16 +597,16 @@ export const Services = () => {
                   aria-selected={isActive}
                   onClick={() => setActiveIdx(i)}
                   onMouseEnter={() => setActiveIdx(i)}
-                  className={`group relative shrink-0 lg:shrink snap-start flex items-center gap-3 lg:gap-4 px-4 lg:px-5 py-3 lg:py-4 rounded-2xl border text-left transition-all duration-500 ${
+                  className={`group relative flex items-center gap-4 px-5 py-4 rounded-2xl border text-left transition-all duration-500 ${
                     isActive
                       ? 'bg-card border-brand/40 shadow-[0_15px_45px_-25px_hsl(109_53%_50%/0.45)]'
                       : 'bg-transparent border-border hover:border-brand/30 hover:bg-card/60'
                   }`}
                 >
-                  {/* Active indicator bar (desktop) */}
+                  {/* Active indicator bar */}
                   <span
                     aria-hidden
-                    className={`hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-[3px] rounded-r-full bg-brand transition-all duration-500 ${
+                    className={`absolute left-0 top-1/2 -translate-y-1/2 w-[3px] rounded-r-full bg-brand transition-all duration-500 ${
                       isActive ? 'h-8 opacity-100' : 'h-0 opacity-0'
                     }`}
                   />
@@ -578,7 +619,7 @@ export const Services = () => {
                   >
                     <Icon className="w-[18px] h-[18px]" strokeWidth={1.75} />
                   </span>
-                  <span className="hidden lg:block min-w-0">
+                  <span className="min-w-0">
                     <span
                       className={`block font-display text-[1.02rem] font-semibold leading-tight tracking-tight transition-colors ${
                         isActive ? 'text-foreground' : 'text-foreground/80'
@@ -586,9 +627,6 @@ export const Services = () => {
                     >
                       {s.title}
                     </span>
-                  </span>
-                  <span className="lg:hidden font-display text-sm font-semibold whitespace-nowrap text-foreground">
-                    {s.short}
                   </span>
                 </button>
               );
@@ -618,7 +656,7 @@ export const Services = () => {
               }}
             />
 
-            <div className="relative p-8 md:p-12 lg:p-14 flex flex-col gap-8 min-h-[26rem]">
+            <div className="relative p-12 lg:p-14 flex flex-col gap-8 min-h-[26rem]">
               <div className="flex items-center gap-4">
                 <span className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-brand text-white shadow-[0_15px_40px_-15px_hsl(109_53%_50%/0.6)]">
                   <ActiveIcon className="w-6 h-6" strokeWidth={1.75} />
@@ -629,15 +667,15 @@ export const Services = () => {
               </div>
 
               <div>
-                <h3 className="font-display text-2xl md:text-3xl lg:text-[2.1rem] font-semibold text-foreground leading-tight tracking-tight">
+                <h3 className="font-display text-3xl lg:text-[2.1rem] font-semibold text-foreground leading-tight tracking-tight">
                   {active.title}
                 </h3>
-                <p className="text-muted-foreground text-base md:text-lg mt-4 max-w-xl font-light leading-relaxed">
+                <p className="text-muted-foreground text-lg mt-4 max-w-xl font-light leading-relaxed">
                   {active.description}
                 </p>
               </div>
 
-              <div className="mt-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 pt-6 border-t border-border/70">
+              <div className="mt-auto flex flex-row items-center justify-between gap-6 pt-6 border-t border-border/70">
                 <div className="flex items-start gap-3 max-w-md">
                   <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[hsl(109_53%_50%/0.12)] text-brand-dark shrink-0">
                     <Target className="w-4 h-4" strokeWidth={2} />
