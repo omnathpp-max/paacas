@@ -157,9 +157,9 @@ const services: Service[] = [
     },
   },
   {
-    num: '02',
     icon: BarChart3,
     title: 'Tax Optimization & Structuring',
+    short: 'Tax Optimization',
     description:
       'We don\u2019t just file returns — we reduce your tax liability legally.',
     outcome: 'More cash retained, smarter structuring.',
@@ -243,9 +243,9 @@ const services: Service[] = [
     },
   },
   {
-    num: '03',
     icon: TrendingUp,
     title: 'Virtual CFO & Growth Advisory',
+    short: 'Virtual CFO',
     description: 'Financial clarity, MIS, forecasting, and strategic guidance.',
     outcome: 'Better decisions, faster growth.',
     details: {
