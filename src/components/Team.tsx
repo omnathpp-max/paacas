@@ -75,24 +75,28 @@ const network = [
     firm: 'Sparkwood Advisors',
     image: kaushikImg,
     linkedin: 'https://www.linkedin.com/in/kaushikganesh/',
+    bio: 'Chartered Accountant with deep expertise in audit, assurance and corporate advisory. Partners with growth-stage businesses on financial controls and reporting.',
   },
   {
     name: 'Thiagarajan Arumugam',
     firm: 'Spark Consulting',
     image: thiagarajanImg,
     linkedin: 'https://www.linkedin.com/in/thiagarajan-arumugam/',
+    bio: 'Seasoned consultant focused on business advisory, process design and strategic finance. Brings decades of cross-industry experience to complex engagements.',
   },
   {
     name: 'CA Jeevan Kumar',
     firm: 'Jeevan & Associates',
     image: jeevanImg,
     linkedin: 'https://www.linkedin.com/in/jeevan-kumar/',
+    bio: 'Practising Chartered Accountant specialising in taxation, compliance and SME advisory. Trusted partner for owner-managed businesses across South India.',
   },
   {
     name: 'CA Gopalakrishnan Natesan',
     firm: 'GN & Co',
     image: gopalImg,
     linkedin: 'https://www.linkedin.com/in/gopalakrishnan-natesan/',
+    bio: 'Chartered Accountant advising on direct tax, assessments and regulatory matters. Known for clear, practical guidance through complex tax situations.',
   },
 ];
 
@@ -281,6 +285,11 @@ export const Team = () => {
                       </a>
                     )}
                   </div>
+                  {a.bio && (
+                    <p className="text-muted-foreground text-xs lg:text-[0.8rem] mt-3 font-light leading-relaxed">
+                      {a.bio}
+                    </p>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -314,13 +323,13 @@ export const Team = () => {
               >
                 <X className="w-4 h-4" strokeWidth={2} />
               </button>
-              <div className="grid md:grid-cols-5 flex-1 min-h-0 md:max-h-[90vh] overflow-y-auto md:overflow-hidden">
-                <div className="md:col-span-2 relative aspect-[4/5] md:aspect-auto bg-secondary overflow-hidden">
+              <div className="grid md:grid-cols-5 flex-1 min-h-0 md:max-h-[90vh] overflow-y-auto md:overflow-hidden overscroll-contain">
+                <div className="md:col-span-2 relative h-64 sm:h-80 md:h-auto md:aspect-auto bg-secondary overflow-hidden shrink-0">
                   {openPartner.image && (
                     <img
                       src={openPartner.image}
                       alt={openPartner.name}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
+                      className="absolute inset-0 w-full h-full object-cover object-top"
                     />
                   )}
                   <div
