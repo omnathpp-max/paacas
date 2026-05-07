@@ -33,9 +33,9 @@ import type { ComponentType } from 'react';
 import { ServiceDetailModal, type ServiceDetails } from './ServiceDetailModal';
 
 type Service = {
-  num: string;
   icon: ComponentType<LucideProps>;
   title: string;
+  short: string;
   description: string;
   outcome: string;
   details: ServiceDetails;
@@ -43,9 +43,9 @@ type Service = {
 
 const services: Service[] = [
   {
-    num: '01',
     icon: Package,
     title: 'Startup Launch & Compliance Stack',
+    short: 'Launch & Compliance',
     description:
       'From incorporation to filings — we set up your entire compliance backbone.',
     outcome: 'Zero confusion, fully compliant from day one.',
