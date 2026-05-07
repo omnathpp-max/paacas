@@ -597,7 +597,7 @@ export const Services = () => {
                   aria-selected={isActive}
                   onClick={() => setActiveIdx(i)}
                   onMouseEnter={() => setActiveIdx(i)}
-                  className={`group relative flex items-center gap-4 px-5 py-4 rounded-2xl border text-left transition-all duration-500 ${
+                  className={`group relative flex items-center gap-4 px-5 py-4 min-h-[5.25rem] rounded-2xl border text-left transition-all duration-500 ${
                     isActive
                       ? 'bg-card border-brand/40 shadow-[0_15px_45px_-25px_hsl(109_53%_50%/0.45)]'
                       : 'bg-transparent border-border hover:border-brand/30 hover:bg-card/60'
