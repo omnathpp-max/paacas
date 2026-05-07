@@ -285,6 +285,11 @@ export const Team = () => {
                       </a>
                     )}
                   </div>
+                  {a.bio && (
+                    <p className="text-muted-foreground text-xs lg:text-[0.8rem] mt-3 font-light leading-relaxed">
+                      {a.bio}
+                    </p>
+                  )}
                 </div>
               </motion.div>
             ))}
