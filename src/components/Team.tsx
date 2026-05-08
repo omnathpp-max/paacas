@@ -58,7 +58,7 @@ const partners: Partner[] = [
     image: aswinImg as string | null,
     description:
       'Working with founders on advisory, tax, transactions, and financial strategy.',
-    linkedin: 'https://www.linkedin.com/in/aswinkumaarpa/',
+    linkedin: 'https://www.linkedin.com/in/aswin-kumaar-p-a-5a6b323a/',
     bio: [
       "Aswin Kumaar P A is a Partner at P A A & Associates, Chartered Accountants, and leads the firm's Chennai operations. He specialises in Direct and International Taxation, advising corporates and high net worth individuals on structuring, compliance, and cross-border matters.",
       'He brings a multidisciplinary perspective, backed by qualifications as a Chartered Accountant, MBA from IIM Bangalore, Post Graduate Diploma in International Taxation, Registered Valuer (IBBI), and an Electrical Engineer. This diverse background enables him to approach complex financial and regulatory issues with both technical depth and practical clarity.',
