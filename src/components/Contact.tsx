@@ -79,118 +79,151 @@ export const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
-          {/* LEFT — form */}
-          <motion.form
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6 }}
-            onSubmit={handleSubmit}
-            className="lg:col-span-7 rounded-3xl border border-border bg-card p-8 md:p-10"
-          >
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Your name"
-                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="your@email.com"
-                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors"
-                />
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="+91 98765 43210"
-                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors"
-                />
-              </div>
-              <div>
-                <label htmlFor="service" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                  Service
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground focus:outline-none focus:border-brand transition-colors"
-                >
-                  <option value="">Select a service</option>
-                  <option value="launch">Startup Launch & Compliance</option>
-                  <option value="tax">Tax Optimization & Structuring</option>
-                  <option value="cfo">Virtual CFO & Growth Advisory</option>
-                  <option value="fema">FEMA & Cross-Border Advisory</option>
-                  <option value="valuation">Valuation & Transaction Support</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="mb-8">
-              <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Your Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                required
-                placeholder="Tell us about your requirements..."
-                className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors resize-none"
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors disabled:opacity-60"
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-stretch">
+          {/* LEFT — contact info + form */}
+          <div className="flex flex-col gap-5 h-full">
+            {/* Phone & Email */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6 }}
+              className="rounded-2xl border border-border bg-card divide-y divide-border"
             >
-              {isSubmitting ? 'Sending…' : 'Send Message'}
-              <ArrowUpRight
-                className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                strokeWidth={2}
-              />
-            </button>
-          </motion.form>
+              {contactChannels.map((info, i) => {
+                const Icon = info.icon;
+                return (
+                  <div key={i} className="flex items-start gap-4 p-5">
+                    <div className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-brand shrink-0">
+                      <Icon className="w-4 h-4" strokeWidth={1.75} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-display text-base font-semibold text-foreground">
+                        {info.title}
+                      </h4>
+                      {info.details.map((d, j) => (
+                        <p key={j} className="text-muted-foreground text-sm mt-1 font-light break-all">
+                          {d}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </motion.div>
 
-          {/* RIGHT — contact info */}
+            {/* Form */}
+            <motion.form
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              onSubmit={handleSubmit}
+              className="flex-1 rounded-3xl border border-border bg-card p-8 md:p-10"
+            >
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Your name"
+                    className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="your@email.com"
+                    className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+91 98765 43210"
+                    className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="service" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                    Service
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground focus:outline-none focus:border-brand transition-colors"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="launch">Startup Launch & Compliance</option>
+                    <option value="tax">Tax Optimization & Structuring</option>
+                    <option value="cfo">Virtual CFO & Growth Advisory</option>
+                    <option value="fema">FEMA & Cross-Border Advisory</option>
+                    <option value="valuation">Valuation & Transaction Support</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="mb-8">
+                <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  placeholder="Tell us about your requirements..."
+                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-brand transition-colors resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors disabled:opacity-60"
+              >
+                {isSubmitting ? 'Sending…' : 'Send Message'}
+                <ArrowUpRight
+                  className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  strokeWidth={2}
+                />
+              </button>
+            </motion.form>
+          </div>
+
+          {/* RIGHT — offices */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-5 h-full"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="h-full"
           >
             <div className="flex flex-col gap-5 h-full">
               {offices.map((o, i) => (
                 <div
                   key={i}
-                  className="rounded-2xl border border-border bg-card overflow-hidden"
+                  className="rounded-2xl border border-border bg-card overflow-hidden flex-1 flex flex-col"
                 >
                   <div className="flex items-start gap-4 p-5">
                     <div className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-brand shrink-0">
@@ -215,7 +248,7 @@ export const Contact = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="relative h-40 w-full border-t border-border bg-secondary">
+                  <div className="relative flex-1 min-h-[10rem] w-full border-t border-border bg-secondary">
                     <iframe
                       title={`Map of ${o.city}`}
                       src={`https://www.google.com/maps?q=${encodeURIComponent(o.mapQuery)}&output=embed`}
@@ -226,29 +259,6 @@ export const Contact = () => {
                   </div>
                 </div>
               ))}
-
-              <div className="rounded-2xl border border-border bg-card divide-y divide-border">
-                {contactChannels.map((info, i) => {
-                  const Icon = info.icon;
-                  return (
-                    <div key={i} className="flex items-start gap-4 p-5">
-                      <div className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-brand shrink-0">
-                        <Icon className="w-4 h-4" strokeWidth={1.75} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-display text-base font-semibold text-foreground">
-                          {info.title}
-                        </h4>
-                        {info.details.map((d, j) => (
-                          <p key={j} className="text-muted-foreground text-sm mt-1 font-light break-all">
-                            {d}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
             </div>
           </motion.div>
         </div>
