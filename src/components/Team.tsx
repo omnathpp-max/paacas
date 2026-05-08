@@ -58,7 +58,7 @@ const partners: Partner[] = [
     image: aswinImg as string | null,
     description:
       'Working with founders on advisory, tax, transactions, and financial strategy.',
-    linkedin: 'https://www.linkedin.com/in/aswinkumaarpa/',
+    linkedin: 'https://www.linkedin.com/in/aswin-kumaar-p-a-5a6b323a/',
     bio: [
       "Aswin Kumaar P A is a Partner at P A A & Associates, Chartered Accountants, and leads the firm's Chennai operations. He specialises in Direct and International Taxation, advising corporates and high net worth individuals on structuring, compliance, and cross-border matters.",
       'He brings a multidisciplinary perspective, backed by qualifications as a Chartered Accountant, MBA from IIM Bangalore, Post Graduate Diploma in International Taxation, Registered Valuer (IBBI), and an Electrical Engineer. This diverse background enables him to approach complex financial and regulatory issues with both technical depth and practical clarity.',
@@ -74,29 +74,29 @@ const network = [
     name: 'CA Kaushik Ganesh',
     firm: 'Sparkwood Advisors',
     image: kaushikImg,
-    linkedin: 'https://www.linkedin.com/in/kaushikganesh/',
-    bio: 'Chartered Accountant specialising in audit, assurance and corporate advisory.',
+    linkedin: 'https://www.linkedin.com/in/kaushik-ganesh-r/',
+    bio: 'Specializes in Regulatory, Corporate Secretarial, and Compliance Advisory Services',
   },
   {
     name: 'Thiagarajan Arumugam',
     firm: 'Spark Consulting',
     image: thiagarajanImg,
-    linkedin: 'https://www.linkedin.com/in/thiagarajan-arumugam/',
-    bio: 'Consultant focused on business advisory, process design and strategic finance.',
+    linkedin: 'https://www.linkedin.com/in/thiagarajan-arumugam-7a01b4107/',
+    bio: 'Specializes in Human Resources Consulting and Labour Law Advisory',
   },
   {
     name: 'CA Jeevan Kumar',
     firm: 'Jeevan & Associates',
     image: jeevanImg,
     linkedin: 'https://www.linkedin.com/in/jeevan-kumar/',
-    bio: 'Practising CA focused on taxation, compliance and SME advisory.',
+    bio: 'Specializes in Indirect Tax Advisory, Compliance, and Litigation Support',
   },
   {
     name: 'CA Gopalakrishnan Natesan',
     firm: 'GN & Co',
     image: gopalImg,
-    linkedin: 'https://www.linkedin.com/in/gopalakrishnan-natesan/',
-    bio: 'Advises on direct tax, assessments and regulatory matters.',
+    linkedin: 'https://www.linkedin.com/in/gopalakrishnan-natesan-717856168/',
+    bio: 'Specializes in Audit, Assurance, and Financial Reporting Engagements',
   },
 ];
 
