@@ -29,7 +29,7 @@ const contactChannels = [
   {
     icon: Mail,
     title: 'Email',
-    details: ['aswinpa@paacas.com', 'kaushik@paacas.com'],
+    details: ['info@paacas.in'],
   },
 ];
 
@@ -79,7 +79,7 @@ export const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
           {/* LEFT — form */}
           <motion.form
             initial={{ opacity: 0, y: 24 }}
@@ -184,9 +184,9 @@ export const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-5"
+            className="lg:col-span-5 h-full"
           >
-            <div className="space-y-5">
+            <div className="flex flex-col gap-5 h-full">
               {offices.map((o, i) => (
                 <div
                   key={i}
