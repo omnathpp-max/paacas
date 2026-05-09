@@ -273,7 +273,7 @@ export const Team = () => {
                       </h4>
                       <p className="text-muted-foreground text-xs lg:text-sm mt-1 font-light">{a.firm}</p>
                     </div>
-                    {a.linkedin && (
+                    {a.linkedin ? (
                       <a
                         href={a.linkedin}
                         target="_blank"
@@ -283,7 +283,17 @@ export const Team = () => {
                       >
                         <Linkedin className="w-3.5 h-3.5" strokeWidth={1.75} />
                       </a>
-                    )}
+                    ) : a.website ? (
+                      <a
+                        href={a.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${a.name} website`}
+                        className="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full border border-border text-muted-foreground hover:bg-brand hover:text-white hover:border-brand transition-colors"
+                      >
+                        <Globe className="w-3.5 h-3.5" strokeWidth={1.75} />
+                      </a>
+                    ) : null}
                   </div>
                   {a.bio && (
                     <p className="text-muted-foreground text-xs lg:text-[0.8rem] mt-3 font-light leading-relaxed">
