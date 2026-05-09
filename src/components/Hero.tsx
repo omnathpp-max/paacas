@@ -189,9 +189,6 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="mt-12"
           >
-            <p className="text-xs text-white/45 uppercase tracking-[0.2em] mb-5 text-center">
-              Trusted by leading organizations
-            </p>
             <div
               className="relative overflow-hidden"
               style={{
