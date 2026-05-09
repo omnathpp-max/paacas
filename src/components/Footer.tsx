@@ -33,7 +33,7 @@ export const Footer = () => {
               </p>
             </Link>
             <p className="text-background/70 text-base font-light leading-relaxed max-w-md">
-              Your trusted finance and compliance partner since 1958. Built for founders and
+              Your trusted finance and compliance partner. Built for founders and
               growing companies who expect outcomes — not just deliverables.
             </p>
 
