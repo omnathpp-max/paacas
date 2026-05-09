@@ -88,6 +88,7 @@ const network = [
     name: 'CA Jeevan Kumar',
     firm: 'Jeevan & Associates',
     image: jeevanImg,
+    website: 'https://jnaca.org/resource/Jeevan.aspx',
     bio: 'Specializes in Indirect Tax Advisory, Compliance, and Litigation Support',
   },
   {
