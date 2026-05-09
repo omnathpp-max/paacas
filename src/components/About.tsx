@@ -43,9 +43,9 @@ export const About = () => {
               Who We Are
             </span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-6 leading-[1.05] tracking-tight">
-              A legacy that began in 1958, <br className="hidden md:block" />
+              A legacy spanning generations, <br className="hidden md:block" />
               <span className="italic font-light text-muted-foreground">evolving with </span>
-              <span className="text-brand italic">every generation.</span>
+              <span className="text-brand italic">every era.</span>
             </h2>
             <p className="text-muted-foreground text-lg md:text-xl mt-6 max-w-2xl font-light leading-relaxed">
               Founded in 1958, P A A was built on strong professional values that continue to
