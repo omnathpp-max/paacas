@@ -80,16 +80,14 @@ export const ClientLogos = () => {
             {loop.map((logo, i) => (
               <div
                 key={i}
-                className="group shrink-0 mx-4 md:mx-6"
+                className="shrink-0 mx-8 md:mx-12 flex items-center justify-center h-20 w-40"
               >
-                <div className="flex items-center justify-center h-28 w-52 px-6 rounded-2xl border border-border/70 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-card hover:shadow-elegant hover:-translate-y-1">
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    loading="lazy"
-                    className="max-h-16 max-w-full object-contain opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                  className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110"
+                />
               </div>
             ))}
           </motion.div>
