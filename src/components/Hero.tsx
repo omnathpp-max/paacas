@@ -1,17 +1,6 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useEffect, useRef } from 'react';
-import fleetStudioLogo from '@/assets/clients/fleetstudio.png';
-import absoluteBrokingLogo from '@/assets/clients/absolute-broking.png';
-import allMasterLogo from '@/assets/clients/allmaster.png';
-import abLogo from '@/assets/clients/ab.png';
-
-const clientLogos = [
-  { src: fleetStudioLogo, alt: 'Fleet Studio' },
-  { src: absoluteBrokingLogo, alt: 'Absolute Broking' },
-  { src: allMasterLogo, alt: 'All Master' },
-  { src: abLogo, alt: 'AB' },
-];
 
 const stats = [
   { from: 65, value: 75, suffix: '+', label: 'Years of combined practice', duration: 1.5 },
@@ -180,43 +169,6 @@ export const Hero = () => {
                 </p>
               </div>
             ))}
-          </motion.div>
-
-          {/* Client logo marquee */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-12"
-          >
-            <div
-              className="relative overflow-hidden"
-              style={{
-                maskImage:
-                  'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-                WebkitMaskImage:
-                  'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-              }}
-            >
-              <motion.div
-                className="flex gap-20 w-max"
-                animate={{ x: ['0%', '-50%'] }}
-                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-              >
-                {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center justify-center shrink-0 h-20 w-40 opacity-70 hover:opacity-100 transition-opacity"
-                  >
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                ))}
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </div>
