@@ -95,7 +95,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-36 pb-24 overflow-hidden bg-[hsl(220_45%_8%)]"
+      className="relative min-h-screen flex items-center pt-36 pb-12 overflow-hidden bg-[hsl(220_45%_8%)]"
     >
       {/* Animated gradient mesh background */}
       <div className="absolute inset-0 overflow-hidden">
@@ -230,11 +230,8 @@ export const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.75 }}
-            className="mt-10"
+            className="mt-8"
           >
-            <p className="text-xs uppercase tracking-widest text-white/35 mb-5 text-center sm:text-left">
-              Trusted by 5000+ businesses
-            </p>
             <div
               className="relative overflow-hidden"
               style={{
@@ -250,14 +247,14 @@ export const Hero = () => {
                 {[...clientLogos, ...clientLogos].map((logo, i) => (
                   <div
                     key={i}
-                    className="shrink-0 mx-4 flex items-center justify-center h-10 w-28"
+                    className="shrink-0 mx-5 flex items-center justify-center h-12 w-36"
                   >
                     <img
                       src={logo.src}
                       alt={logo.alt}
                       loading={i < clientLogos.length ? 'eager' : 'lazy'}
                       decoding="async"
-                      className="max-h-8 max-w-full object-contain brightness-0 invert opacity-50 hover:opacity-80 transition-opacity duration-300"
+                      className="max-h-10 max-w-full object-contain brightness-0 invert opacity-50 hover:opacity-80 transition-opacity duration-300"
                     />
                   </div>
                 ))}
