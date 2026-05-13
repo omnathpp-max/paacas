@@ -80,7 +80,7 @@ export const ClientLogos = () => {
             {loop.map((logo, i) => (
               <div
                 key={i}
-                className="shrink-0 mx-8 md:mx-12 flex items-center justify-center h-20 w-40"
+                className="shrink-0 mx-3 md:mx-5 flex items-center justify-center h-20 w-36"
               >
                 <img
                   src={logo.src}
