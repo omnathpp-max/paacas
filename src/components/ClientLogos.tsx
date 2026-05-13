@@ -54,12 +54,12 @@ export const ClientLogos = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-card/60 backdrop-blur-sm mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
-              Trusted Partners
+              Our Clients
             </span>
           </div>
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
-            Powering finance for{' '}
-            <span className="text-gradient-brand">forward-thinking teams</span>
+            Trusted by{' '}
+            <span className="text-gradient-brand">industry leaders</span>
           </h2>
         </motion.div>
 
