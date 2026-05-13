@@ -16,6 +16,14 @@ import nuvio from '@/assets/clients/nuvio.png';
 import madStreetDen from '@/assets/clients/mad-street-den.png';
 import kbk from '@/assets/clients/kbk.png';
 import carecodePro from '@/assets/clients/carecode-pro.png';
+import adr from '@/assets/clients/adr.png';
+import abContainers from '@/assets/clients/ab-containers.png';
+import boldcap from '@/assets/clients/boldcap.png';
+import absoluteBroking from '@/assets/clients/absolute-broking.png';
+import fleetStudio from '@/assets/clients/fleet-studio.png';
+import uravu from '@/assets/clients/uravu.png';
+import fanly from '@/assets/clients/fanly.png';
+import xoro from '@/assets/clients/xoro.png';
 
 // `dark: true` renders the logo on a dark chip so logos that contain
 // white text remain clearly visible on the light section background.
@@ -37,6 +45,14 @@ const logos = [
   { src: madStreetDen, alt: 'Mad Street Den', dark: true },
   { src: kbk, alt: 'KBK' },
   { src: carecodePro, alt: 'Carecode Pro' },
+  { src: adr, alt: 'ADR' },
+  { src: abContainers, alt: 'AB Containers' },
+  { src: boldcap, alt: 'BoldCap', dark: true },
+  { src: absoluteBroking, alt: 'Absolute Broking' },
+  { src: fleetStudio, alt: 'Fleet Studio', dark: true },
+  { src: uravu, alt: 'Uravu' },
+  { src: fanly, alt: 'Fanly' },
+  { src: xoro, alt: 'Xoro' },
 ];
 
 export const ClientLogos = () => {
