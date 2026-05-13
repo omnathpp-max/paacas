@@ -8,6 +8,14 @@ import kosh from '@/assets/clients/kosh.png';
 import talentMaximus from '@/assets/clients/talent-maximus.png';
 import syaqua from '@/assets/clients/syaqua.png';
 import scoreTraining from '@/assets/clients/score-training.png';
+import satoriXr from '@/assets/clients/satori-xr.png';
+import petavue from '@/assets/clients/petavue.png';
+import niharika from '@/assets/clients/niharika.png';
+import jintex from '@/assets/clients/jintex.png';
+import nuvio from '@/assets/clients/nuvio.png';
+import madStreetDen from '@/assets/clients/mad-street-den.png';
+import kbk from '@/assets/clients/kbk.png';
+import carecodePro from '@/assets/clients/carecode-pro.png';
 
 // `dark: true` renders the logo on a dark chip so logos that contain
 // white text remain clearly visible on the light section background.
@@ -21,6 +29,14 @@ const logos = [
   { src: talentMaximus, alt: 'Talent Maximus' },
   { src: syaqua, alt: 'Syaqua' },
   { src: scoreTraining, alt: 'Score Training' },
+  { src: satoriXr, alt: 'Satori XR' },
+  { src: petavue, alt: 'Petavue' },
+  { src: niharika, alt: 'Niharika Studio' },
+  { src: jintex, alt: 'Jintex' },
+  { src: nuvio, alt: 'Nuvio' },
+  { src: madStreetDen, alt: 'Mad Street Den', dark: true },
+  { src: kbk, alt: 'KBK' },
+  { src: carecodePro, alt: 'Carecode Pro' },
 ];
 
 export const ClientLogos = () => {
