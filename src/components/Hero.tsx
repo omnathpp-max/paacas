@@ -2,7 +2,6 @@ import { motion, useInView, useMotionValue, useTransform, animate } from 'framer
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
-import anujTiles from '@/assets/clients/anuj-tiles.png';
 import hexanode from '@/assets/clients/hexanode.png';
 import turiyoSys from '@/assets/clients/turiyo-sys.png';
 import winarb from '@/assets/clients/winarb.png';
@@ -25,15 +24,13 @@ import boldcap from '@/assets/clients/boldcap.png';
 import absoluteBroking from '@/assets/clients/absolute-broking.png';
 import fleetStudio from '@/assets/clients/fleet-studio.png';
 import uravu from '@/assets/clients/uravu.png';
-import fanly from '@/assets/clients/fanly.png';
 import xoro from '@/assets/clients/xoro.png';
 
 const clientLogos = [
-  { src: anujTiles, alt: 'Anuj Vitrified Tiles' },
   { src: hexanode, alt: 'Hexanode' },
   { src: turiyoSys, alt: 'Turiyo Sys' },
   { src: winarb, alt: 'WinArb' },
-  { src: meenakshi, alt: 'Meenakshi Super Speciality Hospital' },
+  { src: meenakshi, alt: 'Meenakshi Super Speciality Hospital', large: true },
   { src: kosh, alt: 'Kosh' },
   { src: talentMaximus, alt: 'Talent Maximus' },
   { src: syaqua, alt: 'Syaqua' },
@@ -48,11 +45,10 @@ const clientLogos = [
   { src: carecodePro, alt: 'Carecode Pro' },
   { src: adr, alt: 'ADR' },
   { src: abContainers, alt: 'AB Containers' },
-  { src: boldcap, alt: 'BoldCap' },
+  { src: boldcap, alt: 'BoldCap', large: true },
   { src: absoluteBroking, alt: 'Absolute Broking' },
-  { src: fleetStudio, alt: 'Fleet Studio' },
-  { src: uravu, alt: 'Uravu' },
-  { src: fanly, alt: 'Fanly' },
+  { src: fleetStudio, alt: 'Fleet Studio', large: true },
+  { src: uravu, alt: 'Uravu', large: true },
   { src: xoro, alt: 'Xoro' },
 ];
 
@@ -250,14 +246,14 @@ export const Hero = () => {
             {[...clientLogos, ...clientLogos].map((logo, i) => (
               <div
                 key={i}
-                className="shrink-0 mx-5 flex items-center justify-center h-12 w-36"
+                className={`shrink-0 mx-5 flex items-center justify-center ${logo.large ? 'h-14 w-44' : 'h-12 w-36'}`}
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
                   loading={i < clientLogos.length ? 'eager' : 'lazy'}
                   decoding="async"
-                  className="max-h-10 max-w-full object-contain brightness-0 invert opacity-50 hover:opacity-80 transition-opacity duration-300"
+                  className={`max-w-full object-contain brightness-0 invert opacity-50 hover:opacity-80 transition-opacity duration-300 ${logo.large ? 'max-h-12' : 'max-h-10'}`}
                 />
               </div>
             ))}
