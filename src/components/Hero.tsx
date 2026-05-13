@@ -231,6 +231,16 @@ export const Hero = () => {
         transition={{ duration: 0.8, delay: 0.75 }}
         className="mt-24 pb-12"
       >
+        <style>{`
+          @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .marquee-track {
+            animation: marquee 55s linear infinite;
+            will-change: transform;
+          }
+        `}</style>
         <div
           className="relative overflow-hidden"
           style={{
@@ -238,26 +248,22 @@ export const Hero = () => {
             WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
           }}
         >
-          <motion.div
-            className="flex w-max items-center"
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
-          >
+          <div className="marquee-track flex w-max items-center gap-16">
             {[...clientLogos, ...clientLogos].map((logo, i) => (
               <div
                 key={i}
-                className={`shrink-0 mx-5 flex items-center justify-center ${logo.large ? 'h-14 w-44' : 'h-12 w-36'}`}
+                className="shrink-0 w-32 h-12 flex items-center justify-center"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
                   loading={i < clientLogos.length ? 'eager' : 'lazy'}
                   decoding="async"
-                  className={`max-w-full object-contain brightness-0 invert opacity-50 hover:opacity-80 transition-opacity duration-300 ${logo.large ? 'max-h-12' : 'max-h-10'}`}
+                  className="max-w-full max-h-full object-contain brightness-0 invert opacity-50 hover:opacity-80 transition-opacity duration-300"
                 />
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>
