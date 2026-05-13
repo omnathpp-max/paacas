@@ -2,7 +2,6 @@ import { motion, useInView, useMotionValue, useTransform, animate } from 'framer
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
-import anujTiles from '@/assets/clients/anuj-tiles.png';
 import hexanode from '@/assets/clients/hexanode.png';
 import turiyoSys from '@/assets/clients/turiyo-sys.png';
 import winarb from '@/assets/clients/winarb.png';
@@ -17,21 +16,18 @@ import niharika from '@/assets/clients/niharika.png';
 import jintex from '@/assets/clients/jintex.png';
 import nuvio from '@/assets/clients/nuvio.png';
 import madStreetDen from '@/assets/clients/mad-street-den.png';
-import kbk from '@/assets/clients/kbk.png';
 import carecodePro from '@/assets/clients/carecode-pro.png';
 import adr from '@/assets/clients/adr.png';
 import abContainers from '@/assets/clients/ab-containers.png';
 import boldcap from '@/assets/clients/boldcap.png';
-import absoluteBroking from '@/assets/clients/absolute-broking.png';
 import fleetStudio from '@/assets/clients/fleet-studio.png';
 import uravu from '@/assets/clients/uravu.png';
 import fanly from '@/assets/clients/fanly.png';
 import xoro from '@/assets/clients/xoro.png';
 
 const clientLogos = [
-  { src: anujTiles, alt: 'Anuj Vitrified Tiles' },
   { src: hexanode, alt: 'Hexanode' },
-  { src: turiyoSys, alt: 'Turiyo Sys' },
+  { src: turiyoSys, alt: 'Turiyo Sys', large: true },
   { src: winarb, alt: 'WinArb' },
   { src: meenakshi, alt: 'Meenakshi Super Speciality Hospital' },
   { src: kosh, alt: 'Kosh' },
@@ -44,12 +40,10 @@ const clientLogos = [
   { src: jintex, alt: 'Jintex' },
   { src: nuvio, alt: 'Nuvio' },
   { src: madStreetDen, alt: 'Mad Street Den' },
-  { src: kbk, alt: 'KBK' },
   { src: carecodePro, alt: 'Carecode Pro' },
   { src: adr, alt: 'ADR' },
-  { src: abContainers, alt: 'AB Containers' },
+  { src: abContainers, alt: 'AB Containers', large: true },
   { src: boldcap, alt: 'BoldCap' },
-  { src: absoluteBroking, alt: 'Absolute Broking' },
   { src: fleetStudio, alt: 'Fleet Studio' },
   { src: uravu, alt: 'Uravu' },
   { src: fanly, alt: 'Fanly' },
@@ -232,13 +226,7 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.75 }}
             className="mt-14"
           >
-            <div
-              className="relative overflow-hidden"
-              style={{
-                maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
-                WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
-              }}
-            >
+            <div className="relative overflow-hidden">
               <motion.div
                 className="flex w-max items-center"
                 animate={{ x: ['0%', '-50%'] }}
@@ -247,14 +235,14 @@ export const Hero = () => {
                 {[...clientLogos, ...clientLogos].map((logo, i) => (
                   <div
                     key={i}
-                    className="shrink-0 mx-5 flex items-center justify-center h-12 w-36"
+                    className={`shrink-0 mx-5 flex items-center justify-center ${logo.large ? 'h-14 w-44' : 'h-12 w-36'}`}
                   >
                     <img
                       src={logo.src}
                       alt={logo.alt}
                       loading={i < clientLogos.length ? 'eager' : 'lazy'}
                       decoding="async"
-                      className="max-h-10 max-w-full object-contain brightness-0 invert opacity-50 hover:opacity-80 transition-opacity duration-300"
+                      className={`max-w-full object-contain brightness-0 invert opacity-50 hover:opacity-80 transition-opacity duration-300 ${logo.large ? 'max-h-13' : 'max-h-10'}`}
                     />
                   </div>
                 ))}
