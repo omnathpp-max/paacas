@@ -18,7 +18,7 @@ import nuvio from '@/assets/clients/nuvio.png';
 import madStreetDen from '@/assets/clients/mad-street-den.png';
 import kbk from '@/assets/clients/kbk.png';
 import carecodePro from '@/assets/clients/carecode-pro.png';
-import adr from '@/assets/clients/adr.png';
+import fanly from '@/assets/clients/fanly.png';
 import abContainers from '@/assets/clients/ab-containers.png';
 import boldcap from '@/assets/clients/boldcap.png';
 import absoluteBroking from '@/assets/clients/absolute-broking.png';
@@ -43,10 +43,10 @@ const clientLogos = [
   { src: madStreetDen, alt: 'Mad Street Den' },
   { src: kbk, alt: 'KBK' },
   { src: carecodePro, alt: 'Carecode Pro' },
-  { src: adr, alt: 'ADR' },
+  { src: fanly, alt: 'Fanly', large: true },
   { src: abContainers, alt: 'AB Containers' },
   { src: boldcap, alt: 'BoldCap', large: true },
-  { src: absoluteBroking, alt: 'Absolute Broking' },
+  { src: absoluteBroking, alt: 'Absolute Broking', large: true },
   { src: fleetStudio, alt: 'Fleet Studio', large: true },
   { src: uravu, alt: 'Uravu', large: true },
   { src: xoro, alt: 'Xoro' },
