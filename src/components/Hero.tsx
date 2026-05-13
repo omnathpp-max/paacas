@@ -229,7 +229,7 @@ export const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.75 }}
-        className="mt-14 pb-12"
+        className="mt-24 pb-12"
       >
         <div
           className="relative overflow-hidden"
