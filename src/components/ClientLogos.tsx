@@ -1,24 +1,26 @@
 import { motion } from 'framer-motion';
-import fleetStudio from '@/assets/clients/fleetstudio-v2.png';
-import absoluteBroking from '@/assets/clients/absolute-broking-v2.png';
-import allMaster from '@/assets/clients/allmaster-v2.png';
-import abContainers from '@/assets/clients/ab-containers.png';
-import adr from '@/assets/clients/adr.png';
 import anujTiles from '@/assets/clients/anuj-tiles.png';
-import boldcap from '@/assets/clients/boldcap.png';
-import carecodePro from '@/assets/clients/carecode-pro.png';
-import fanly from '@/assets/clients/fanly.png';
+import hexanode from '@/assets/clients/hexanode.png';
+import turiyoSys from '@/assets/clients/turiyo-sys.png';
+import winarb from '@/assets/clients/winarb.png';
+import meenakshi from '@/assets/clients/meenakshi.png';
+import kosh from '@/assets/clients/kosh.png';
+import talentMaximus from '@/assets/clients/talent-maximus.png';
+import syaqua from '@/assets/clients/syaqua.png';
+import scoreTraining from '@/assets/clients/score-training.png';
 
+// `dark: true` renders the logo on a dark chip so logos that contain
+// white text remain clearly visible on the light section background.
 const logos = [
-  { src: fleetStudio, alt: 'Fleet Studio' },
-  { src: absoluteBroking, alt: 'Absolute Broking' },
-  { src: allMaster, alt: 'All Master' },
-  { src: abContainers, alt: 'AB Containers' },
-  { src: adr, alt: 'ADR' },
   { src: anujTiles, alt: 'Anuj Vitrified Tiles' },
-  { src: boldcap, alt: 'BoldCap' },
-  { src: carecodePro, alt: 'Carecode Pro' },
-  { src: fanly, alt: 'Fanly' },
+  { src: hexanode, alt: 'Hexanode', dark: true },
+  { src: turiyoSys, alt: 'Turiyo Sys' },
+  { src: winarb, alt: 'WinArb' },
+  { src: meenakshi, alt: 'Meenakshi Super Speciality Hospital' },
+  { src: kosh, alt: 'Kosh' },
+  { src: talentMaximus, alt: 'Talent Maximus' },
+  { src: syaqua, alt: 'Syaqua' },
+  { src: scoreTraining, alt: 'Score Training' },
 ];
 
 export const ClientLogos = () => {
@@ -80,13 +82,15 @@ export const ClientLogos = () => {
             {loop.map((logo, i) => (
               <div
                 key={i}
-                className="shrink-0 mx-3 md:mx-5 flex items-center justify-center h-20 w-36"
+                className={`shrink-0 mx-3 md:mx-5 flex items-center justify-center h-20 w-36 rounded-xl px-3 transition-transform duration-300 hover:scale-110 ${
+                  logo.dark ? 'bg-foreground/90' : ''
+                }`}
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
                   loading="lazy"
-                  className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110"
+                  className="max-h-16 max-w-full object-contain"
                 />
               </div>
             ))}
