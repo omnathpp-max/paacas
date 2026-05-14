@@ -248,18 +248,18 @@ export const Hero = () => {
             WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
           }}
         >
-          <div className="marquee-track flex w-max items-center gap-16">
+          <div className="marquee-track flex w-max items-center gap-10">
             {[...clientLogos, ...clientLogos].map((logo, i) => (
               <div
                 key={i}
-                className="shrink-0 w-32 h-12 flex items-center justify-center"
+                className="shrink-0 flex items-center justify-center h-10"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
                   loading={i < clientLogos.length ? 'eager' : 'lazy'}
                   decoding="async"
-                  className="max-w-full max-h-full object-contain brightness-0 invert opacity-50 hover:opacity-80 transition-opacity duration-300"
+                  className="h-full w-auto max-w-[9rem] object-contain brightness-0 invert opacity-50 hover:opacity-80 transition-opacity duration-300"
                 />
               </div>
             ))}
