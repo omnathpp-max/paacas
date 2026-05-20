@@ -15,20 +15,7 @@ import {
   Sparkles,
   type LucideProps,
 } from 'lucide-react';
-import {
-  Layers,
-  Settings2,
-  ShieldCheck,
-  Users2,
-  Plane,
-  Landmark,
-  Receipt,
-  Target,
-  PiggyBank,
-  HeartHandshake,
-  FileText,
-  Scale,
-} from 'lucide-react';
+import { Layers, Settings2, ShieldCheck, Users as Users2, Plane, Landmark, Receipt, Target, PiggyBank, HeartHandshake, FileText, Scale } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -516,7 +503,7 @@ export const WhoWeHelp = () => {
       <Dialog open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>
         <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] sm:w-full p-0 bg-background border-0 max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl font-sans shadow-[0_30px_80px_-20px_hsl(220_50%_15%/0.45)] max-sm:!w-screen max-sm:!h-[100dvh] max-sm:!max-h-[100dvh] max-sm:!max-w-none max-sm:!rounded-none max-sm:!left-0 max-sm:!top-0 max-sm:!translate-x-0 max-sm:!translate-y-0 data-[state=open]:duration-500 data-[state=open]:ease-out data-[state=closed]:duration-200 data-[state=open]:slide-in-from-bottom-8 data-[state=open]:zoom-in-95 [&>button]:right-4 [&>button]:top-4 [&>button]:z-50 [&>button]:rounded-full [&>button]:bg-background/90 [&>button]:backdrop-blur-md [&>button]:border [&>button]:border-border [&>button]:shadow-md [&>button]:p-2 [&>button]:opacity-100 [&>button>svg]:h-5 [&>button>svg]:w-5 [&>button]:text-foreground hover:[&>button]:bg-background">
           {selected?.details ? (
-            <StartupModalBody audience={selected} details={selected.details} />
+            <StartupModalBody audience={selected} details={selected.details} onClose={() => setSelected(null)} />
           ) : selected ? (
             <ComingSoonBody audience={selected} />
           ) : null}
@@ -551,9 +538,11 @@ const ComingSoonBody = ({ audience }: { audience: Audience }) => {
 const StartupModalBody = ({
   audience,
   details,
+  onClose,
 }: {
   audience: Audience;
   details: StartupDetails;
+  onClose: () => void;
 }) => {
   const Icon = audience.icon;
   return (
@@ -578,10 +567,12 @@ const StartupModalBody = ({
           </DialogDescription>
         </DialogHeader>
         <div className="relative mt-10 flex items-center gap-4">
-          <Button size="lg" className="bg-brand hover:bg-brand-dark text-white text-base rounded-full px-6">
-            <Calendar className="w-4 h-4" />
-            {details.hero.cta}
-          </Button>
+          <a href="#contact" onClick={onClose}>
+            <Button size="lg" className="bg-brand hover:bg-brand-dark text-white text-base rounded-full px-6">
+              <Calendar className="w-4 h-4" />
+              {details.hero.cta}
+            </Button>
+          </a>
           <span className="text-sm text-background/60 hidden sm:inline">Free 30-min discovery call</span>
         </div>
       </header>
@@ -705,10 +696,12 @@ const StartupModalBody = ({
             {details.finalCta.headline}
           </h3>
           <div className="flex flex-col sm:flex-row gap-3 mt-10">
-            <Button size="lg" className="bg-brand hover:bg-brand-dark text-white text-base rounded-full px-6">
-              <Calendar className="w-4 h-4" />
-              {details.finalCta.primary}
-            </Button>
+            <a href="#contact" onClick={onClose}>
+              <Button size="lg" className="bg-brand hover:bg-brand-dark text-white text-base rounded-full px-6">
+                <Calendar className="w-4 h-4" />
+                {details.finalCta.primary}
+              </Button>
+            </a>
             <Button
               size="lg"
               variant="outline"
