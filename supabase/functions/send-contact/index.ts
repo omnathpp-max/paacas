@@ -12,7 +12,17 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const { name, email, phone, service, message } = await req.json();
+    const { name, email, phone, service: serviceKey, message } = await req.json();
+
+    const serviceLabels: Record<string, string> = {
+      launch: "Startup Launch & Compliance",
+      tax: "Tax Optimization & Structuring",
+      cfo: "Virtual CFO & Growth Advisory",
+      fema: "FEMA & Cross-Border Advisory",
+      valuation: "Valuation & Transaction Support",
+      other: "Other",
+    };
+    const service = serviceLabels[serviceKey] ?? serviceKey ?? "—";
 
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
