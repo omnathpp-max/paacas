@@ -42,13 +42,39 @@ export const JoinUs = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 800));
-    toast({
-      title: 'Application submitted',
-      description: "Thanks for applying. Our team will review and get back to you within 3–5 business days.",
-    });
-    setSubmitting(false);
-    setOpen(false);
+    const form = e.target as HTMLFormElement;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-application`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!res.ok) throw new Error('Failed to submit');
+
+      toast({
+        title: 'Application submitted',
+        description: "Thanks for applying. Our team will review and get back to you within 3–5 business days.",
+      });
+      form.reset();
+      setOpen(false);
+    } catch {
+      toast({
+        title: 'Something went wrong',
+        description: 'Please try again or email us directly at info@paacas.in',
+        variant: 'destructive',
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
