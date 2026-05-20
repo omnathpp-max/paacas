@@ -231,16 +231,6 @@ export const Hero = () => {
         transition={{ duration: 0.8, delay: 0.75 }}
         className="mt-24 pb-12"
       >
-        <style>{`
-          @keyframes marquee {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .marquee-track {
-            animation: marquee 55s linear infinite;
-            will-change: transform;
-          }
-        `}</style>
         <div
           className="relative overflow-hidden"
           style={{
@@ -248,7 +238,7 @@ export const Hero = () => {
             WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
           }}
         >
-          <div className="marquee-track flex w-max items-center gap-10">
+          <div className="animate-marquee flex w-max items-center gap-10">
             {[...clientLogos, ...clientLogos].map((logo, i) => (
               <div
                 key={i}
