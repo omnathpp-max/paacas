@@ -13,7 +13,11 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const { firstName, lastName, email, phone, location, experience, role, qualification, linkedin, about } = await req.json();
+    const {
+      firstName, lastName, email, phone, location,
+      experience, role, qualification, linkedin, about,
+      resumePath, resumeFilename,
+    } = await req.json();
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
@@ -33,6 +37,20 @@ Deno.serve(async (req: Request) => {
       about,
     });
 
+    // Download the resume from Storage to attach to the email
+    let attachments: { filename: string; content: string }[] = [];
+    if (resumePath) {
+      const { data: fileData, error: fileError } = await supabase.storage
+        .from("resumes")
+        .download(resumePath);
+
+      if (!fileError && fileData) {
+        const buffer = await fileData.arrayBuffer();
+        const base64 = btoa(String.fromCharCode(...new Uint8Array(buffer)));
+        attachments = [{ filename: resumeFilename || "resume.pdf", content: base64 }];
+      }
+    }
+
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -44,6 +62,7 @@ Deno.serve(async (req: Request) => {
         to: ["aswinpa@paacas.com"],
         reply_to: email,
         subject: `New Job Application from ${firstName} ${lastName}`,
+        attachments,
         html: `
           <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
             <h2 style="color:#1a1a1a;margin-bottom:24px;">New Job Application</h2>
@@ -85,7 +104,10 @@ Deno.serve(async (req: Request) => {
                 <td style="padding:10px 0;color:#1a1a1a;">${about.replace(/\n/g, "<br>")}</td>
               </tr>
             </table>
-            <p style="margin-top:24px;color:#666;font-size:13px;">Note: Resume was attached by the applicant — please follow up directly to request the file.</p>
+            ${attachments.length > 0
+              ? '<p style="margin-top:24px;color:#666;font-size:13px;">Resume attached to this email.</p>'
+              : '<p style="margin-top:24px;color:#e53e3e;font-size:13px;">Resume could not be attached — please follow up with the applicant directly.</p>'
+            }
           </div>
         `,
       }),
@@ -94,6 +116,11 @@ Deno.serve(async (req: Request) => {
     if (!res.ok) {
       const err = await res.text();
       throw new Error(`Resend error: ${err}`);
+    }
+
+    // Clean up the file from storage after sending
+    if (resumePath) {
+      await supabase.storage.from("resumes").remove([resumePath]);
     }
 
     return new Response(JSON.stringify({ success: true }), {

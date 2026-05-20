@@ -1,6 +1,12 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Sparkles, X, Upload } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 import {
   Dialog,
   DialogContent,
@@ -37,15 +43,35 @@ const perks = [
 export const JoinUs = () => {
   const [open, setOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [fileName, setFileName] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
     const form = e.target as HTMLFormElement;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const formData = new FormData(form);
+    const file = formData.get('resume') as File | null;
 
     try {
+      let resumePath = '';
+      let resumeFilename = '';
+
+      if (file && file.size > 0) {
+        resumeFilename = file.name;
+        const ext = resumeFilename.split('.').pop();
+        resumePath = `${crypto.randomUUID()}.${ext}`;
+        const { error: uploadError } = await supabase.storage
+          .from('resumes')
+          .upload(resumePath, file, { contentType: file.type });
+        if (uploadError) throw new Error('Resume upload failed');
+      }
+
+      const data = Object.fromEntries(
+        [...formData.entries()].filter(([k]) => k !== 'resume')
+      );
+
       const res = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-application`,
         {
@@ -54,7 +80,7 @@ export const JoinUs = () => {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ ...data, resumePath, resumeFilename }),
         }
       );
 
@@ -65,6 +91,7 @@ export const JoinUs = () => {
         description: "Thanks for applying. Our team will review and get back to you within 3–5 business days.",
       });
       form.reset();
+      setFileName('');
       setOpen(false);
     } catch {
       toast({
@@ -194,9 +221,19 @@ export const JoinUs = () => {
                     Upload Resume (PDF, DOCX) <span className="text-brand">*</span>
                   </label>
                   <label className="flex items-center gap-3 px-4 py-3 rounded-xl border border-dashed border-border bg-background hover:border-brand/50 hover:bg-secondary/50 transition cursor-pointer">
-                    <Upload className="w-4 h-4 text-brand" />
-                    <span className="text-sm text-muted-foreground">Choose file…</span>
-                    <input type="file" name="resume" accept=".pdf,.doc,.docx" required className="hidden" />
+                    <Upload className="w-4 h-4 text-brand shrink-0" />
+                    <span className="text-sm text-muted-foreground truncate">
+                      {fileName || 'Choose file…'}
+                    </span>
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      name="resume"
+                      accept=".pdf,.doc,.docx"
+                      required
+                      className="hidden"
+                      onChange={(e) => setFileName(e.target.files?.[0]?.name || '')}
+                    />
                   </label>
                 </div>
 
