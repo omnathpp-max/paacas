@@ -236,14 +236,16 @@ export const ServiceDetailModal = ({ open, onOpenChange, icon: Icon, title, deta
                       {details.finalCta.primary}
                     </Button>
                   </a>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="bg-transparent border-background/20 text-background hover:bg-background/10 hover:text-background text-base rounded-full px-6"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    {details.finalCta.secondary}
-                  </Button>
+                  <a href="https://wa.me/917010847979" target="_blank" rel="noopener noreferrer">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="bg-transparent border-background/20 text-background hover:bg-background/10 hover:text-background text-base rounded-full px-6"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      {details.finalCta.secondary}
+                    </Button>
+                  </a>
                 </div>
               </div>
             </section>
