@@ -6,7 +6,6 @@ import {
   Building2,
   Globe2,
   Briefcase,
-  MessageCircle,
   Calendar,
   Package,
   BarChart3,
@@ -16,6 +15,7 @@ import {
   type LucideProps,
 } from 'lucide-react';
 import { Layers, Settings2, ShieldCheck, Users as Users2, Plane, Landmark, Receipt, Target, PiggyBank, HeartHandshake, FileText, Scale } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import {
   Dialog,
   DialogContent,
@@ -702,13 +702,13 @@ const StartupModalBody = ({
                 {details.finalCta.primary}
               </Button>
             </a>
-            <a href="https://wa.me/917010847979" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/917010847979?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services." target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
                 variant="outline"
                 className="bg-transparent border-background/20 text-background hover:bg-background/10 hover:text-background text-base rounded-full px-6"
               >
-                <MessageCircle className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4" />
                 {details.finalCta.secondary}
               </Button>
             </a>
